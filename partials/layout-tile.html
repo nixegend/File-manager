@@ -1,0 +1,6 @@
+<div class="fm-tile-contant clearfix">
+    <div ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" class="tile">
+        <i class="fa {{item.folder ? 'fa-folder folder' : 'fa-file file'}}"></i>
+        <p class="name">{{ renderFileName(item.name, item.ext) }}</p>
+    </div>
+</div>

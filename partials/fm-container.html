@@ -1,0 +1,75 @@
+<div class="fm-container">
+    <div class="fm-sidebar" ng-show="fmSettings.sidebar" ng-style="{'width': fmSettings.sidebarWidth+'%'}">
+        <div class="fm-resizer" ng-mousedown="dragResizer(event)"></div>
+        <div class="storage">
+            <i class="hdd fa fa-hdd-o"></i> Storage
+        </div>
+        <ul class="menu-folders-tree">
+            <li ng-repeat="item in foldersTree.content" ng-include="menuFoldersTree"></li>
+        </ul>
+    </div>
+    <div class="fm-content {{fmSettings.layoutView == 'tile' ? 'based-infobar': ''}}" ng-style="{'width': fmSettings.contentWidth+'%'}"
+    ng-switch="fmSettings.layoutView">
+
+        <ul class="context-menu" ng-if="contextMenuState">
+
+            <li ng-click="paste(tableData)">
+                <i class="fa fa-clipboard"></i> Paste
+            </li>
+            <li ng-click="copy(tableData)">
+                <i class="fa fa-files-o"></i> Copy
+            </li>
+            <li ng-click="cut(tableData)">
+                <i class="fa fa-scissors"></i> Cut
+            </li>
+
+            <li class="divider"></li>
+
+            <li ng-click="selectAll(tableData)">
+                <i class="fa {{allSelected ? 'fa-check-square-o' : 'fa-square-o'}}"></i> Select all
+            </li>
+            <li ng-click="rename(tableData)">
+                <i class="fa fa-pencil"></i> Rename
+            </li>
+
+            <li class="divider"></li>
+
+            <li ng-click="compressed(tableData)">
+                <i class="glyphicon glyphicon-compressed"></i> To archive
+            </li>
+            <li ng-click="download(tableData)">
+                <i class="fa fa-download"></i> Download
+            </li>
+
+            <li class="divider"></li>
+
+            <li ng-click="remove(tableData)">
+                <i class="fa fa-trash-o"></i> Remove
+            </li>
+        </ul>
+
+        <div class="fm-tile-layout" ng-switch-when="tile">
+            <div class="infobar">
+                <i class="fa fa-bars context-menu-btn" ng-click="contextMenuBtn()"></i>
+
+                <!--<div class="tile-sort-form input-group input-group-sm">
+                    <span class="input-group-addon">Sort by:</span>
+                    <select class="form-control" ng-model="criteria" 
+                    ng-options="option.machineName as option.name for option in sortOptions">
+                    </select>
+                    <span ng-click="sortDescAscBtn()" class="input-group-addon btn-info">
+                        <i class="fa {{reverse ? 'fa-sort-amount-desc' : 'fa-sort-amount-asc'}}"></i>
+                    </span>
+                </div>-->
+
+            </div>
+            <fm-tile-layout></fm-tile-layout>
+        </div>
+
+        <div class="fm-table-layout" ng-switch-when="table">
+            <fm-table-layout></fm-table-layout>
+        </div>
+
+
+    </div>
+</div>

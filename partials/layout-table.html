@@ -1,0 +1,57 @@
+<table class="fm-table-contant table table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                <i class="fa fa-bars context-menu-btn" ng-click="contextMenuBtn()"></i>
+            </th>
+            <th>
+                <button type="button" class="btn-sort" ng-click="sortOrder('name')" ng-switch="criteria"> Name
+                    <i ng-switch-when="name" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
+                </button>
+            </th>
+            <th>
+                <button type="button" class="btn-sort" ng-click="sortOrder('ext')" ng-switch="criteria"> Type
+                    <i ng-switch-when="ext" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
+                </button>
+            </th>
+            <th>
+                <button type="button" class="btn-sort" ng-click="sortOrder('size')" ng-switch="criteria"> Size
+                    <i ng-switch-when="size" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
+                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
+                </button>
+            </th>
+            <th>
+                <button type="button" class="btn-sort" ng-click="sortOrder('date')" ng-switch="criteria"> Date
+                    <i ng-switch-when="date" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
+                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in tableData | orderBy:criteria:reverse">
+            <td>
+                <i class="fa {{row.selected ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="selectThis(row)"></i>
+            </td>
+
+            <td ng-switch="row.folder">
+                <span ng-switch-when="false"> <i class="fa fa-file-o"></i> {{row.name}} </span>
+                <span ng-switch-when="true"> <i class="fa fa-folder-o"></i> {{row.name}} </span>
+            </td>
+
+            <td ng-switch="row.folder">
+                <span ng-switch-when="false" class="file"> .{{row.ext}} </span>
+                <span ng-switch-when="true" class="label label-info folder">-- folder</span>
+            </td>
+
+            <td ng-if="row.size !== null" class="size"> {{getDocSize(row.size)}} Kb </td>
+            <td ng-if="row.size == null">
+                <button type="button" class="btn btn-success btn-xs"> Get size </button>
+            </td>
+
+            <td> {{row.date}} </td>
+        </tr>
+    </tbody>
+</table>
