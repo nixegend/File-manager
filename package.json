@@ -1,0 +1,32 @@
+{
+  "name": "file_manager",
+  "version": "1.0.0",
+  "description": "works with files",
+  "main": "index.html",
+  "scripts": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nixegend/File-manager.git"
+  },
+  "keywords": [
+    "file",
+    "manager",
+    "nodeJS",
+    "angular"
+  ],
+  "author": "Anton Panchenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nixegend/File-manager/issues"
+  },
+  "homepage": "https://github.com/nixegend/File-manager#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1"
+  }
+}
