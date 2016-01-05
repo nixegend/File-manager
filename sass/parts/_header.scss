@@ -1,0 +1,44 @@
+.fm-header {
+  padding: 5px 0;
+  width: 100%;
+  background-color: #549DFD;
+  border-bottom: 1px solid #BFC5FD;
+
+  .fm-breadcrumb {
+    > li {
+      list-style-type: none;
+      font-size: 13px;
+      margin: -5px 0;
+      float: left;
+      padding: 5px 5px 5px 0;
+
+      &:not(:last-child):after {
+        content: " / ";
+        font-size: 17px;
+        line-height: 0;
+        cursor: default;
+      }
+
+      &:last-child {
+        padding-right: 0;
+
+        .folder {
+          cursor: default;
+          color: #7F7F7F;
+        }
+      }
+
+      &:not(:last-child) {
+        .folder {
+          cursor: pointer;
+          padding: 5px 0;
+          color: #0062E2;
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}

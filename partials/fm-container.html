@@ -8,8 +8,7 @@
             <li ng-repeat="item in foldersTree.content" ng-include="menuFoldersTree"></li>
         </ul>
     </div>
-    <div class="fm-content {{fmSettings.layoutView == 'tile' ? 'based-infobar': ''}}" ng-style="{'width': fmSettings.contentWidth+'%'}"
-    ng-switch="fmSettings.layoutView">
+    <div class="fm-content" ng-style="{'width': fmSettings.contentWidth+'%'}" ng-switch="fmSettings.layoutView">
 
         <ul class="context-menu" ng-if="contextMenuState">
 

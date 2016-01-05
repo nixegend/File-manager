@@ -1,0 +1,114 @@
+.fm-tile-contant {
+  height: 100%;
+  overflow-y: auto;
+
+  .tile {
+    .file,
+    .folder {
+      font-size: 53px;
+      color: #BEDAFF;
+    }
+  }
+}
+
+.fm-tile-layout {
+  height: 100%;
+  overflow-x: hidden;
+
+  .fm-tile-contant {
+    @include scroll-box-height();
+    padding: 5px;
+  }
+
+  .infobar {
+    @include bar-styles();
+  }
+}
+
+.tile {
+  background-color: #fafafa;
+  width: 300px;
+  height: 90px;
+  margin: 5px;
+  overflow: hidden;
+  padding: 5px;
+  float: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #CCD5FF;
+    background-color: #EDF3FF;
+  }
+
+  > .name {
+    margin: 0 0 5px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  > .size {
+
+  }
+
+  .fm-icon-file,
+  .fm-icon-folder {
+    float: left;
+    margin: 3px 10px 3px 3px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .fm-icon-folder {
+    background-color: #B1D8AC;
+    width: 53px;
+    height: 70px;
+    border-radius: 4px 2px 2px 4px;
+    margin-right: 23px;
+
+     &:after {
+      width: 9px;
+      right: -9px;
+      height: 35px;
+    }
+
+    &:before {
+      right: -5px;
+      width: 5px;
+      height: 63px;
+    }
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      box-shadow: 1px 0 2px 0 #878787 inset;
+      background-color: #97C189;
+      border-radius: 0 2px 2px 0;
+      top: 3px;
+    }
+  }
+
+  .fm-icon-file {
+    width: 55px;
+    height: 70px;
+    border-radius: 4px 12px 4px 4px;
+    box-shadow: 20px -35px 0 15px #8CADFB inset;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      border-width: 0;
+      border-bottom: 20px solid #5F85B9;
+      border-right: 20px solid transparent;
+      box-shadow: 0px 0px 2px 2px #818181;
+      top: 0;
+      right: 0;
+    }
+  }
+
+}

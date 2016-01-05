@@ -29,8 +29,6 @@ define(['app', '../directives/fm-container'], function (app) {
             };
 
 
-
-
             $scope.openSettingsMmodal = function (size) {
                 $uibModal.open({
                     size: size,

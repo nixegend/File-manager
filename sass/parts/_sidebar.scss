@@ -1,0 +1,116 @@
+.fm-sidebar {
+  float: left;
+  position: relative;
+  background-color: #F1F1F1;
+  height: 100%;
+  box-shadow: 3px 3px 7px -1px #B3B3B3;
+  z-index: 2;
+
+  .storage {
+    @include bar-styles();
+  }
+
+  .fm-resizer {
+    position: absolute;
+    right: -3px;
+    height: 100%;
+    width: 8px;
+    z-index: 1;
+
+    &:after {
+        content: "";
+        height: 100%;
+        width: 2px;
+        background-color: #BFC5FD;
+        margin-left: 4px;
+        display: block;
+    }
+
+    &:hover:after {
+        background-color: #549DFD;
+    }
+
+    &:hover {
+        cursor: col-resize;
+    }
+  }
+
+  .storage .hdd {
+    font-size: 17px;
+  }
+}
+
+
+.menu-folders-tree {
+  padding-left: 15px;
+  margin: 0;
+
+  @include scroll-box-height();
+
+  li {
+    list-style: none;
+
+    ul {
+      padding-left: 15px;
+    }
+
+    > .file {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 1px 3px;
+      cursor: pointer;
+
+      &:hover {
+        color: #549DFD;
+        background-color: #E1E6ED;
+      }
+    }
+
+    > .folder {
+      position: relative;
+      padding: 1px 3px;
+
+      > .angle {
+        visibility: hidden;
+        position: absolute;
+        top: 1px;
+        left: -9px;
+      }
+
+      > .name {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+      }
+
+      > .icon {
+        float: left;
+        margin-right: 7px;
+        font-size: 16px;
+      }
+
+      &:hover {
+        background-color: #E1E6ED;
+      }
+
+      > .icon,
+      > .name {
+        cursor: pointer;
+
+        &:hover {
+          color: #549DFD;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    li > .folder > .angle {
+      visibility: visible;
+    }
+  }
+
+}
