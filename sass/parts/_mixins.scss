@@ -11,7 +11,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
-  color: #fff;
-  background-color: #8CADFB;
-  border-bottom: 2px solid #ddd;
+  color: $info-bar-text;
+  background-color: $info-bar-bg;
+  border-bottom: $border-bottom-info-bar;
 }

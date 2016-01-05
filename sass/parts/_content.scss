@@ -4,7 +4,6 @@
 
 .fm-content {
   float: left;
-  background-color: #fff;
   height: 100%;
 }
 
@@ -14,7 +13,7 @@
   margin: -8px;
 
   &:hover {
-    color: #000;
+    color: $link-default;
   }
 }
 
@@ -26,7 +25,7 @@
    height: 100%;
    min-width: 150px;
    border-right: 1px solid #DEDEDE;
-   background-color: #F1F1F1;
+   background-color: $context-menu-bg;
    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 
   .divider {
@@ -38,11 +37,12 @@
   > li {
     cursor: pointer;
     list-style: none;
+    color: $link-default;
     padding: 3px 10px;
 
     &:hover {
-      background-color: #E1E6ED;
-      color: #549DFD;
+      background-color: $link-hover-bg;
+      color: $link-hover;
     }
   }
 }

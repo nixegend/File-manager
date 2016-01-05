@@ -1,7 +1,7 @@
 .fm-sidebar {
   float: left;
   position: relative;
-  background-color: #F1F1F1;
+  background-color: $sidebar-bg;
   height: 100%;
   box-shadow: 3px 3px 7px -1px #B3B3B3;
   z-index: 2;
@@ -21,13 +21,13 @@
         content: "";
         height: 100%;
         width: 2px;
-        background-color: #BFC5FD;
+        background-color: $header-border-bottom;
         margin-left: 4px;
         display: block;
     }
 
     &:hover:after {
-        background-color: #549DFD;
+        background-color: $link-hover;
     }
 
     &:hover {
@@ -62,8 +62,8 @@
       cursor: pointer;
 
       &:hover {
-        color: #549DFD;
-        background-color: #E1E6ED;
+        color: $link-hover;
+        background-color: $link-hover-bg;
       }
     }
 
@@ -93,7 +93,7 @@
       }
 
       &:hover {
-        background-color: #E1E6ED;
+        background-color: $link-hover-bg;
       }
 
       > .icon,
@@ -101,7 +101,7 @@
         cursor: pointer;
 
         &:hover {
-          color: #549DFD;
+          color: $link-hover;
         }
       }
     }

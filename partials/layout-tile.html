@@ -1,6 +1,6 @@
 <div class="fm-tile-contant clearfix">
     <div ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" class="tile">
-        <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}"></i>
+        <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}" filetype="{{item.ext}}"></i>
         <p class="name">{{ renderFileName(item.name, item.ext) }}</p>
         <span ng-if="item.size !== null" class="size"> {{getDocSize(item.size)}} Kb </span>
         <button ng-if="item.size == null" type="button" class="btn btn-success btn-xs"> Get size </button>

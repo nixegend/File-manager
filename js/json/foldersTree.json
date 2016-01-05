@@ -5,15 +5,6 @@
       "path": "./storage",
       "folder": false,
       "file": true,
-      "name": ".",
-      "date": "22/03/2015",
-      "ext": "htaccess",
-      "size": 292
-    },
-    {
-      "path": "./storage",
-      "folder": false,
-      "file": true,
       "name": "db.node",
       "date": "22/03/2015",
       "ext": "accdb",

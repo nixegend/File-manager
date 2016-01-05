@@ -1,8 +1,8 @@
 .fm-header {
   padding: 5px 0;
   width: 100%;
-  background-color: #549DFD;
-  border-bottom: 1px solid #BFC5FD;
+  background-color: $header-bg;
+  border-bottom: 1px solid $header-border-bottom;
 
   .fm-breadcrumb {
     > li {
@@ -32,10 +32,10 @@
         .folder {
           cursor: pointer;
           padding: 5px 0;
-          color: #0062E2;
+          color: $link-hover;
 
           &:hover {
-            color: #000;
+            color: $link-default;
           }
         }
       }
