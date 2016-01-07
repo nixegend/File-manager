@@ -2,8 +2,9 @@
 $all-headers-height:               38px;
 $fm-container-bg:               #fff;
 $btn-sort-hover:                rgba(255, 255, 255, 0.16);
+$sidebar-box-shadow:              3px 3px 7px -1px #B3B3B3;
 $breadcrumb-last-element-color: #7F7F7F;
-$context-menu-border-right:     1px solid #DEDEDE;
+$context-menu-border-right:       1px solid #DEDEDE;
 $divider-color:                 #dedede;
 
 // ------------- links -----------------------------
@@ -27,9 +28,11 @@ $context-menu-bg: $sidebar-bg;
 // ------------- file icon -------------------------
 $icon-file-bg:        #8CADFB;
 $icon-file-ext-colot: #fff;
+$sidebar-icon-file-color: lighten($icon-file-bg, 9%);
 
 // ------------- folder icon -----------------------
 $folder-icon-bg: #97C189;
+$sidebar-icon-folder-color: $folder-icon-bg;
 
 // ------------- tile container --------------------
 $tile-box-bg:              #fafafa;
