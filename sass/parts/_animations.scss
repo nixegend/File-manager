@@ -1,16 +1,16 @@
 .view {
   &.ng-enter,
   &.ng-leave {
-    transition: 400ms linear all;
+    transition: 0.4s linear all;
   }
 
-  .ng-leave.ng-leave-active,
-  .ng-enter {
+  &.ng-leave.ng-leave-active,
+  &.ng-enter {
     opacity: 0;
   }
 
-  .ng-enter.ng-enter-active, 
-  .ng-leave {
+  &.ng-enter.ng-enter-active,
+  &.ng-leave {
     opacity: 1;
   }
 }

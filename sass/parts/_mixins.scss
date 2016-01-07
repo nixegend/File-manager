@@ -1,17 +1,17 @@
 @mixin scroll-box-height() {
-  height: calc(100% - #{$all-header-height});
+  height: calc(100% - #{$all-headers-height});
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 @mixin bar-styles() {
   padding: 8px 15px;
-  height: $all-header-height;
+  height: $all-headers-height;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
-  color: $info-bar-text;
-  background-color: $info-bar-bg;
-  border-bottom: $border-bottom-info-bar;
+  color: $header-infobar-text;
+  background-color: $header-infobar-bg;
+  border-bottom: $header-infobar-border-bottom;
 }

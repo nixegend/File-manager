@@ -1,12 +1,12 @@
 <div ng-if="fmSettings.showFiles && item.file" class="file">
   <i class="icon fa fa-file-o"></i>
-  <span class="name"> {{renderFileName(item.name, item.ext)}} </span>
+  <span class="name" title="{{item.name}}"> {{renderFileName(item.name, item.ext)}} </span>
 </div>
 
 <div ng-if="item.folder" class="folder">
    <i ng-click="toggleLevelBelow(item)" class="angle fa {{item.open ? 'fa-angle-down' : 'fa-angle-right'}}"></i>
    <i ng-click="toggleLevelBelow(item)" class="icon fa {{item.open ? 'fa-folder-open-o' : 'fa-folder-o'}}"></i>
-   <span class="name" ng-click="goToDirectory(item)"> {{item.name}} </span>
+   <span class="name" ng-click="goToDirectory(item)" title="{{item.name}}"> {{item.name}} </span>
 </div>
 
 <ul ng-if="item.content.length > 0 && item.open" ng-class="{'subMenuContainer': item.content.length > 0}">

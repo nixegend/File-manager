@@ -1,17 +1,57 @@
-$all-header-height: 38px;
+// ------------- general ---------------------------
+$all-headers-height:               38px;
+$fm-container-bg:               #fff;
+$btn-sort-hover:                rgba(255, 255, 255, 0.16);
+$breadcrumb-last-element-color: #7F7F7F;
+$context-menu-border-right:     1px solid #DEDEDE;
+$divider-color:                 #dedede;
 
-
-$link-hover: #328BFF;
+// ------------- links -----------------------------
+$link-hover:    #328BFF;
 $link-hover-bg: #E1E6ED;
-$link-default: #333;
+$link-default:  #333;
 
-$header-bg: #549DFD;
-$header-border-bottom: #BFC5FD;
+// ------------- header ----------------------------
+$header-bg:          #549DFD;
+$header-border-bottom: 1px solid #BFC5FD;
 
-$info-bar-bg: #8CADFB;
-$info-bar-text: #fff;
+// ------------- headers ins content ---------------
+$header-infobar-bg:          lighten($header-bg, 9%);
+$header-infobar-text:        #fff;
+$header-infobar-border-bottom: 2px solid #ddd;
 
-$sidebar-bg: #F1F1F1;
-$context-menu-bg: #F1F1F1;
+// ------------- sidebar and context menu ----------
+$sidebar-bg:      #F1F1F1;
+$context-menu-bg: $sidebar-bg;
 
-$border-bottom-info-bar: 2px solid #ddd;
+// ------------- file icon -------------------------
+$icon-file-bg:        #8CADFB;
+$icon-file-ext-colot: #fff;
+
+// ------------- folder icon -----------------------
+$folder-icon-bg: #97C189;
+
+// ------------- tile container --------------------
+$tile-box-bg:              #fafafa;
+$tile-box-bg-hover:        #EDF3FF;
+$tile-box-text-colot:      #333;
+$tile-box-text-size-colot: #989898;
+
+// ------------- tile border -----------------------
+$tile-border:       1px solid #ddd;
+$tile-border-hover: 1px solid #CCD5FF;
+
+// ------------- table steles -----------------------
+$fm-table-tr-odd-bg:      #fff;
+$fm-table-tr-even-bg:     #fafafa;
+$fm-table-tr-hover:       $tile-box-bg-hover;
+$fm-table-text-color:     #333;
+$fm-table-border-bottom-td: $tile-border;
+
+// ------------- btn-fm -----------------------
+$btn-fm-color: #fff;
+$btn-fm-bg-color: #6D84E0;
+$btn-fm-border-color: #7E7AC7;
+
+$btn-fm-hover-color: #333;
+$btn-fm-hover-bg-color: #8BA1FD;

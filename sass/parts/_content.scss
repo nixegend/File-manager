@@ -1,5 +1,6 @@
 .fm-container {
   width: 100%;
+  background-color: $fm-container-bg;
 }
 
 .fm-content {
@@ -24,14 +25,14 @@
    margin: 0;
    height: 100%;
    min-width: 150px;
-   border-right: 1px solid #DEDEDE;
+   border-right: $context-menu-border-right;
    background-color: $context-menu-bg;
    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 
   .divider {
     padding: 1px 0 0 0;
     margin: 4px 0;
-    background-color: #dedede;
+    background-color: $divider-color;
   }
 
   > li {
@@ -44,5 +45,18 @@
       background-color: $link-hover-bg;
       color: $link-hover;
     }
+  }
+}
+
+.btn-fm:focus,
+.btn-fm {
+  background-color: $btn-fm-bg-color;
+  border-color: $btn-fm-border-color;
+  color: $btn-fm-color;
+  outline: none;
+
+  &:hover {
+    background-color: $btn-fm-hover-bg-color;
+    color: $btn-fm-hover-color;
   }
 }

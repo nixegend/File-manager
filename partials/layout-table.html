@@ -1,4 +1,4 @@
-<table class="fm-table-contant table table-hover table-striped table-bordered">
+<table class="fm-table-contant table">
     <thead>
         <tr>
             <th>
@@ -31,27 +31,28 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="row in tableData | orderBy:criteria:reverse">
+        <tr ng-repeat="item in tableData | orderBy:criteria:reverse">
             <td>
-                <i class="fa {{row.selected ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="selectThis(row)"></i>
+                <i class="fa {{item.selected ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="selectThis(item)"></i>
             </td>
 
-            <td ng-switch="row.folder">
-                <span ng-switch-when="false"> <i class="fa fa-file-o"></i> {{row.name}} </span>
-                <span ng-switch-when="true"> <i class="fa fa-folder-o"></i> {{row.name}} </span>
+            <td>
+                <span title="{{item.name}}">
+                    <i class="fa {{item.folder ? 'fa-folder-o' : 'fa-file-o'}}"></i> {{item.name}}
+                </span>
             </td>
 
-            <td ng-switch="row.folder">
-                <span ng-switch-when="false" class="file"> .{{row.ext}} </span>
+            <td ng-switch="item.folder">
+                <span ng-switch-when="false" class="file"> .{{item.ext}} </span>
                 <span ng-switch-when="true" class="label label-info folder">-- folder</span>
             </td>
 
-            <td ng-if="row.size !== null" class="size"> {{getDocSize(row.size)}} Kb </td>
-            <td ng-if="row.size == null">
-                <button type="button" class="btn btn-success btn-xs"> Get size </button>
+            <td ng-switch="item.size">
+                <span ng-switch-default class="size"> {{getDocSize(item.size)}} Kb </span>
+                <button ng-switch-when="null" type="button" class="btn btn-success btn-xs"> Get size </button>
             </td>
 
-            <td> {{row.date}} </td>
+            <td> {{item.date}} </td>
         </tr>
     </tbody>
 </table>

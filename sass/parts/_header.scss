@@ -2,7 +2,7 @@
   padding: 5px 0;
   width: 100%;
   background-color: $header-bg;
-  border-bottom: 1px solid $header-border-bottom;
+  border-bottom: $header-border-bottom;
 
   .fm-breadcrumb {
     > li {
@@ -24,7 +24,7 @@
 
         .folder {
           cursor: default;
-          color: #7F7F7F;
+          color: $breadcrumb-last-element-color;
         }
       }
 
