@@ -1,16 +1,18 @@
 // ------------- general ---------------------------
-$all-headers-height:               38px;
+$all-headers-height:              38px;
+$tile-height:                     85px;
+$tile-width:                      300px;
 $fm-container-bg:               #fff;
 $btn-sort-hover:                rgba(255, 255, 255, 0.16);
 $sidebar-box-shadow:              3px 3px 7px -1px #B3B3B3;
-$breadcrumb-last-element-color: #7F7F7F;
-$context-menu-border-right:       1px solid #DEDEDE;
+$breadcrumb-last-element-color: #898989;
+$context-menu-border-right:       1px solid #dedede;
 $divider-color:                 #dedede;
 
 // ------------- links -----------------------------
 $link-hover:    #328BFF;
 $link-hover-bg: #E1E6ED;
-$link-default:  #333;
+$default-text:  #333;
 
 // ------------- header ----------------------------
 $header-bg:          #549DFD;
@@ -30,31 +32,32 @@ $icon-file-bg:        #8CADFB;
 $icon-file-ext-colot: #fff;
 $sidebar-icon-file-color: lighten($icon-file-bg, 9%);
 
-// ------------- folder icon -----------------------
+// ------------- folder icon ------------------------
 $folder-icon-bg: #97C189;
 $sidebar-icon-folder-color: $folder-icon-bg;
 
-// ------------- tile container --------------------
+// ------------- tile container ---------------------
 $tile-box-bg:              #fafafa;
 $tile-box-bg-hover:        #EDF3FF;
-$tile-box-text-colot:      #333;
+$tile-box-text-colot:      $default-text;
 $tile-box-text-size-colot: #989898;
 
-// ------------- tile border -----------------------
-$tile-border:       1px solid #ddd;
-$tile-border-hover: 1px solid #CCD5FF;
+// ------------- tile border ------------------------
+$tile-border:       1px solid darken($tile-box-bg, 7%);
+$tile-border-hover: 1px solid darken($tile-box-bg-hover, 10%);
 
 // ------------- table steles -----------------------
 $fm-table-tr-odd-bg:      #fff;
-$fm-table-tr-even-bg:     #fafafa;
-$fm-table-tr-hover:       $tile-box-bg-hover;
-$fm-table-text-color:     #333;
+$fm-table-tr-even-bg:     darken($fm-table-tr-odd-bg, 2%);
+
+$fm-table-tr-hover:         $tile-box-bg-hover;
+$fm-table-text-color:       $default-text;
 $fm-table-border-bottom-td: $tile-border;
 
-// ------------- btn-fm -----------------------
+// ------------- btn-fm -----------------------------
 $btn-fm-color: #fff;
 $btn-fm-bg-color: #6D84E0;
-$btn-fm-border-color: #7E7AC7;
+$btn-fm-border-color: darken($btn-fm-bg-color, 5%);
 
-$btn-fm-hover-color: #333;
-$btn-fm-hover-bg-color: #8BA1FD;
+$btn-fm-hover-color: $default-text;
+$btn-fm-hover-bg-color: lighten($btn-fm-bg-color, 17%);

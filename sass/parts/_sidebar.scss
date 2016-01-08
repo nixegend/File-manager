@@ -61,7 +61,7 @@
       cursor: pointer;
 
       > .name {
-        color: $link-default;
+        color: $default-text;
       }
 
       > .icon {
@@ -86,7 +86,7 @@
         visibility: hidden;
         position: absolute;
         top: 1px;
-        color: $link-default;
+        color: $default-text;
         left: -9px;
       }
 
@@ -96,7 +96,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: bold;
-        color: $link-default;
+        color: $default-text;
       }
 
       > .icon {

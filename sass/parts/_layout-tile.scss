@@ -19,14 +19,14 @@
 
 .tile {
   background-color: $tile-box-bg;
-  width: 300px;
-  height: 90px;
+  width: $tile-width;
+  height: $tile-height;
   margin: 5px;
   overflow: hidden;
   padding: 5px;
   float: left;
   cursor: pointer;
-  box-sizing: border-box;
+  position: relative;
   border: $tile-border;
 
   &:hover {
@@ -37,48 +37,49 @@
 
   > .name {
     color: $tile-box-text-colot;
-    margin: 5px 0 0 0;
+    margin-top: 5px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
 
   > .size {
-    float: right;
-    margin-top: 32px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
     color: $tile-box-text-size-colot;
   }
 
   > .get-btn-size {
-    float: right;
-    margin-top: 27px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
   }
 
   .fm-icon-file,
   .fm-icon-folder {
     float: left;
-    margin: 3px 10px 3px 3px;
+    height: $tile-height - 13px;
     position: relative;
     display: inline-block;
   }
 
   .fm-icon-folder {
     background-color: lighten($folder-icon-bg, 12.5%);
-    width: 53px;
-    height: 70px;
+    width: 50px;
     border-radius: 4px 2px 2px 4px;
-    margin-right: 23px;
+    margin-right: 20px;
 
-     &:after {
+    &:after {
       width: 9px;
       right: -9px;
-      height: 35px;
+      height: 45%;
     }
 
     &:before {
       right: -5px;
       width: 5px;
-      height: 63px;
+      height: $tile-height - 20px;
     }
 
     &:after,
@@ -94,9 +95,9 @@
 
   .fm-icon-file {
     width: 55px;
-    height: 70px;
+    margin-right: 10px;
     border-radius: 4px 12px 4px 4px;
-    box-shadow: 20px -35px 0 15px $icon-file-bg inset;
+    box-shadow: 20px -37px 0 15px $icon-file-bg inset;
 
     &:after {
       content: '';
@@ -111,7 +112,8 @@
     &:before {
       content: "." attr(filetype) "";
       font-size: 12px;
-      margin-top: 40px;
+      bottom: 8px;
+      position: absolute;
       color: $icon-file-ext-colot;
       min-width: 48px;
       background-color: darken($icon-file-bg, 7%);

@@ -14,7 +14,7 @@
   margin: -8px;
 
   &:hover {
-    color: $link-default;
+    color: $default-text;
   }
 }
 
@@ -38,7 +38,7 @@
   > li {
     cursor: pointer;
     list-style: none;
-    color: $link-default;
+    color: $default-text;
     padding: 3px 10px;
 
     &:hover {
