@@ -4,19 +4,25 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.menuFoldersTree = '/partials/menu-folder-tree.html';
             $scope.contextMenuState = false;
+            $scope.breadcrumbArr = [];
 
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
                 $scope.tableData = data.content;
-                $scope.breadcrumbArr = [];
             });
 
             $scope.goToDirectory = function (data) {
                 if (data.folder) {
-                    console.log(data);
-                    $scope.breadcrumbArr.push(data.name);
+                    $scope.breadcrumbArr = data.path.split('/').slice(2);
                     $scope.tableData = data.content;
                     if (data.storage) $scope.breadcrumbArr = [];
+                }
+            };
+
+            $scope.breadcrumbWalker = function (index) {
+                var destArr = $scope.breadcrumbArr.slice(0, index + 1);
+                for (var i = 0; i < destArr.length; i++) {
+                  $scope.tableData
                 }
             };
 
