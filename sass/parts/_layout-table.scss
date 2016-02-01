@@ -23,15 +23,38 @@
     color: $fm-table-text-color;
 
     > tr {
-        transition: 0.15s linear background-color;
+      transition: 0.15s linear background-color;
+
+      &.selected {
+        &:nth-of-type(odd),
+        &:nth-of-type(even) {
+           background-color: $fm-table-tr-hover;
+        }
+      }
 
       > td {
         border-bottom: $fm-table-border-bottom-td;
         border-top: 0;
+
+        .icon-folder {
+          color: darken($sidebar-icon-folder-color, 10%);
+        }
+
+        .icon-file {
+          color: darken($sidebar-icon-file-color, 10%);
+        }
       }
 
       > td:first-child {
         text-align: center;
+
+        .check {
+          color: #587658;
+        }
+
+        .uncheck {
+          color: #a8a8a8;
+        }
       }
 
       &:nth-of-type(odd) {

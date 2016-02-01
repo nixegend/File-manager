@@ -9,6 +9,12 @@ define(['app'], function (app) {
                 $scope.reverse = ($scope.criteria === criteria) ? !$scope.reverse : false;
                 $scope.criteria = criteria;
             };
-
+            
+            
+            $scope.selectThis = function (item) {
+                item.selected = !item.selected;
+            };
+            
+            
         }]);
 });

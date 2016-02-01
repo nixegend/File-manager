@@ -31,14 +31,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in tableData | orderBy:criteria:reverse">
+        <tr ng-repeat="item in tableData | orderBy:criteria:reverse" class="{{item.selected ? 'selected' : 'not-selected'}}">
             <td>
-                <i class="fa {{item.selected ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="selectThis(item)"></i>
+                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             </td>
 
             <td>
                 <span title="{{item.name}}">
-                    <i class="fa {{item.folder ? 'fa-folder-o' : 'fa-file-o'}}"></i> {{item.name}}
+                    <i class="fa {{item.folder ? 'fa-folder-o icon-folder' : 'fa-file-o icon-file'}}"></i> {{item.name}}
                 </span>
             </td>
 
