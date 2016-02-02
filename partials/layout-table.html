@@ -49,7 +49,7 @@
 
             <td ng-switch="item.size">
                 <span ng-switch-default class="size"> {{getDocSize(item.size)}} Kb </span>
-                <button ng-switch-when="null" type="button" class="btn btn-success btn-xs"> Get size </button>
+                <button ng-switch-when="null" type="button" ng-click="getFolderSize(item)" class="btn btn-success btn-xs"> Get size </button>
             </td>
 
             <td> {{item.date}} </td>

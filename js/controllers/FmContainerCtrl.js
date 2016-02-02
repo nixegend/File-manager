@@ -65,19 +65,11 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             };
 
             $scope.getDocSize = function (fSize) {
-                var arr = [], k = 0;
-                function getSize(s) {
-                    if (k == 3) {
-                        arr.push((s % 10) + ',');
-                        k = 0;
-                    } else {
-                        arr.push(s % 10);
-                    }
-                    s = parseInt(s / 10);
-                    k++;
-                    return s ? getSize(s) : arr.reverse().join('');
-                }
-                return getSize(Math.ceil(fSize / 1024));
+                return api.convertToKb(Math.ceil(fSize / 1024));
+            };
+
+            $scope.getFolderSize = function (obj) {
+                obj.size = api.getSumSizes(obj.content);
             };
 
         }]);
