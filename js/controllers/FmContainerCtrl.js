@@ -24,12 +24,12 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             $scope.breadcrumbWalker = function (index, last) {
                 if (last) return;
                 var destArr = $scope.breadcrumbArr.slice(0, index + 1);
+                var tree = $scope.foldersTree;
 
-                //======================================
-                for (var i = 0; i < destArr.length; i++) {
-                    $scope.tableData;
+                for (var i = 0; i < index + 1; i++) {
+                    tree = $filter('filter')(tree.content, { name: destArr[i] })[0];
+                    if (i == index) $scope.goToDirectory(tree);
                 }
-                //======================================
             };
 
             $scope.toggleLevelBelow = function (obj) {
