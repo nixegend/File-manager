@@ -20,7 +20,7 @@
 
                     <ul class="fm-breadcrumb form-control input-sm">
                         <li ng-repeat="item in breadcrumbArr track by $index">
-                            <span class="folder" ng-click="breadcrumbWalker($index)">{{item}}</span>
+                            <span class="folder" ng-click="breadcrumbWalker($index, $last)">{{item}}</span>
                         </li>
                     </ul>
 

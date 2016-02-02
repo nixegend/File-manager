@@ -4,6 +4,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.menuFoldersTree = '/partials/menu-folder-tree.html';
             $scope.contextMenuState = false;
+            $scope.allSelected = false;
             $scope.breadcrumbArr = [];
 
             api.getJSONresponse('foldersTree').then(function (data) {
@@ -19,10 +20,11 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 }
             };
 
-            $scope.breadcrumbWalker = function (index) {
+            $scope.breadcrumbWalker = function (index, last) {
+                if (last) return;
                 var destArr = $scope.breadcrumbArr.slice(0, index + 1);
                 for (var i = 0; i < destArr.length; i++) {
-                  $scope.tableData
+                    $scope.tableData
                 }
             };
 
@@ -40,6 +42,17 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 } else {
                     return fName;
                 }
+            };
+
+            $scope.selectAll = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    data[i]['selected'] = !$scope.allSelected;
+                }
+                $scope.allSelected = !$scope.allSelected;
+            };
+
+            $scope.selectThis = function (item) {
+                item.selected = !item.selected;
             };
 
             $scope.getDocSize = function (fSize) {

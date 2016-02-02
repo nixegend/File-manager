@@ -1,5 +1,11 @@
 <div class="fm-tile-contant clearfix">
-    <div ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" class="tile">
+    <div ng-repeat="item in tableData | orderBy:criteria:reverse" 
+         ng-dblclick="goToDirectory(item)" 
+         class="tile {{item.folder ? 'folder' : 'file'}}" 
+         ng-class="{'selected': item.selected}">
+
+        <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" 
+        ng-click="selectThis(item)"></i>
         <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}" filetype="{{item.ext}}"></i>
         <p class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</p>
         <span ng-if="item.size !== null" class="size"> {{getDocSize(item.size)}} Kb </span>

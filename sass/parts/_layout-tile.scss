@@ -29,6 +29,40 @@
   position: relative;
   border: $tile-border;
 
+  &.selected {
+    background-color: darken($tile-box-bg-hover, 1%);
+  }
+
+  .check,
+  .uncheck {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 5px;
+    padding: 5px;
+    font-size: 21px;
+  }
+
+  &.file {
+    .check {
+      color: darken($icon-file-bg, 20%);
+    }
+
+    .uncheck {
+      color: lighten($icon-file-bg, 10%);
+    }
+  }
+
+  &.folder {
+    .check {
+      color: darken($folder-icon-bg, 20%);
+    }
+
+    .uncheck {
+      color: lighten($folder-icon-bg, 2%);
+    }
+  }
+
   &:hover {
     cursor: pointer;
     border: $tile-border-hover;

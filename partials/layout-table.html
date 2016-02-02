@@ -31,7 +31,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in tableData | orderBy:criteria:reverse" class="{{item.selected ? 'selected' : 'not-selected'}}">
+        <tr ng-repeat="item in tableData | orderBy:criteria:reverse" ng-class="{'selected': item.selected}">
             <td>
                 <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             </td>

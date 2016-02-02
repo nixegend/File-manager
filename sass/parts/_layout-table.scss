@@ -28,7 +28,7 @@
       &.selected {
         &:nth-of-type(odd),
         &:nth-of-type(even) {
-           background-color: $fm-table-tr-hover;
+           background-color: darken($fm-table-tr-hover, 1%);
         }
       }
 
@@ -37,11 +37,11 @@
         border-top: 0;
 
         .icon-folder {
-          color: darken($sidebar-icon-folder-color, 10%);
+          color: darken($sidebar-icon-folder-color, 12%);
         }
 
         .icon-file {
-          color: darken($sidebar-icon-file-color, 10%);
+          color: darken($sidebar-icon-file-color, 12%);
         }
       }
 
