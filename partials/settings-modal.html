@@ -1,8 +1,8 @@
-<div class="modal-header">
+<div class="modal-header settings-modal-header">
     <button type="button" class="close" ng-click="closeModal()">&times;</button>
     <h4 class="modal-title">Settings</h4>
 </div>
-<div class="modal-body">
+<div class="modal-body settings-modal-body">
     <div class="row">
 
         <fieldset class="col-sm-6">
@@ -49,19 +49,19 @@
             <legend>Table layout</legend>
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-8 control-label"> Show "<em>Type</em>" </label>
+                    <label class="col-sm-8 control-label"> Show " <span>Type</span> " </label>
                     <div class="col-sm-4 checkbox">
                         <i class="fa fa-check-square-o" ng-click="showHideTableColumn('type')"></i>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-8 control-label"> Show "<em>Size</em>" </label>
+                    <label class="col-sm-8 control-label"> Show " <span>Size</span> " </label>
                     <div class="col-sm-4 checkbox">
                         <i class="fa fa-check-square-o" ng-click="showHideTableColumn('size')"></i>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-8 control-label"> Show "<em>Date</em>" </label>
+                    <label class="col-sm-8 control-label"> Show " <span>Date</span> " </label>
                     <div class="col-sm-4 checkbox">
                         <i class="fa fa-check-square-o" ng-click="showHideTableColumn('date')"></i>
                     </div>
@@ -71,6 +71,6 @@
 
     </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer settings-modal-footer">
     <button type="button" class="btn btn-fm btn-sm" ng-click="saveSettings()">Save changes</button>
 </div>

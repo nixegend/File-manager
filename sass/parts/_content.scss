@@ -65,3 +65,10 @@
     color: $btn-fm-hover-color;
   }
 }
+
+.settings-modal-body {
+  span {
+    color: $link-hover;
+    font-weight: 100;
+  }
+}

@@ -23,7 +23,6 @@
     color: $fm-table-text-color;
 
     > tr {
-      transition: 0.15s linear background-color;
 
       &.selected {
         &:nth-of-type(odd),
