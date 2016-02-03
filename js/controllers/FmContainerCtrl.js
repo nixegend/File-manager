@@ -13,11 +13,11 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 $scope.tableData = data.content;
             });
 
-            $scope.goToDirectory = function (data) {
-                if (data.folder) {
-                    $scope.breadcrumbArr = data.path.split('/').slice(2);
-                    $scope.tableData = data.content;
-                    if (data.storage) $scope.breadcrumbArr = [];
+            $scope.goToDirectory = function (obj) {
+                if (obj.folder) {
+                    $scope.breadcrumbArr = obj.path.split('/').slice(2);
+                    $scope.tableData = obj.content;
+                    if (obj.storage) $scope.breadcrumbArr = [];
                 }
             };
 
@@ -62,6 +62,75 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 $scope.disabledMenuItem = (arr.length <= 0) ? true : false;
                 if (arr.length <= 0) $scope.allSelected = false;
                 if (arr.length == $scope.tableData.length) $scope.allSelected = true;
+            };
+
+            $scope.rename = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected) data[i].rename = true;
+                }
+            };
+
+            $scope.renameDone = function (obj) {
+                if (obj.folder) {
+                    var newPath = obj.path.split('/');
+                    newPath.pop();
+                    newPath.push(obj.name);
+                    obj.path = newPath.join('/');
+                    
+                    
+                    
+                    
+                    
+
+            // (function sum(arr) {
+            //     var s = 0;
+            //     for (var i = 0; i < arr.length; i++) {
+            //         if (arr[i].folder) {
+            //             s += sum(arr[i].content);
+            //         } else if (arr[i].file) {
+            //             s += arr[i].size;
+            //         }
+            //     }
+            //     return s;
+            // })(arrObj);
+
+                    
+                    
+                    
+                    
+                } else {
+                    return;
+                }
+            };
+
+            $scope.cut = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected);
+                }
+            };
+
+            $scope.copy = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected);
+                }
+            };
+
+            $scope.compressed = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected);
+                }
+            };
+
+            $scope.download = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected);
+                }
+            };
+
+            $scope.remove = function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected);
+                }
             };
 
             $scope.getDocSize = function (fSize) {

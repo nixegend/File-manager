@@ -65,7 +65,7 @@
       }
 
       > .icon {
-        color: $sidebar-icon-file-color;
+        color: darken($sidebar-icon-file-color, 7%);
       }
 
       &:hover {
@@ -103,7 +103,7 @@
         float: left;
         margin-right: 7px;
         font-size: 16px;
-        color: $sidebar-icon-folder-color;
+        color: darken($sidebar-icon-folder-color, 7%);
       }
 
       &:hover {

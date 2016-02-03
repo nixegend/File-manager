@@ -35,24 +35,35 @@
         border-bottom: $fm-table-border-bottom-td;
         border-top: 0;
 
+        .icon-file,
         .icon-folder {
-          color: darken($sidebar-icon-folder-color, 12%);
+          font-size: 14px;
+        }
+
+        .icon-folder {
+          color: darken($sidebar-icon-folder-color, 7%);
         }
 
         .icon-file {
-          color: darken($sidebar-icon-file-color, 12%);
+          color: darken($sidebar-icon-file-color, 7%);
         }
       }
 
       > td:first-child {
         text-align: center;
 
+        .check,
+        .uncheck {
+          font-size: 19px;
+          cursor: pointer;
+        }
+
         .check {
-          color: #587658;
+          color: darken($sidebar-icon-folder-color, 5%);
         }
 
         .uncheck {
-          color: #a8a8a8;
+          color: darken($sidebar-icon-file-color, 5%);
         }
       }
 

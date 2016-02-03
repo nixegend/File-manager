@@ -36,9 +36,21 @@
                 <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             </td>
 
-            <td>
-                <span title="{{item.name}}">
-                    <i class="fa {{item.folder ? 'fa-folder-o icon-folder' : 'fa-file-o icon-file'}}"></i> {{item.name}}
+            <td ng-switch="item.rename">
+                <div ng-switch-when="true" class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <i class="fa {{item.folder ? 'fa-folder icon-folder' : 'fa-file icon-file'}}"></i>
+                    </span>
+                    <input class="form-control" type="text" ng-model="item.name">
+                    <span class="input-group-btn">
+						<button type="button" class="btn btn-success" ng-click="renameDone(item); item.rename = false">
+							<i class="glyphicon glyphicon-ok"></i>
+						</button>
+					</span>
+                </div>
+
+                <span ng-switch-default title="{{item.name}}">
+                    <i class="fa {{item.folder ? 'fa-folder icon-folder' : 'fa-file icon-file'}}"></i> {{item.name}}
                 </span>
             </td>
 
