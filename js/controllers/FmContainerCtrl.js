@@ -8,6 +8,14 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             $scope.disabledPaste = true;
             $scope.allSelected = false;
 
+            function cancelSelected(data) {
+                for (var i = 0; i < data.length; i++) {
+                    data[i].selected = false;
+                }
+                $scope.allSelected = false;
+                $scope.disabledMenuItem = true;
+            };
+
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
                 $scope.tableData = data.content;
@@ -15,6 +23,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.goToDirectory = function (obj) {
                 if (obj.folder) {
+                    cancelSelected($scope.tableData);
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
                     $scope.tableData = obj.content;
                     if (obj.storage) $scope.breadcrumbArr = [];
@@ -72,32 +81,22 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.renameDone = function (obj) {
                 if (obj.folder) {
-                    var newPath = obj.path.split('/');
-                    newPath.pop();
-                    newPath.push(obj.name);
-                    obj.path = newPath.join('/');
-                    
-                    
-                    
-                    
-                    
+                    var nPath = obj.path.split('/');
+                    var ind = nPath.length - 1;
+                    nPath[ind] = obj.name;
+                    obj.path = nPath.join('/');
 
-            // (function sum(arr) {
-            //     var s = 0;
-            //     for (var i = 0; i < arr.length; i++) {
-            //         if (arr[i].folder) {
-            //             s += sum(arr[i].content);
-            //         } else if (arr[i].file) {
-            //             s += arr[i].size;
-            //         }
-            //     }
-            //     return s;
-            // })(arrObj);
+                    (function pathReplacer(arr) {
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr[i].folder) {
+                                var np = arr[i].path.split('/');
+                                np[ind] = obj.name;
+                                arr[i].path = np.join('/');
+                                pathReplacer(arr[i].content);
+                            }
+                        }
+                    })(obj.content);
 
-                    
-                    
-                    
-                    
                 } else {
                     return;
                 }
@@ -129,8 +128,10 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.remove = function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].selected);
+                    if (data[i].selected) data.splice(i--, 1);
                 }
+                $scope.allSelected = false;
+                $scope.disabledMenuItem = true;
             };
 
             $scope.getDocSize = function (fSize) {
