@@ -10,19 +10,19 @@
                     <i ng-switch-default class="sort-icon fa fa-sort"></i>
                 </button>
             </th>
-            <th>
+            <th ng-if="fmSettings.showTypeCol">
                 <button type="button" class="btn-sort" ng-click="sortOrder('ext')" ng-switch="criteria"> Type
                     <i ng-switch-when="ext" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
                     <i ng-switch-default class="sort-icon fa fa-sort"></i>
                 </button>
             </th>
-            <th>
+            <th ng-if="fmSettings.showSizeCol">
                 <button type="button" class="btn-sort" ng-click="sortOrder('size')" ng-switch="criteria"> Size
                     <i ng-switch-when="size" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
                     <i ng-switch-default class="sort-icon fa fa-sort"></i>
                 </button>
             </th>
-            <th>
+            <th ng-if="fmSettings.showDateCol">
                 <button type="button" class="btn-sort" ng-click="sortOrder('date')" ng-switch="criteria"> Date
                     <i ng-switch-when="date" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
                     <i ng-switch-default class="sort-icon fa fa-sort"></i>
@@ -42,17 +42,17 @@
                 </span>
             </td>
 
-            <td ng-switch="item.folder">
+            <td ng-if="fmSettings.showTypeCol" ng-switch="item.folder">
                 <span ng-switch-when="false" class="file"> .{{item.ext}} </span>
                 <span ng-switch-when="true" class="label label-info folder">-- folder</span>
             </td>
 
-            <td ng-switch="item.size">
+            <td ng-if="fmSettings.showSizeCol" ng-switch="item.size">
                 <span ng-switch-default class="size"> {{getDocSize(item.size)}} Kb </span>
                 <button ng-switch-when="null" type="button" ng-click="getFolderSize(item)" class="btn btn-success btn-xs"> Get size </button>
             </td>
 
-            <td> {{item.date}} </td>
+            <td ng-if="fmSettings.showDateCol"> {{item.date}} </td>
         </tr>
     </tbody>
 </table>

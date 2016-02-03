@@ -7,6 +7,9 @@ define(['app', '../directives/fm-container'], function (app) {
                     sidebar: true,
                     showFiles: true,
                     showExt: true,
+                    showTypeCol: true,
+                    showSizeCol: true,
+                    showDateCol: true,
                     sidebarWidth: '20',
                     contentWidth: '80',
                     filesInSidebar: false,
@@ -19,7 +22,6 @@ define(['app', '../directives/fm-container'], function (app) {
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
 
-
             $scope.goHistoryBackward = function () {
 
             };
@@ -27,7 +29,6 @@ define(['app', '../directives/fm-container'], function (app) {
             $scope.goHistoryForward = function () {
 
             };
-
 
             $scope.openSettingsMmodal = function (size) {
                 $uibModal.open({
@@ -51,6 +52,14 @@ define(['app', '../directives/fm-container'], function (app) {
 
                         $scope.showHideFilesExtension = function () {
                             s.showExt = !s.showExt;
+                        };
+
+                        $scope.showHideTableColumn = function (col) {
+                            switch (col) {
+                                case 'type': s.showTypeCol = !s.showTypeCol; break;
+                                case 'size': s.showSizeCol = !s.showSizeCol; break;
+                                case 'date': s.showDateCol = !s.showDateCol; break;
+                            }
                         };
 
                         $scope.saveSettings = function () {
