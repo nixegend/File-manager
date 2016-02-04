@@ -1,15 +1,23 @@
 <div class="fm-tile-contant clearfix">
-    <div ng-repeat="item in tableData | orderBy:criteria:reverse" 
-         ng-dblclick="goToDirectory(item)" 
-         class="tile {{item.folder ? 'folder' : 'file'}}" 
-         ng-class="{'selected': item.selected}">
+    <div ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" class="tile {{item.folder ? 'folder' : 'file'}}"
+    ng-class="{'selected': item.selected}" ng-switch="item.rename">
 
-        <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" 
-        ng-click="selectThis(item)"></i>
+        <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
         <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}" filetype="{{item.ext}}"></i>
-        <p class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</p>
+        <p ng-switch-default class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</p>
+
+        <div ng-switch-when="true" class="input-group input-group-sm">
+            <input class="form-control" type="text" ng-model="item.name">
+            <span class="input-group-btn">
+			  <button type="button" class="btn btn-success" ng-click="renameDone(item); item.rename = false">
+				<i class="glyphicon glyphicon-ok"></i>
+			  </button>
+			</span>
+        </div>
+
         <span ng-if="item.size !== null" class="size"> {{getDocSize(item.size)}} Kb </span>
-        <button ng-if="item.size == null" type="button" ng-click="getFolderSize(item)" 
-        class="btn btn-success btn-xs get-btn-size"> Get size </button>
+        <button ng-if="item.size == null" type="button" ng-click="getFolderSize(item)" class="btn btn-success btn-xs get-btn-size">
+            Get size 
+        </button>
     </div>
 </div>
