@@ -7,7 +7,6 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             $scope.disabledMenuItem = true;
             $scope.disabledPaste = true;
             $scope.allSelected = false;
-            $scope.allSelected = false;
             $scope.tempCopyCutArr = [];
 
             function cancelSelected(data, disParam) {
@@ -38,9 +37,55 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 o.path = np.join('/');
             };
 
+            function deepPathNameChanger(current, nested) {
+                for (var i = 0; i < nested.length; i++) {
+                    if (nested[i].folder) {
+                        nested[i].path = current.path + '/' + nested[i].name;
+                        deepPathNameChanger(nested[i], nested[i].content);
+                    } else {
+                        nested[i].path = current.path;
+                    }
+                }
+            };
+
+            function changeTheSameName(source, dest, callback) {
+                for (var i = 0; i < source.length; i++) {
+                    for (var k = 0; k < dest.length; k++) {
+
+                        if (source[i].folder && source[i].name == dest[k].name) {
+                            source[i].name = '+' + source[i].name;
+                            $scope.renameDone(source[i]);
+                        } else {
+                            if (source[i].name + source[i].ext == dest[k].name + dest[k].ext) {
+                                source[i].name = '+' + source[i].name;
+                            }
+                        }
+
+                    }
+                }
+
+                if (typeof (callback) == "function") callback(source);
+            };
+
+            function raplaceAllPathNames(current, nested, callback) {
+                var temp = [];
+                for (var i = 0; i < nested.length; i++) {
+
+                    if (nested[i].folder) {
+                        nested[i].path = current.path + '/' + nested[i].name;
+                        deepPathNameChanger(nested[i], nested[i].content);
+                    } else {
+                        nested[i].path = current.path;
+                    }
+
+                    temp.push(nested[i]);
+                }
+                if (typeof (callback) == "function") callback(temp);
+            };
+
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
-                $scope.currentDir = data.content;
+                $scope.currentDir = data;
                 $scope.tableData = data.content;
             });
 
@@ -49,7 +94,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                     cancelSelected($scope.tableData);
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
                     $scope.tableData = obj.content;
-                    $scope.currentDir = obj.content;
+                    $scope.currentDir = obj;
                     if (obj.storage) $scope.breadcrumbArr = [];
                 }
             };
@@ -107,24 +152,27 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 if (obj.folder) {
                     var ind = obj.path.split('/').length - 1;
                     replacePathName(obj, ind, obj.name);
-                    (function pathReplacer(arr) {
+                    (function pathReplacer(dir, arr) {
                         for (var i = 0; i < arr.length; i++) {
                             if (arr[i].folder) {
                                 replacePathName(arr[i], ind, obj.name);
-                                pathReplacer(arr[i].content);
+                                pathReplacer(arr[i], arr[i].content);
+                            } else {
+                                arr[i].path = dir.path;
                             }
                         }
-                    })(obj.content);
-
-                } else {
-                    return;
+                    })(obj, obj.content);
                 }
             };
 
-            $scope.paste = function (content) {
-                content.push.apply(content, $scope.tempCopyCutArr);
-                $scope.disabledPaste = true;
-                $scope.tempCopyCutArr = [];
+            $scope.paste = function (obj) {
+                raplaceAllPathNames(obj, $scope.tempCopyCutArr, function (arr) {
+                    $scope.disabledPaste = true;
+                    changeTheSameName(arr, obj.content, function (changedArr) {
+                        obj.content.push.apply(obj.content, changedArr);
+                    });
+                    $scope.tempCopyCutArr = [];
+                });
             };
 
             $scope.cut = function (data) {
@@ -145,9 +193,13 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             };
 
             $scope.compressed = function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].selected);
-                }
+
+                // console.log($scope.foldersTree.content);
+                console.log($scope.tableData);
+
+                // for (var i = 0; i < data.length; i++) {
+                //     if (data[i].selected);
+                // }
             };
 
             $scope.download = function (data) {
