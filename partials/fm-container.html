@@ -12,7 +12,7 @@
 
         <ul class="context-menu" ng-if="contextMenuState">
 
-            <li ng-click="paste(tableData)" ng-class="{'disabled': disabledPaste}">
+            <li ng-click="paste(currentDir)" ng-class="{'disabled': disabledPaste}">
                 <i class="fa fa-clipboard"></i> Paste
             </li>
             <li ng-click="copy(tableData)" ng-class="{'disabled': disabledMenuItem}">

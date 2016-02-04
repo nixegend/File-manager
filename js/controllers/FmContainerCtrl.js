@@ -7,17 +7,40 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             $scope.disabledMenuItem = true;
             $scope.disabledPaste = true;
             $scope.allSelected = false;
+            $scope.allSelected = false;
+            $scope.tempCopyCutArr = [];
 
-            function cancelSelected(data) {
+            function cancelSelected(data, disParam) {
                 for (var i = 0; i < data.length; i++) {
                     data[i].selected = false;
                 }
-                $scope.allSelected = false;
-                $scope.disabledMenuItem = true;
+
+                if (!disParam) {
+                    $scope.allSelected = false;
+                    $scope.disabledMenuItem = true;
+                }
+            };
+
+            function cutCopyActions(data, callback) {
+                var temp = [];
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].selected) {
+                        temp.push(angular.copy(data[i]));
+                    }
+                }
+
+                if (typeof (callback) == "function") callback(temp);
+            };
+
+            function replacePathName(o, j, nPath) {
+                var np = o.path.split('/');
+                np[j] = nPath;
+                o.path = np.join('/');
             };
 
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
+                $scope.currentDir = data.content;
                 $scope.tableData = data.content;
             });
 
@@ -26,6 +49,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                     cancelSelected($scope.tableData);
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
                     $scope.tableData = obj.content;
+                    $scope.currentDir = obj.content;
                     if (obj.storage) $scope.breadcrumbArr = [];
                 }
             };
@@ -81,17 +105,12 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.renameDone = function (obj) {
                 if (obj.folder) {
-                    var nPath = obj.path.split('/');
-                    var ind = nPath.length - 1;
-                    nPath[ind] = obj.name;
-                    obj.path = nPath.join('/');
-
+                    var ind = obj.path.split('/').length - 1;
+                    replacePathName(obj, ind, obj.name);
                     (function pathReplacer(arr) {
                         for (var i = 0; i < arr.length; i++) {
                             if (arr[i].folder) {
-                                var np = arr[i].path.split('/');
-                                np[ind] = obj.name;
-                                arr[i].path = np.join('/');
+                                replacePathName(arr[i], ind, obj.name);
                                 pathReplacer(arr[i].content);
                             }
                         }
@@ -102,16 +121,27 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 }
             };
 
+            $scope.paste = function (content) {
+                content.push.apply(content, $scope.tempCopyCutArr);
+                $scope.disabledPaste = true;
+                $scope.tempCopyCutArr = [];
+            };
+
             $scope.cut = function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].selected);
-                }
+                cutCopyActions(data, function (arr) {
+                    $scope.remove(data);
+                    $scope.tempCopyCutArr = arr;
+                    cancelSelected(arr);
+                    $scope.disabledPaste = false;
+                });
             };
 
             $scope.copy = function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].selected);
-                }
+                cutCopyActions(data, function (arr) {
+                    $scope.tempCopyCutArr = arr;
+                    cancelSelected(arr, true);
+                    $scope.disabledPaste = false;
+                });
             };
 
             $scope.compressed = function (data) {
