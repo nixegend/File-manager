@@ -4,7 +4,7 @@
 }
 
 .fm-table-contant {
-  height: calc(100% - #{$all-headers-height});
+  height: calc(100% - #{$sub-headers-height});
   margin-bottom: 0;
 
   td,

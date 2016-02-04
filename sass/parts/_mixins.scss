@@ -1,12 +1,12 @@
 @mixin scroll-box-height() {
-  height: calc(100% - #{$all-headers-height});
+  height: calc(100% - #{$sub-headers-height});
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 @mixin bar-styles() {
   padding: 8px 15px;
-  height: $all-headers-height;
+  height: $sub-headers-height;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

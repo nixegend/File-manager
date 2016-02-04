@@ -1,5 +1,6 @@
 .fm-container {
   width: 100%;
+  height: calc(100% - #{$top-header-height});
   background-color: $fm-container-bg;
 }
 

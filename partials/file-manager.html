@@ -1,70 +1,61 @@
 <div class="fm-header clearfix">
 
-    <div class="col-sm-7">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-fm btn-sm">
-                        <i class="glyphicon glyphicon-chevron-left" ng-click="goHistoryBackward()"></i>
-                    </button>
-                    <button type="button" class="btn btn-fm btn-sm" ng-click="goToDirectory(foldersTree)">
-                        <i class="glyphicon glyphicon-home"></i>
-                    </button>
-                    <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryForward()">
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-9">
-                <div class="input-group">
+    <div class="cell">
+        <button type="button" class="btn btn-fm btn-sm">
+            <i class="glyphicon glyphicon-chevron-left" ng-click="goHistoryBackward()"></i>
+        </button>
+        <button type="button" class="btn btn-fm btn-sm" ng-click="goToDirectory(foldersTree)">
+            <i class="glyphicon glyphicon-home"></i>
+        </button>
+        <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryForward()">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </button>
+    </div>
 
-                    <ul class="fm-breadcrumb form-control input-sm">
-                        <li ng-repeat="item in breadcrumbArr track by $index">
-                            <span class="folder" ng-click="breadcrumbWalker($index, $last)">{{item}}</span>
-                        </li>
-                    </ul>
-
-                    <span class="input-group-btn">
-						<button type="button" class="btn btn-fm btn-sm">
-							<!--<i class="glyphicon glyphicon-arrow-right"></i>-->
-							<i class="glyphicon glyphicon-refresh"></i>
-						</button>
-					</span>
-                </div>
-            </div>
+    <div class="cell">
+        <div class="input-group">
+            <ul class="fm-breadcrumb form-control input-sm">
+                <li ng-repeat="item in breadcrumbArr track by $index">
+                    <span class="folder" ng-click="breadcrumbWalker($index, $last)">{{item}}</span>
+                </li>
+            </ul>
+            <span class="input-group-btn">
+				<button type="button" class="btn btn-fm btn-sm">
+					<!--<i class="glyphicon glyphicon-arrow-right"></i>-->
+					<i class="glyphicon glyphicon-refresh"></i>
+				</button>
+			</span>
         </div>
     </div>
 
-    <div class="col-sm-5">
-        <div class="row">
-            <div class="col-sm-7">
-                <div class="input-group">
-                    <input class="form-control input-sm" type="text" ng-model="searchInput" placeholder="Search ...">
-                    <span class="input-group-btn">
-						<button type="button" class="btn btn-fm btn-sm">
-							<i class="glyphicon glyphicon-search"></i>
-						</button>
-					</span>
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="pull-right">
-                    <button type="button" class="btn btn-fm btn-sm" ng-click="openUploadModal('lg')">
-                        <i class="fa fa-upload"></i>
-                    </button>
-                    <button type="button" class="btn btn-fm btn-sm" ng-click="openNewFileModal('sm')">
-                        + <i class="fa fa-file-o"></i>
-                    </button>
-                    <button type="button" class="btn btn-fm btn-sm" ng-click="openNewFolderModal('sm')">
-                        + <i class="fa fa-folder-o"></i>
-                    </button>
-                    <button type="button" class="btn btn-fm btn-sm" ng-click="openSettingsMmodal()">
-                        <i class="glyphicon glyphicon-cog"></i>
-                    </button>
-                </div>
-            </div>
+    <div class="cell">
+        <div class="input-group">
+            <input class="form-control input-sm" type="text" ng-model="searchInput" placeholder="Search ...">
+            <span class="input-group-btn">
+				<button type="button" class="btn btn-fm btn-sm">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</span>
         </div>
     </div>
+
+    <div class="cell">
+        <div class="pull-right">
+            <button type="button" class="btn btn-fm btn-sm" ng-click="openUploadModal('lg')">
+                <i class="fa fa-upload"></i>
+            </button>
+            <button type="button" class="btn btn-fm btn-sm" ng-click="openNewFileModal('sm')">
+                + <i class="fa fa-file-o"></i>
+            </button>
+            <button type="button" class="btn btn-fm btn-sm" ng-click="openNewFolderModal('sm')">
+                + <i class="fa fa-folder-o"></i>
+            </button>
+            <button type="button" class="btn btn-fm btn-sm" ng-click="openSettingsMmodal()">
+                <i class="glyphicon glyphicon-cog"></i>
+            </button>
+        </div>
+    </div>
+
 </div>
 
 <fm-container></fm-container>

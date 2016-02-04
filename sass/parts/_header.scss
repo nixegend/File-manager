@@ -1,8 +1,30 @@
 .fm-header {
-  padding: 5px 0;
   width: 100%;
+  display: table;
+  height: $top-header-height;
   background-color: $header-bg;
   border-bottom: $header-border-bottom;
+
+  .cell {
+    padding: 5px;
+    vertical-align: middle;
+    display: table-cell;
+
+    &:first-child {
+      min-width: 120px;
+      width: 12%;
+    }
+
+    &:nth-child(3) {
+      min-width: 170px;
+      width: 20%;
+    }
+
+    &:last-child {
+      min-width: 175px;
+      width: 12%;
+    }
+  }
 
   .fm-breadcrumb {
     > li {

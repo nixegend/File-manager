@@ -8,16 +8,12 @@ define(['app', '../controllers/FmContainerCtrl'], function (app) {
             templateUrl: '/partials/fm-container.html',
             link: function (scope, element, attr) {
 
-                var header = document.querySelector('.fm-header');
-
                 var fmUI = {
                     sidebar: document.querySelector('.fm-sidebar'),
                     content: document.querySelector('.fm-content'),
                     eleOffsetLeft: element[0].offsetLeft,
                     eleWidth: element[0].offsetWidth
                 };
-
-                element[0].style.height = window.innerHeight - header.offsetHeight + 'px';
 
                 scope.dragResizer = function (e) {
                     var thisLeftColOffset = fmUI.sidebar.offsetLeft;
@@ -48,7 +44,6 @@ define(['app', '../controllers/FmContainerCtrl'], function (app) {
                 window.addEventListener('resize', function () {
                     fmUI.eleWidth = element[0].offsetWidth;
                     fmUI.eleOffsetLeft = element[0].offsetLeft;
-                    element[0].style.height = window.innerHeight - header.offsetHeight + 'px';
                 }, true);
 
             }
