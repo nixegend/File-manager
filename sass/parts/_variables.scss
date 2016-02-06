@@ -1,7 +1,7 @@
 // ------------- general ---------------------------
-$sub-headers-height:              38px;
+
 $top-header-height:               42px;
-$tile-height:                     85px;
+$tile-height:                     75px;
 $tile-width:                      300px;
 $fm-container-bg:               #fff;
 $btn-sort-hover:                rgba(255, 255, 255, 0.16);
@@ -20,9 +20,10 @@ $header-bg:          #549DFD;
 $header-border-bottom: 1px solid #BFC5FD;
 
 // ------------- headers ins content ---------------
-$header-infobar-bg:          lighten($header-bg, 9%);
-$header-infobar-text:        #fff;
-$header-infobar-border-bottom: 2px solid #ddd;
+$sub-header-height:      38px;
+$sub-header-bg:          lighten($header-bg, 9%);
+$sub-header-text:        #fff;
+$sub-header-border-bottom: 2px solid #ddd;
 
 // ------------- sidebar and context menu ----------
 $sidebar-bg:      #F1F1F1;
@@ -40,25 +41,26 @@ $sidebar-icon-folder-color: $folder-icon-bg;
 // ------------- tile container ---------------------
 $tile-box-bg:              #fafafa;
 $tile-box-bg-hover:        #EDF3FF;
-$tile-box-text-colot:      $default-text;
-$tile-box-text-size-colot: #989898;
+$tile-box-text-color:      $default-text;
+$tile-box-text-size-color: #989898;
 
 // ------------- tile border ------------------------
 $tile-border:       1px solid darken($tile-box-bg, 7%);
 $tile-border-hover: 1px solid darken($tile-box-bg-hover, 10%);
 
-// ------------- table steles -----------------------
-$fm-table-tr-odd-bg:      #fff;
-$fm-table-tr-even-bg:     darken($fm-table-tr-odd-bg, 2%);
+// ------------- table styles -----------------------
+$fm-table-tr-odd-bg:        lighten($tile-box-bg, 2%);
+$fm-table-tr-even-bg:       $tile-box-bg;
 
 $fm-table-tr-hover:         $tile-box-bg-hover;
 $fm-table-text-color:       $default-text;
 $fm-table-border-bottom-td: $tile-border;
 
 // ------------- btn-fm -----------------------------
-$btn-fm-color: #fff;
-$btn-fm-bg-color: #6D84E0;
-$btn-fm-border-color: darken($btn-fm-bg-color, 5%);
+$btn-fm-color:        #fff;
+$btn-fm-active-color: #000;
+$btn-fm-bg-color:     #738AE6;
+$btn-fm-border-color: darken($btn-fm-bg-color, 4%);
 
 $btn-fm-hover-color: $default-text;
 $btn-fm-hover-bg-color: lighten($btn-fm-bg-color, 17%);

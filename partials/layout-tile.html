@@ -2,9 +2,9 @@
     <div ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" class="tile {{item.folder ? 'folder' : 'file'}}"
     ng-class="{'selected': item.selected}" ng-switch="item.rename">
 
+        <span ng-switch-default class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</span>
         <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
         <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}" filetype="{{item.ext}}"></i>
-        <p ng-switch-default class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</p>
 
         <div ng-switch-when="true" class="input-group input-group-sm">
             <input class="form-control" type="text" ng-model="item.name">

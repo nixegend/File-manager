@@ -1,42 +1,39 @@
-<table class="fm-table-contant table">
-    <thead>
-        <tr>
-            <th>
-                <i class="fa fa-bars context-menu-btn" ng-click="contextMenuBtn()"></i>
-            </th>
-            <th>
-                <button type="button" class="btn-sort" ng-click="sortOrder('name')" ng-switch="criteria"> Name
-                    <i ng-switch-when="name" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
-                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
-                </button>
-            </th>
-            <th ng-if="fmSettings.showTypeCol">
-                <button type="button" class="btn-sort" ng-click="sortOrder('ext')" ng-switch="criteria"> Type
-                    <i ng-switch-when="ext" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
-                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
-                </button>
-            </th>
-            <th ng-if="fmSettings.showSizeCol">
-                <button type="button" class="btn-sort" ng-click="sortOrder('size')" ng-switch="criteria"> Size
-                    <i ng-switch-when="size" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
-                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
-                </button>
-            </th>
-            <th ng-if="fmSettings.showDateCol">
-                <button type="button" class="btn-sort" ng-click="sortOrder('date')" ng-switch="criteria"> Date
-                    <i ng-switch-when="date" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
-                    <i ng-switch-default class="sort-icon fa fa-sort"></i>
-                </button>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
-            <td>
-                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
-            </td>
+<div class="fm-table-contant">
+    <div class="thead">
+        <div class="tr">
+            <div class="td" ng-click="contextMenuBtn()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="td" ng-click="sortOrder('name')" ng-switch="criteria">
+                Name
+               <i ng-switch-when="name" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+               <i ng-switch-default class="sort-icon fa fa-sort"></i>
+            </div>
+            <div class="td" ng-if="fmSettings.showTypeCol" ng-click="sortOrder('ext')" ng-switch="criteria">
+                Type
+                <i ng-switch-when="ext" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+                <i ng-switch-default class="sort-icon fa fa-sort"></i>
+            </div>
+            <div class="td" ng-if="fmSettings.showSizeCol" ng-click="sortOrder('size')" ng-switch="criteria">
+                Size
+                <i ng-switch-when="size" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
+                <i ng-switch-default class="sort-icon fa fa-sort"></i>
+            </div>
+            <div class="td" ng-if="fmSettings.showDateCol" ng-click="sortOrder('date')" ng-switch="criteria">
+                Date
+                <i ng-switch-when="date" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
+                <i ng-switch-default class="sort-icon fa fa-sort"></i>
+            </div>
+        </div>
+    </div>
 
-            <td ng-switch="item.rename">
+    <div class="tbody">
+        <div class="tr" ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
+            <div class="td">
+                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
+            </div>
+
+            <div class="td" ng-switch="item.rename">
                 <div ng-switch-when="true" class="input-group input-group-sm">
                     <span class="input-group-addon">
                         <i class="fa {{item.folder ? 'fa-folder icon-folder' : 'fa-file icon-file'}}"></i>
@@ -52,19 +49,19 @@
                 <span ng-switch-default title="{{item.name}}">
                     <i class="fa {{item.folder ? 'fa-folder icon-folder' : 'fa-file icon-file'}}"></i> {{item.name}}
                 </span>
-            </td>
+            </div>
 
-            <td ng-if="fmSettings.showTypeCol" ng-switch="item.folder">
+            <div class="td" ng-if="fmSettings.showTypeCol" ng-switch="item.folder">
                 <span ng-switch-when="false" class="file"> .{{item.ext}} </span>
                 <span ng-switch-when="true" class="label label-info folder">-- folder</span>
-            </td>
+            </div>
 
-            <td ng-if="fmSettings.showSizeCol" ng-switch="item.size">
+            <div class="td" ng-if="fmSettings.showSizeCol" ng-switch="item.size">
                 <span ng-switch-default class="size"> {{getDocSize(item.size)}} Kb </span>
                 <button ng-switch-when="null" type="button" ng-click="getFolderSize(item)" class="btn btn-success btn-xs"> Get size </button>
-            </td>
+            </div>
 
-            <td ng-if="fmSettings.showDateCol"> {{item.date}} </td>
-        </tr>
-    </tbody>
-</table>
+            <div class="td" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
+        </div>
+    </div>
+</div>

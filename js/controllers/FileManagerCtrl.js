@@ -10,8 +10,8 @@ define(['app', '../directives/fm-container'], function (app) {
                     showTypeCol: true,
                     showSizeCol: true,
                     showDateCol: true,
-                    sidebarWidth: '20',
-                    contentWidth: '80',
+                    sidebarWidth: '15',
+                    contentWidth: '85',
                     filesInSidebar: false,
                     layoutView: 'table'
                 };
@@ -28,6 +28,10 @@ define(['app', '../directives/fm-container'], function (app) {
 
             $scope.goHistoryForward = function () {
 
+            };
+
+            $scope.layoutSwitcher = function () {
+                localStorageService.set('fm', $rootScope.fmSettings);
             };
 
             $scope.openSettingsMmodal = function (size) {

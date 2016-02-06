@@ -50,6 +50,14 @@
             <button type="button" class="btn btn-fm btn-sm" ng-click="openNewFolderModal('sm')">
                 + <i class="fa fa-folder-o"></i>
             </button>
+            <div class="btn-group btn-group-sm">
+                <label class="btn btn-fm" ng-model="fmSettings.layoutView" ng-click="layoutSwitcher()" uib-btn-radio="'table'">
+                    <i class="glyphicon glyphicon-th-list"></i>
+                </label>
+                <label class="btn btn-fm" ng-model="fmSettings.layoutView" ng-click="layoutSwitcher()" uib-btn-radio="'tile'">
+                    <i class="glyphicon glyphicon-th-large"></i>
+                </label>
+            </div>
             <button type="button" class="btn btn-fm btn-sm" ng-click="openSettingsMmodal()">
                 <i class="glyphicon glyphicon-cog"></i>
             </button>

@@ -12,7 +12,7 @@
     padding: 5px;
   }
 
-  .infobar {
+  .infobar-sub-header {
     @include bar-styles();
   }
 }
@@ -70,7 +70,7 @@
   }
 
   > .name {
-    color: $tile-box-text-colot;
+    color: $tile-box-text-color;
     margin-top: 5px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -81,7 +81,7 @@
     position: absolute;
     right: 5px;
     bottom: 5px;
-    color: $tile-box-text-size-colot;
+    color: $tile-box-text-size-color;
   }
 
   > .get-btn-size {
@@ -100,7 +100,7 @@
 
   .fm-icon-folder {
     background-color: lighten($folder-icon-bg, 12.5%);
-    width: 50px;
+    width: 45px;
     border-radius: 4px 2px 2px 4px;
     margin-right: 20px;
 
@@ -128,17 +128,17 @@
   }
 
   .fm-icon-file {
-    width: 55px;
+    width: 50px;
     margin-right: 10px;
     border-radius: 4px 12px 4px 4px;
-    box-shadow: 20px -37px 0 15px $icon-file-bg inset;
+    box-shadow: 20px -32px 0 15px $icon-file-bg inset;
 
     &:after {
       content: '';
       position: absolute;
       border-width: 0;
-      border-bottom: 20px solid darken($icon-file-bg, 9%);
-      border-right: 20px solid transparent;
+      border-bottom: 15px solid darken($icon-file-bg, 9%);
+      border-right: 15px solid transparent;
       top: 0;
       right: 0;
     }
@@ -149,11 +149,11 @@
       bottom: 8px;
       position: absolute;
       color: $icon-file-ext-colot;
-      min-width: 48px;
+      min-width: 45px;
       background-color: darken($icon-file-bg, 7%);
       padding: 2px 5px;
       display: inline-block;
-      margin-left: 7px;
+      margin-left: 5px;
     }
   }
 }

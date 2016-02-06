@@ -6,8 +6,12 @@
   box-shadow: $sidebar-box-shadow;
   z-index: 2;
 
-  .storage {
+  .storage-sub-header {
     @include bar-styles();
+
+    .hdd {
+      font-size: 17px;
+    }
   }
 
   .fm-resizer {
@@ -33,10 +37,6 @@
     &:hover {
         cursor: col-resize;
     }
-  }
-
-  .storage .hdd {
-    font-size: 17px;
   }
 }
 

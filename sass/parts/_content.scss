@@ -9,16 +9,6 @@
   height: 100%;
 }
 
-.context-menu-btn {
-  cursor: pointer;
-  padding: 8px;
-  margin: -8px;
-
-  &:hover {
-    color: $default-text;
-  }
-}
-
 .context-menu {
    padding: 0;
    float: left;
@@ -52,6 +42,10 @@
       color: $link-hover;
     }
   }
+}
+
+.btn-fm.active {
+  color: $btn-fm-active-color;
 }
 
 .btn-fm:focus,

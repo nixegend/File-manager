@@ -1,7 +1,7 @@
 <div class="fm-container">
     <div class="fm-sidebar" ng-show="fmSettings.sidebar" ng-style="{'width': fmSettings.sidebarWidth+'%'}">
         <div class="fm-resizer" ng-mousedown="dragResizer(event)"></div>
-        <div class="storage">
+        <div class="storage-sub-header">
             <i class="hdd fa fa-hdd-o"></i> Storage
         </div>
         <ul class="menu-folders-tree">
@@ -54,8 +54,11 @@
         </ul>
 
         <div class="fm-tile-layout" ng-switch-when="tile">
-            <div class="infobar">
+            <div class="infobar-sub-header">
                 <i class="fa fa-bars context-menu-btn" ng-click="contextMenuBtn()"></i>
+
+
+
 
                 <!--<div class="tile-sort-form input-group input-group-sm">
                     <span class="input-group-addon">Sort by:</span>
@@ -66,6 +69,9 @@
                         <i class="fa {{reverse ? 'fa-sort-amount-desc' : 'fa-sort-amount-asc'}}"></i>
                     </span>
                 </div>-->
+
+
+
 
             </div>
             <fm-tile-layout></fm-tile-layout>

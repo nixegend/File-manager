@@ -4,37 +4,111 @@
 }
 
 .fm-table-contant {
-  height: calc(100% - #{$sub-headers-height});
-  margin-bottom: 0;
+  height: calc(100% - #{$top-header-height});
 
-  td,
-  th {
-    cursor: default;
-    vertical-align: middle;
+  .tr {
+   display: table;
+   width: 100%;
+   table-layout: fixed;
 
-    > .btn {
-      margin: -3px 0;
+      > .td {
+       display: table-cell;
+       vertical-align: middle;
+       text-overflow: ellipsis;
+       overflow: hidden;
+       white-space: nowrap;
+       cursor: default;
+       padding: 5px;
+
+      &:first-child {
+        width: 40px;
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        width: 50%;
+      }
+
+      &:nth-child(3) {
+        width: 15%;
+      }
+
+      &:nth-child(4) {
+        width: 15%;
+      }
+
+      &:nth-child(5) {
+        width: 15%;
+      }
     }
   }
 
-  > tbody {
-    height: 100%;
-    overflow: auto;
-    color: $fm-table-text-color;
+  .thead {
+    background-color: $sub-header-bg;
+    color: $sub-header-text;
+    border-bottom: $sub-header-border-bottom;
+    height: $sub-header-height;
 
-    > tr {
+    > .tr {
+      > .td {
+        color: $sub-header-text;
+        height: $sub-header-height - 2px;
+        white-space: nowrap;
+        line-height: 14px;
+        position: relative;
+        font-weight: normal;
+        cursor: pointer;
+
+        .sort-icon {
+          position: absolute;
+          right: 5px;
+          opacity: 0.3;
+        }
+
+        &:hover {
+          background-color: $btn-sort-hover;
+
+          > .sort-icon {
+            opacity: 1;
+          }
+        }
+
+        &:first-child {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .tbody {
+    color: $fm-table-text-color;
+    height: 100%;
+    overflow-y: auto;
+
+    > .tr {
+      border-bottom: $fm-table-border-bottom-td;
+      height: 41px;
 
       &.selected {
-        &:nth-of-type(odd),
-        &:nth-of-type(even) {
-           background-color: darken($fm-table-tr-hover, 1%);
+        &:nth-child(odd),
+        &:nth-child(even) {
+          background-color: darken($fm-table-tr-hover, 1%);
         }
       }
 
-      > td {
-        border-bottom: $fm-table-border-bottom-td;
-        border-top: 0;
+      &:nth-child(odd) {
+        background-color: $fm-table-tr-odd-bg;
+      }
 
+      &:nth-child(even) {
+        background-color: $fm-table-tr-even-bg;
+      }
+
+      &:hover {
+        background-color: $fm-table-tr-hover;
+      }
+
+      > .td {
         .icon-file,
         .icon-folder {
           font-size: 14px;
@@ -47,109 +121,25 @@
         .icon-file {
           color: darken($sidebar-icon-file-color, 7%);
         }
-      }
-
-      > td:first-child {
-        text-align: center;
-
-        .check,
-        .uncheck {
-          font-size: 19px;
-          cursor: pointer;
-        }
-
-        .check {
-          color: darken($sidebar-icon-folder-color, 5%);
-        }
-
-        .uncheck {
-          color: darken($sidebar-icon-file-color, 5%);
-        }
-      }
-
-      &:nth-of-type(odd) {
-        background-color: $fm-table-tr-odd-bg;
-      }
-
-      &:nth-of-type(even) {
-        background-color: $fm-table-tr-even-bg;
-      }
-
-      &:hover {
-        background-color: $fm-table-tr-hover;
-      }
-    }
-  }
-
-  > thead {
-    > tr {
-      > th {
-        background-color: $header-infobar-bg;
-        color: $header-infobar-text;
-        font-weight: normal;
 
         &:first-child {
           text-align: center;
+
+          .check,
+          .uncheck {
+            font-size: 19px;
+            cursor: pointer;
+            margin-top: 3px;
+          }
+
+          .check {
+            color: darken($sidebar-icon-folder-color, 5%);
+          }
+
+          .uncheck {
+            color: darken($sidebar-icon-file-color, 5%);
+          }
         }
-      }
-    }
-  }
-
-  > tbody,
-  > thead {
-    float: left;
-    width: 100%;
-
-    > tr {
-      width: 100%;
-      display: table;
-    }
-  }
-
-// sizes --------------
-
-  > tbody > tr > td,
-  > thead > tr > th {
-
-    &:first-child {
-        width: 5%;
-    }
-    &:nth-child(2) {
-        width: 50%;
-    }
-    &:nth-child(3) {
-        width: 15%;
-    }
-    &:nth-child(4) {
-        width: 15%;
-    }
-    &:nth-child(5) {
-        width: 15%;
-    }
-  }
-
-// -----------------
-
-  .btn-sort {
-    background-color: transparent;
-    width: 100%;
-    text-align: left;
-    border: none;
-    margin: -8px -4px;
-    padding: 8px 4px;
-    box-sizing: content-box;
-
-    > .sort-icon {
-      float: right;
-      margin-top: 3px;
-      opacity: 0.3;
-    }
-
-    &:hover {
-      background-color: $btn-sort-hover;
-
-      > .sort-icon {
-        opacity: 1;
       }
     }
   }
