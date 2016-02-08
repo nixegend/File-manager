@@ -116,6 +116,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.contextMenuBtn = function () {
                 $scope.contextMenuState = !$scope.contextMenuState;
+                $scope.$broadcast('countEventBoxesInRow');
             };
 
             $scope.renderFileName = function (fName, ext) {
