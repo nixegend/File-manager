@@ -7,7 +7,7 @@ define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], functio
             templateUrl: '/partials/layout-tile.html',
             link: function (scope, element, attr) {
 
-                function countBoxesInRow() {
+                function setBoxWidth() {
                     var numOfBoxes = Math.ceil(element[0].offsetWidth / 300) - 1;
                     if (numOfBoxes != scope.boxesInRow && numOfBoxes >= 1) {
                         scope.boxesInRow = numOfBoxes;
@@ -21,9 +21,9 @@ define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], functio
                     }
                 };
 
-                scope.$on('ngRepeatFinished', countBoxesInRow);
-                window.addEventListener('resize', countBoxesInRow, true);
-                scope.$on('contentResizeEvent', countBoxesInRow);
+                scope.$on('ngRepeatFinished', setBoxWidth);
+                window.addEventListener('resize', setBoxWidth, true);
+                scope.$on('contentResizeEvent', setBoxWidth);
             }
         };
     }]);
