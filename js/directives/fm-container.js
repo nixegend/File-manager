@@ -8,12 +8,16 @@ define(['app', '../controllers/FmContainerCtrl'], function (app) {
             templateUrl: '/partials/fm-container.html',
             link: function (scope, element, attr) {
 
+                var fmSettings = localStorageService.get('fm');
                 var fmUI = {
                     sidebar: document.querySelector('.fm-sidebar'),
                     content: document.querySelector('.fm-content'),
                     eleOffsetLeft: element[0].offsetLeft,
                     eleWidth: element[0].offsetWidth
                 };
+
+               fmUI.sidebar.style.width = fmSettings.sidebarWidth + '%';
+               fmUI.content.style.width = fmSettings.contentWidth + '%';
 
                 scope.dragResizer = function (e) {
                     var thisLeftColOffset = fmUI.sidebar.offsetLeft;

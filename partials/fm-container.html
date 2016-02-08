@@ -1,5 +1,5 @@
 <div class="fm-container">
-    <div class="fm-sidebar" ng-show="fmSettings.sidebar" ng-style="{'width': fmSettings.sidebarWidth+'%'}">
+    <div class="fm-sidebar" ng-show="fmSettings.sidebar">
         <div class="fm-resizer" ng-mousedown="dragResizer(event)"></div>
         <div class="storage-sub-header">
             <i class="hdd fa fa-hdd-o"></i> Storage
@@ -8,10 +8,9 @@
             <li ng-repeat="item in foldersTree.content" ng-include="menuFoldersTree"></li>
         </ul>
     </div>
-    <div class="fm-content" ng-style="{'width': fmSettings.contentWidth+'%'}" ng-switch="fmSettings.layoutView">
+    <div class="fm-content" ng-switch="fmSettings.layoutView">
 
         <ul class="context-menu" ng-if="contextMenuState">
-
             <li ng-click="paste(currentDir)" ng-class="{'disabled': disabledPaste}">
                 <i class="fa fa-clipboard"></i> Paste
             </li>
