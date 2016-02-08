@@ -72,7 +72,9 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li ng-repeat="opt in sortOptions" ng-click="setSortOption(opt)">
-                                <a name="{{opt.name}}">{{opt.name}}</a>
+                                <a name="{{opt.name}}">{{opt.name}} 
+                                    <i ng-if="opt.option == selectedOption.option" class="fa fa-check"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -17,6 +17,11 @@
           cursor: pointer;
           color: $default-text;
 
+          > i {
+            float: right;
+            margin-top: 3px;
+          }
+
           &:hover {
             background-color: $link-hover-bg;
             color: $link-hover;
