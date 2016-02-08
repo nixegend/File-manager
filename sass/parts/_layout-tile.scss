@@ -2,19 +2,54 @@
   height: 100%;
   overflow-x: hidden;
 
-  .fm-tile-contant {
-    @include scroll-box-height();
-    padding: 5px;
-  }
-
-  .infobar-sub-header {
+  .tile-sub-header {
+    display: table;
+    width: 100%;
     @include bar-styles();
+
+    .dropdown-menu {
+      > li {
+        &:not(:last-child) {
+          border-bottom: 1px solid #e3e3e3;
+        }
+
+        > a {
+          cursor: pointer;
+          color: $default-text;
+
+          &:hover {
+            background-color: $link-hover-bg;
+            color: $link-hover;
+          }
+        }
+      }
+    }
+
+    > .td {
+      vertical-align: middle;
+      text-align: center;
+      padding: 0 5px;
+      display: table-cell;
+
+     &:last-child {
+       text-align: right;
+     }
+
+     &:first-child {
+       width: 40px;
+       cursor: pointer;
+
+       &:hover {
+          background-color: $btn-sort-hover;
+       }
+      }
+    }
   }
 }
 
 .fm-tile-contant {
-  height: 100%;
-  overflow-y: auto;
+  @include scroll-box-height();
+  padding: 5px;
 
   .tile {
     padding: 5px;
@@ -26,7 +61,7 @@
         color: darken($icon-file-bg, 20%);
       }
 
-    .uncheck {
+      .uncheck {
         color: lighten($icon-file-bg, 10%);
       }
     }
@@ -36,7 +71,7 @@
         color: darken($folder-icon-bg, 20%);
       }
 
-    .uncheck {
+      .uncheck {
         color: lighten($folder-icon-bg, 2%);
       }
     }

@@ -6,7 +6,7 @@ require.config({
 		'ngRoute': 			'../bower_components/angular-route/angular-route.min',
 		'bootstrap':		'../bower_components/bootstrap/dist/js/bootstrap.min',
 		'angular':			'../bower_components/angular/angular.min',
-		'jquery': 			'../bower_components/jquery/jquery.min'
+		'jquery': 			'../bower_components/jquery/dist/jquery.min'
 	},
 	shim: {
 		'angular': {

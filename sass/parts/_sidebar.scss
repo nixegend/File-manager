@@ -7,6 +7,10 @@
   z-index: 2;
 
   .storage-sub-header {
+    padding: 8px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     @include bar-styles();
 
     .hdd {
@@ -22,29 +26,28 @@
     z-index: 1;
 
     &:after {
-        content: "";
-        height: 100%;
-        width: 2px;
-        background-color: $header-border-bottom;
-        margin-left: 4px;
-        display: block;
+      content: "";
+      height: 100%;
+      width: 2px;
+      background-color: $header-border-bottom;
+      margin-left: 4px;
+      display: block;
     }
 
     &:hover:after {
-        background-color: $link-hover;
+      background-color: $link-hover;
     }
 
     &:hover {
-        cursor: col-resize;
+      cursor: col-resize;
     }
   }
 }
 
 .menu-folders-tree {
+  @include scroll-box-height();
   padding-left: 15px;
   margin: 0;
-
-  @include scroll-box-height();
 
   li {
     list-style: none;
@@ -126,5 +129,4 @@
       visibility: visible;
     }
   }
-
 }

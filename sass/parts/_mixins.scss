@@ -5,11 +5,7 @@
 }
 
 @mixin bar-styles() {
-  padding: 8px 15px;
   height: $sub-header-height;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   cursor: default;
   color: $sub-header-text;
   background-color: $sub-header-bg;

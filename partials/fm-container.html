@@ -54,33 +54,39 @@
         </ul>
 
         <div class="fm-tile-layout" ng-switch-when="tile">
-            <div class="infobar-sub-header">
-                <i class="fa fa-bars context-menu-btn" ng-click="contextMenuBtn()"></i>
 
+            <div class="tile-sub-header">
+                <div class="td" ng-click="contextMenuBtn()">
+                    <i class="fa fa-bars"></i>
+                </div>
 
+                <div class="td">
+                    <span>Sort by:</span>
 
+                    <div class="btn-group" uib-dropdown>
+                        <button type="button" class="btn btn-fm btn-sm" ng-click="sortOrder(selectedOption.option)">
+                            <i class="fa {{reverse ? 'fa-sort-amount-desc' : 'fa-sort-amount-asc'}}"></i>
+                        </button>
+                        <button type="button" class="btn btn-fm btn-sm dropdown-toggle" uib-dropdown-toggle>
+                            {{selectedOption.name}}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li ng-repeat="opt in sortOptions" ng-click="setSortOption(opt)">
+                                <a name="{{opt.name}}">{{opt.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!--<div class="tile-sort-form input-group input-group-sm">
-                    <span class="input-group-addon">Sort by:</span>
-                    <select class="form-control" ng-model="criteria" 
-                    ng-options="option.machineName as option.name for option in sortOptions">
-                    </select>
-                    <span ng-click="sortDescAscBtn()" class="input-group-addon btn-info">
-                        <i class="fa {{reverse ? 'fa-sort-amount-desc' : 'fa-sort-amount-asc'}}"></i>
-                    </span>
-                </div>-->
-
-
-
-
+                </div>
             </div>
+
             <fm-tile-layout></fm-tile-layout>
         </div>
 
         <div class="fm-table-layout" ng-switch-when="table">
             <fm-table-layout></fm-table-layout>
         </div>
-
 
     </div>
 </div>

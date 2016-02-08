@@ -16,7 +16,7 @@ $link-hover-bg: #E1E6ED;
 $default-text:  #333;
 
 // ------------- header ----------------------------
-$header-bg:          #549DFD;
+$header-bg:          #02adea;
 $header-border-bottom: 1px solid #BFC5FD;
 
 // ------------- headers ins content ---------------
@@ -59,8 +59,8 @@ $fm-table-border-bottom-td: $tile-border;
 // ------------- btn-fm -----------------------------
 $btn-fm-color:        #fff;
 $btn-fm-active-color: #000;
-$btn-fm-bg-color:     #738AE6;
+$btn-fm-bg-color:     darken($header-bg, 6%);
 $btn-fm-border-color: darken($btn-fm-bg-color, 4%);
 
 $btn-fm-hover-color: $default-text;
-$btn-fm-hover-bg-color: lighten($btn-fm-bg-color, 17%);
+$btn-fm-hover-bg-color: lighten($btn-fm-bg-color, 7%);

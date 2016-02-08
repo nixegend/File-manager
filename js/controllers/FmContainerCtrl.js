@@ -2,12 +2,29 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
     app.controller('FmContainerCtrl', ['$scope', '$filter', 'api', 'localStorageService', '$rootScope',
         function ($scope, $filter, api, localStorageService, $rootScope) {
 
+            var sortArr = [
+                { name: 'Name', option: 'name' },
+                { name: 'Type', option: 'ext' },
+                { name: 'Size', option: 'size' },
+                { name: 'Date', option: 'date' }
+            ];
+
             $scope.menuFoldersTree = '/partials/menu-folder-tree.html';
             $scope.contextMenuState = false;
             $scope.disabledMenuItem = true;
             $scope.disabledPaste = true;
             $scope.allSelected = false;
             $scope.tempCopyCutArr = [];
+            $scope.criteria = null;
+            $scope.reverse = true;
+            $scope.selectedOption = sortArr[0];
+            $scope.sortOptions = sortArr;
+
+            api.getJSONresponse('foldersTree').then(function (data) {
+                $scope.foldersTree = data;
+                $scope.currentDir = data;
+                $scope.tableData = data.content;
+            });
 
             function cancelSelected(data, disParam) {
                 for (var i = 0; i < data.length; i++) {
@@ -83,11 +100,15 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 if (typeof (callback) == "function") callback(temp);
             };
 
-            api.getJSONresponse('foldersTree').then(function (data) {
-                $scope.foldersTree = data;
-                $scope.currentDir = data;
-                $scope.tableData = data.content;
-            });
+            $scope.sortOrder = function (criteria) {
+                $scope.reverse = ($scope.criteria === criteria) ? !$scope.reverse : false;
+                $scope.criteria = criteria;
+            };
+
+            $scope.setSortOption = function (obj) {
+                $scope.selectedOption = obj;
+                $scope.sortOrder(obj.option);
+            };
 
             $scope.goToDirectory = function (obj) {
                 if (obj.folder) {
