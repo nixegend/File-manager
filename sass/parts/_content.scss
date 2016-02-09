@@ -44,8 +44,14 @@
   }
 }
 
-.btn-fm.active {
-  color: $btn-fm-active-color;
+.btn-fm {
+  &.active {
+    color: $btn-fm-active-color;
+  }
+
+  &[disabled] {
+    opacity: 0.4;
+  }
 }
 
 .btn-fm:focus,

@@ -14,15 +14,20 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             $scope.disabledMenuItem = true;
             $scope.disabledPaste = true;
             $scope.allSelected = false;
+            $scope.disabledBackward = true;
+            $scope.disabledForward = true;
             $scope.tempCopyCutArr = [];
+            $scope.historyArr = [];
             $scope.criteria = null;
             $scope.reverse = true;
+            $scope.step = 0;
             $scope.selectedOption = sortArr[0];
             $scope.sortOptions = sortArr;
 
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
                 $scope.currentDir = data;
+                $scope.historyArr[0] = data;
                 $scope.tableData = data.content;
             });
 
@@ -110,8 +115,16 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 $scope.sortOrder(obj.option);
             };
 
-            $scope.goToDirectory = function (obj) {
+            $scope.goToDirectory = function (obj, disHistory) {
                 if (obj.folder) {
+
+                    if (!disHistory) {
+                        $scope.historyArr.push(obj);
+                        $scope.disabledForward = true;
+                        $scope.disabledBackward = false;
+                        $scope.step = $scope.historyArr.length;
+                    }
+
                     cancelSelected($scope.tableData);
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
                     $scope.tableData = obj.content;

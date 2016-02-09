@@ -1,13 +1,13 @@
 <div class="fm-header clearfix">
 
     <div class="cell">
-        <button type="button" class="btn btn-fm btn-sm">
-            <i class="glyphicon glyphicon-chevron-left" ng-click="goHistoryBackward()"></i>
+        <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryBackward()" ng-disabled="disabledBackward">
+            <i class="glyphicon glyphicon-chevron-left"></i>
         </button>
-        <button type="button" class="btn btn-fm btn-sm" ng-click="goToDirectory(foldersTree)">
+        <button type="button" class="btn btn-fm btn-sm" ng-click="goToHomeDirectory(foldersTree)">
             <i class="glyphicon glyphicon-home"></i>
         </button>
-        <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryForward()">
+        <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryForward()" ng-disabled="disabledForward">
             <i class="glyphicon glyphicon-chevron-right"></i>
         </button>
     </div>

@@ -10,8 +10,8 @@ define(['app', '../directives/fm-container'], function (app) {
                     showTypeCol: true,
                     showSizeCol: true,
                     showDateCol: true,
-                    sidebarWidth: '15',
-                    contentWidth: '85',
+                    sidebarWidth: '20',
+                    contentWidth: '80',
                     filesInSidebar: false,
                     layoutView: 'table'
                 };
@@ -23,11 +23,34 @@ define(['app', '../directives/fm-container'], function (app) {
             };
 
             $scope.goHistoryBackward = function () {
+                $scope.step--;
 
+                if ($scope.step > 0) {
+                    $scope.step = ($scope.step == $scope.historyArr.length - 1) ? $scope.step - 1 : $scope.step;
+                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
+                    $scope.disabledForward = false;
+                } else {
+                    $scope.step = 0;
+                    $scope.disabledBackward = true;
+                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
+                }
+            };
+
+            $scope.goToHomeDirectory = function (data) {
+                $scope.goToDirectory(data, true);
             };
 
             $scope.goHistoryForward = function () {
+                $scope.step++;
 
+                if ($scope.step < $scope.historyArr.length - 1) {
+                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
+                    $scope.disabledBackward = false;
+                } else {
+                    $scope.disabledForward = true;
+                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
+                    $scope.step = $scope.historyArr.length;
+                }
             };
 
             $scope.layoutSwitcher = function () {
