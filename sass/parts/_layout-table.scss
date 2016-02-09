@@ -124,12 +124,17 @@
 
         &:first-child {
           text-align: center;
+          cursor: pointer;
 
           .check,
+          .remove,
           .uncheck {
             font-size: 19px;
-            cursor: pointer;
             margin-top: 3px;
+          }
+
+          .remove {
+            color: #FF2A2A;
           }
 
           .check {

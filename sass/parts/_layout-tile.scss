@@ -56,6 +56,35 @@
   @include scroll-box-height();
   padding: 5px;
 
+  .new-folder {
+    .tile-box {
+      display: table;
+
+      > .td {
+        display: table-cell;
+        vertical-align: top;
+
+        .create,
+        .remove {
+          float: right;
+          margin: 10px 0 0 10px;
+        }
+
+        .create {
+            width: 100px;
+        }
+
+        .remove {
+            width: 50px;
+        }
+
+        &:first-child {
+          width: 65px;
+        }
+      }
+    }
+  }
+
   .tile {
     padding: 5px;
     min-width: $tile-min-width;

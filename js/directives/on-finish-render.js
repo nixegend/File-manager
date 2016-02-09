@@ -3,7 +3,7 @@ define(['app'], function (app) {
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
-                if (scope.$last === true) scope.$emit('ngRepeatFinished');
+                if (scope.$last === true) scope.$emit(attr.onFinishRenderItems);
             }
         }
     }]);

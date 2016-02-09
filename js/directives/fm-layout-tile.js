@@ -11,17 +11,17 @@ define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], functio
                     var numOfBoxes = Math.ceil(element[0].offsetWidth / 300) - 1;
                     if (numOfBoxes != scope.boxesInRow && numOfBoxes >= 1) {
                         scope.boxesInRow = numOfBoxes;
-
-                        var boxWidth = 100 / numOfBoxes,
-                            boxes = element[0].children;
-
-                        for (var i = 0; i < boxes.length; i++) {
-                            boxes[i].style.width = boxWidth + '%';
+                        scope.boxWidth = 100 / numOfBoxes;
+                        var boxes = element[0].children,
+                            b = boxes.length,
+                            i = 0;
+                        for (; i < b; i++) {
+                            boxes[i].style.width = scope.boxWidth + '%';
                         }
                     }
                 };
 
-                scope.$on('ngRepeatFinished', setBoxWidth);
+                scope.$on('tileRepeatFinished', setBoxWidth);
                 window.addEventListener('resize', setBoxWidth, true);
                 scope.$on('contentResizeEvent', setBoxWidth);
             }

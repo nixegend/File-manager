@@ -1,4 +1,5 @@
 <div class="fm-table-contant">
+
     <div class="thead">
         <div class="tr">
             <div class="td" ng-click="contextMenuBtn()">
@@ -6,8 +7,8 @@
             </div>
             <div class="td" ng-click="sortOrder('name')" ng-switch="criteria">
                 Name
-               <i ng-switch-when="name" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
-               <i ng-switch-default class="sort-icon fa fa-sort"></i>
+                <i ng-switch-when="name" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+                <i ng-switch-default class="sort-icon fa fa-sort"></i>
             </div>
             <div class="td" ng-if="fmSettings.showTypeCol" ng-click="sortOrder('ext')" ng-switch="criteria">
                 Type
@@ -28,6 +29,36 @@
     </div>
 
     <div class="tbody">
+        <div class="tr new-folder" ng-if="newFolderData.length" ng-repeat="item in newFolderData">
+            <div class="td">
+                <i class="glyphicon glyphicon-remove remove" ng-click="removeNewFolder(item)"></i>
+            </div>
+
+            <div class="td">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-folder icon-folder"></i>
+                    </span>
+                    <input class="form-control" type="text" ng-model="item.name">
+                    <span class="input-group-btn">
+						<button type="button" class="btn btn-success" ng-click="createFolder(item)">
+							<i class="glyphicon glyphicon-ok"></i>
+						</button>
+					</span>
+                </div>
+            </div>
+
+            <div class="td" ng-if="fmSettings.showTypeCol">
+                <span class="label label-info folder">-- folder</span>
+            </div>
+
+            <div class="td" ng-if="fmSettings.showSizeCol">
+                <span class="size"> {{getDocSize(item.size)}} Kb </span>
+            </div>
+
+            <div class="td" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
+        </div>
+
         <div class="tr" ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
             <div class="td">
                 <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
@@ -64,4 +95,5 @@
             <div class="td" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
         </div>
     </div>
+
 </div>

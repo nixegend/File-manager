@@ -26,18 +26,18 @@ gulp.task('watch:sass', function () {
 
 //======================================================
 
-gulp.task('tests', function() {
-  return gulp.src('./tests/test.js')
-    .pipe(jasmine())
-    .pipe(jasmineBrowser.specRunner())
-    .pipe(jasmineBrowser.server({port: 8888}));
-});
+// gulp.task('tests', function() {
+//   return gulp.src('./tests/test.js')
+//     .pipe(jasmine())
+//     .pipe(jasmineBrowser.specRunner())
+//     .pipe(jasmineBrowser.server({port: 8888}));
+// });
 
-gulp.task('watch:tests', function () {
-  gulp.watch('./tests/test.js', ['tests']);
-});
+// gulp.task('watch:tests', function () {
+//   gulp.watch('./tests/test.js', ['tests']);
+// });
 
 
 //======================================================
 
-gulp.task('default', ['sass', 'watch:sass', 'tests', 'watch:tests']);
+gulp.task('default', ['sass', 'watch:sass']);

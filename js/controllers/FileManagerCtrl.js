@@ -1,6 +1,6 @@
-define(['app', '../directives/fm-container'], function (app) {
-    app.controller('FileManagerCtrl', ['$scope', '$rootScope', '$uibModal', 'localStorageService',
-        function ($scope, $rootScope, $uibModal, localStorageService) {
+define(['app', '../services/API', '../directives/fm-container'], function (app) {
+    app.controller('FileManagerCtrl', ['$scope', 'api', '$rootScope', '$uibModal', 'localStorageService',
+        function ($scope, api, $rootScope, $uibModal, localStorageService) {
 
             if (!localStorageService.get('fm')) {
                 var settings = {
@@ -20,6 +20,15 @@ define(['app', '../directives/fm-container'], function (app) {
                 $rootScope.fmSettings = settings;
             } else {
                 $rootScope.fmSettings = localStorageService.get('fm');
+            };
+
+            $scope.newFolderData = [];
+
+            $scope.createNewFolder = function (thisDir) {
+                var todayDate = api.getTodayDate();
+                var newDir = api.folderCreator(thisDir.path, todayDate);
+                // console.log(newDir);
+                $scope.newFolderData.unshift(newDir);
             };
 
             $scope.goHistoryBackward = function () {
@@ -101,6 +110,18 @@ define(['app', '../directives/fm-container'], function (app) {
                 $uibModal.open({
                     size: size,
                     templateUrl: '/partials/upload-modal.html',
+                    controller: function ($scope) {
+                        $scope.closeModal = function () {
+                            $scope.$close();
+                        }
+                    }
+                });
+            };
+
+            $scope.openNewFileModal = function (size) {
+                $uibModal.open({
+                    size: size,
+                    templateUrl: '/partials/new-file-modal.html',
                     controller: function ($scope) {
                         $scope.closeModal = function () {
                             $scope.$close();

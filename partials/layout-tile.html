@@ -1,9 +1,22 @@
 <div class="fm-tile-contant clearfix">
-    <div ng-repeat="item in tableData | orderBy:criteria:reverse"
-         class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items>
 
-        <div ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}" 
-             class="tile-box" ng-switch="item.rename">
+    <div class="tile folder new-folder" ng-if="newFolderData.length" ng-repeat="item in newFolderData" ng-style="{width: boxWidth + '%'}">
+        <div class="tile-box">
+            <div class="td"> <i class="fm-icon-folder"></i> </div>
+            <div class="td">
+                <input class="form-control input-sm" type="text" ng-model="item.name">
+                <button type="button" class="btn btn-xs btn-success create" ng-click="createFolder(item)">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <button type="button" class="btn btn-xs btn-danger remove" ng-click="removeNewFolder(item)">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat="item in tableData | orderBy:criteria:reverse" class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items="tileRepeatFinished">
+        <div ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}" class="tile-box" ng-switch="item.rename">
             <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}" filetype="{{item.ext}}"></i>
             <p ng-switch-default class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</p>
@@ -23,4 +36,5 @@
             </button>
         </div>
     </div>
+
 </div>

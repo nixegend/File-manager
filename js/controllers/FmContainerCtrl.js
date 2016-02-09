@@ -179,7 +179,10 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.rename = function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].selected) data[i].rename = true;
+                    if (data[i].selected) {
+                        data[i].oldName = data[i].name;
+                        data[i].rename = true;
+                    }
                 }
             };
 
