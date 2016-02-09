@@ -5,10 +5,10 @@
             <div class="td"> <i class="fm-icon-folder"></i> </div>
             <div class="td">
                 <input class="form-control input-sm" type="text" ng-model="item.name">
-                <button type="button" class="btn btn-xs btn-success create" ng-click="createFolder(item)">
+                <button type="button" class="btn btn-xs btn-success create" ng-click="createNewFolder($index)">
                     <i class="glyphicon glyphicon-ok"></i>
                 </button>
-                <button type="button" class="btn btn-xs btn-danger remove" ng-click="removeNewFolder(item)">
+                <button type="button" class="btn btn-xs btn-danger remove" ng-click="removeNewFolder($index)">
                     <i class="glyphicon glyphicon-remove"></i>
                 </button>
             </div>

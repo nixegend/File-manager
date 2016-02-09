@@ -44,29 +44,6 @@
   }
 }
 
-.btn-fm {
-  &.active {
-    color: $btn-fm-active-color;
-  }
-
-  &[disabled] {
-    opacity: 0.4;
-  }
-}
-
-.btn-fm:focus,
-.btn-fm {
-  background-color: $btn-fm-bg-color;
-  border-color: $btn-fm-border-color;
-  color: $btn-fm-color;
-  outline: none;
-
-  &:hover {
-    background-color: $btn-fm-hover-bg-color;
-    color: $btn-fm-hover-color;
-  }
-}
-
 .settings-modal-body {
   .control-label > span {
     color: $link-hover;

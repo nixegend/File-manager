@@ -1,13 +1,13 @@
 <div class="fm-header clearfix">
 
     <div class="cell">
-        <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryBackward()" ng-disabled="disabledBackward">
+        <button type="button" class="btn btn-default btn-sm" ng-click="goHistoryBackward()" ng-disabled="disabledBackward">
             <i class="glyphicon glyphicon-chevron-left"></i>
         </button>
-        <button type="button" class="btn btn-fm btn-sm" ng-click="goToHomeDirectory(foldersTree)">
+        <button type="button" class="btn btn-default btn-sm" ng-click="goToHomeDirectory(foldersTree)">
             <i class="glyphicon glyphicon-home"></i>
         </button>
-        <button type="button" class="btn btn-fm btn-sm" ng-click="goHistoryForward()" ng-disabled="disabledForward">
+        <button type="button" class="btn btn-default btn-sm" ng-click="goHistoryForward()" ng-disabled="disabledForward">
             <i class="glyphicon glyphicon-chevron-right"></i>
         </button>
     </div>
@@ -20,7 +20,7 @@
                 </li>
             </ul>
             <span class="input-group-btn">
-				<button type="button" class="btn btn-fm btn-sm">
+				<button type="button" class="btn btn-default btn-sm">
 					<!--<i class="glyphicon glyphicon-arrow-right"></i>-->
 					<i class="glyphicon glyphicon-refresh"></i>
 				</button>
@@ -32,7 +32,7 @@
         <div class="input-group">
             <input class="form-control input-sm" type="text" ng-model="searchInput" placeholder="Search ...">
             <span class="input-group-btn">
-				<button type="button" class="btn btn-fm btn-sm">
+				<button type="button" class="btn btn-default btn-sm">
 					<i class="glyphicon glyphicon-search"></i>
 				</button>
 			</span>
@@ -41,24 +41,24 @@
 
     <div class="cell">
         <div class="pull-right">
-            <button type="button" class="btn btn-fm btn-sm" ng-click="openUploadModal('lg')">
+            <button type="button" class="btn btn-default btn-sm" ng-click="openUploadModal('lg')">
                 <i class="fa fa-upload"></i>
             </button>
-            <button type="button" class="btn btn-fm btn-sm" ng-click="openNewFileModal()">
+            <button type="button" class="btn btn-default btn-sm" ng-click="openNewFileModal()">
                 + <i class="fa fa-file-o"></i>
             </button>
-            <button type="button" class="btn btn-fm btn-sm" ng-click="createNewFolder(currentDir)">
+            <button type="button" class="btn btn-default btn-sm" ng-click="addNewFolder(currentDir)">
                 + <i class="fa fa-folder-o"></i>
             </button>
             <div class="btn-group btn-group-sm">
-                <label class="btn btn-fm" ng-model="fmSettings.layoutView" ng-click="layoutSwitcher()" uib-btn-radio="'table'">
+                <label class="btn btn-default" ng-model="fmSettings.layoutView" ng-click="layoutSwitcher()" uib-btn-radio="'table'">
                     <i class="glyphicon glyphicon-th-list"></i>
                 </label>
-                <label class="btn btn-fm" ng-model="fmSettings.layoutView" ng-click="layoutSwitcher()" uib-btn-radio="'tile'">
+                <label class="btn btn-default" ng-model="fmSettings.layoutView" ng-click="layoutSwitcher()" uib-btn-radio="'tile'">
                     <i class="glyphicon glyphicon-th-large"></i>
                 </label>
             </div>
-            <button type="button" class="btn btn-fm btn-sm" ng-click="openSettingsMmodal()">
+            <button type="button" class="btn btn-default btn-sm" ng-click="openSettingsMmodal()">
                 <i class="glyphicon glyphicon-cog"></i>
             </button>
         </div>

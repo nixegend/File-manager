@@ -22,13 +22,18 @@ define(['app', '../services/API', '../directives/fm-container'], function (app) 
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
 
-            $scope.newFolderData = [];
-
-            $scope.createNewFolder = function (thisDir) {
-                var todayDate = api.getTodayDate();
-                var newDir = api.folderCreator(thisDir.path, todayDate);
-                // console.log(newDir);
+            $scope.addNewFolder = function (thisDir) {
+                var newDir = api.folderCreator(thisDir.path, api.getTodayDate());
                 $scope.newFolderData.unshift(newDir);
+            };
+
+            $scope.createNewFolder = function (index) {
+                // console.log(newDir);
+                $scope.newFolderData[index];
+            };
+
+            $scope.removeNewFolder = function (index) {
+                $scope.newFolderData.splice(index, 1);
             };
 
             $scope.goHistoryBackward = function () {

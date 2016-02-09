@@ -31,7 +31,7 @@
     <div class="tbody">
         <div class="tr new-folder" ng-if="newFolderData.length" ng-repeat="item in newFolderData">
             <div class="td">
-                <i class="glyphicon glyphicon-remove remove" ng-click="removeNewFolder(item)"></i>
+                <i class="glyphicon glyphicon-remove remove" ng-click="removeNewFolder($index)"></i>
             </div>
 
             <div class="td">
@@ -41,7 +41,7 @@
                     </span>
                     <input class="form-control" type="text" ng-model="item.name">
                     <span class="input-group-btn">
-						<button type="button" class="btn btn-success" ng-click="createFolder(item)">
+						<button type="button" class="btn btn-success" ng-click="createNewFolder($index)">
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
 					</span>

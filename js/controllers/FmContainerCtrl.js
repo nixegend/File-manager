@@ -17,6 +17,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             $scope.disabledBackward = true;
             $scope.disabledForward = true;
             $scope.tempCopyCutArr = [];
+            $scope.newFolderData = [];
             $scope.historyArr = [];
             $scope.criteria = null;
             $scope.reverse = true;
@@ -129,6 +130,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
                     $scope.tableData = obj.content;
                     $scope.currentDir = obj;
+                    $scope.newFolderData = [];
                     if (obj.storage) $scope.breadcrumbArr = [];
                 }
             };
