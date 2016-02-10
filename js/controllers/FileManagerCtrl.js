@@ -22,20 +22,35 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
 
+            function checkSimilarNames(obj, callback) {
+                var thisDir = $scope.currentDir.content,
+                    similarName = false;
 
-            function checkSimilarNames() {
+                for (var i = 0; i < thisDir.length; i++) {
+                    if (thisDir[i].folder && thisDir[i].name == obj.name) {
+                        similarName = true;
+                        break;
+                    }
+                }
 
+                if (typeof (callback) == "function") callback(similarName);
             };
-            
+
             $scope.addNewFolder = function (thisDir) {
                 var newDir = api.folderCreator(thisDir.path, api.getTodayDate());
                 $scope.newFolderData.unshift(newDir);
             };
 
             $scope.createNewFolder = function (index) {
-
-                // console.log(folder);
-                var folder = $scope.newFolderData.splice(index, 1);
+                checkSimilarNames($scope.newFolderData[index], function (similar) {
+                    if (similar) {
+                        alert('A folder "'+$scope.newFolderData[index].name+'" already exists');
+                    } else {
+                        var folder = $scope.newFolderData.splice(index, 1)[0];
+                        $scope.currentDir.content.push(folder);
+                        $scope.$broadcast('runSetBoxWidth', true);
+                    }
+                });
             };
 
             $scope.removeNewFolder = function (index) {

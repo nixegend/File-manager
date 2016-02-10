@@ -1,5 +1,5 @@
 define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], function (app) {
-    app.directive('fmTileLayout', [function () {
+    app.directive('fmTileLayout', ['$timeout', function ($timeout) {
         return {
             restrict: 'E',
             replace: true,
@@ -7,23 +7,24 @@ define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], functio
             templateUrl: '/partials/fm-layout-tile.html',
             link: function (scope, element, attr) {
 
-                function setBoxWidth() {
+                function setBoxWidth(runState) {
                     var numOfBoxes = Math.ceil(element[0].offsetWidth / 300) - 1;
-                    if (numOfBoxes != scope.boxesInRow && numOfBoxes >= 1) {
+                    if (runState || numOfBoxes != scope.boxesInRow && numOfBoxes >= 1) {
                         scope.boxesInRow = numOfBoxes;
                         scope.boxWidth = 100 / numOfBoxes;
-                        var boxes = element[0].children,
-                            b = boxes.length,
-                            i = 0;
-                        for (; i < b; i++) {
-                            boxes[i].style.width = scope.boxWidth + '%';
-                        }
+                        $timeout(function () {
+                            var boxes = element[0].children,
+                                b = boxes.length,
+                                i = 0;
+                            for (; i < b; i++) {
+                                boxes[i].style.width = scope.boxWidth + '%';
+                            }
+                        }, 10);
                     }
                 };
 
-                scope.$on('tileRepeatFinished', setBoxWidth);
+                scope.$on('runSetBoxWidth', setBoxWidth);
                 window.addEventListener('resize', setBoxWidth, true);
-                scope.$on('contentResizeEvent', setBoxWidth);
             }
         };
     }]);

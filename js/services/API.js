@@ -47,7 +47,7 @@ define(['app'], function (app) {
                 file: false,
                 folder: true,
                 name: "+++++",
-                path: furtherPath + "/+++++",
+                path: furtherPath + "/",
                 size: 0
             }
         };

@@ -35,7 +35,7 @@ define(['app', '../controllers/FmContainerCtrl'], function (app) {
                         fmUI.sidebar.style.width = pos + '%';
                         fmUI.content.style.width = 100 - pos + '%';
 
-                        scope.$broadcast('contentResizeEvent');
+                        scope.$broadcast('runSetBoxWidth');
                         e.preventDefault();
                     });
 
