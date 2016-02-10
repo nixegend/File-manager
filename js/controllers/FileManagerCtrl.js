@@ -1,4 +1,4 @@
-define(['app', '../services/API', '../directives/fm-container'], function (app) {
+define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '../directives/fm-container'], function (app) {
     app.controller('FileManagerCtrl', ['$scope', 'api', '$rootScope', '$uibModal', 'localStorageService',
         function ($scope, api, $rootScope, $uibModal, localStorageService) {
 
@@ -112,15 +112,15 @@ define(['app', '../services/API', '../directives/fm-container'], function (app) 
             };
 
             $scope.openUploadModal = function (size) {
-                $uibModal.open({
-                    size: size,
-                    templateUrl: '/partials/upload-modal.html',
-                    controller: function ($scope) {
-                        $scope.closeModal = function () {
-                            $scope.$close();
-                        }
-                    }
-                });
+                // $uibModal.open({
+                //     size: size,
+                //     templateUrl: '/partials/upload-modal.html',
+                //     controller: function ($scope) {
+                //         $scope.closeModal = function () {
+                //             $scope.$close();
+                //         }
+                //     }
+                // });
             };
 
             $scope.openNewFileModal = function (size) {
