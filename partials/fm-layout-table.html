@@ -59,7 +59,7 @@
             <div class="td" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
         </div>
 
-        <div class="tr" ng-repeat="item in tableData | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
+        <div class="tr" ng-repeat="item in currentDir.content | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
             <div class="td">
                 <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             </div>

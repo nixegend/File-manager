@@ -22,14 +22,20 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
 
+
+            function checkSimilarNames() {
+
+            };
+            
             $scope.addNewFolder = function (thisDir) {
                 var newDir = api.folderCreator(thisDir.path, api.getTodayDate());
                 $scope.newFolderData.unshift(newDir);
             };
 
             $scope.createNewFolder = function (index) {
-                // console.log(newDir);
-                $scope.newFolderData[index];
+
+                // console.log(folder);
+                var folder = $scope.newFolderData.splice(index, 1);
             };
 
             $scope.removeNewFolder = function (index) {
@@ -74,7 +80,7 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
             $scope.openSettingsMmodal = function (size) {
                 $uibModal.open({
                     size: size,
-                    templateUrl: '/partials/settings-modal.html',
+                    templateUrl: '/partials/fm-settings-form.html',
                     controller: function ($rootScope, $scope, localStorageService) {
                         var s = $rootScope.fmSettings;
 
@@ -111,22 +117,10 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
                 });
             };
 
-            $scope.openUploadModal = function (size) {
-                // $uibModal.open({
-                //     size: size,
-                //     templateUrl: '/partials/upload-modal.html',
-                //     controller: function ($scope) {
-                //         $scope.closeModal = function () {
-                //             $scope.$close();
-                //         }
-                //     }
-                // });
-            };
-
             $scope.openNewFileModal = function (size) {
                 $uibModal.open({
                     size: size,
-                    templateUrl: '/partials/new-file-modal.html',
+                    templateUrl: '/partials/fm-create-file-form.html',
                     controller: function ($scope) {
                         $scope.closeModal = function () {
                             $scope.$close();

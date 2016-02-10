@@ -9,7 +9,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 { name: 'Date', option: 'date' }
             ];
 
-            $scope.menuFoldersTree = '/partials/menu-folder-tree.html';
+            $scope.menuFoldersTree = '/partials/fm-menu-folder-tree.html';
             $scope.contextMenuState = false;
             $scope.disabledMenuItem = true;
             $scope.disabledPaste = true;
@@ -29,7 +29,6 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 $scope.foldersTree = data;
                 $scope.currentDir = data;
                 $scope.historyArr[0] = data;
-                $scope.tableData = data.content;
             });
 
             function cancelSelected(data, disParam) {
@@ -126,9 +125,8 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                         $scope.step = $scope.historyArr.length;
                     }
 
-                    cancelSelected($scope.tableData);
+                    cancelSelected($scope.currentDir.content);
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
-                    $scope.tableData = obj.content;
                     $scope.currentDir = obj;
                     $scope.newFolderData = [];
                     if (obj.storage) $scope.breadcrumbArr = [];
@@ -173,10 +171,10 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.selectThis = function (item) {
                 item.selected = !item.selected;
-                var arr = $filter('filter')($scope.tableData, { selected: true });
+                var arr = $filter('filter')($scope.currentDir.content, { selected: true });
                 $scope.disabledMenuItem = (arr.length <= 0) ? true : false;
                 if (arr.length <= 0) $scope.allSelected = false;
-                if (arr.length == $scope.tableData.length) $scope.allSelected = true;
+                if (arr.length == $scope.currentDir.content.length) $scope.allSelected = true;
             };
 
             $scope.rename = function (data) {
@@ -233,10 +231,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             };
 
             $scope.compressed = function (data) {
-
-                // console.log($scope.foldersTree.content);
-                console.log($scope.tableData);
-
+                console.log($scope.currentDir);
                 // for (var i = 0; i < data.length; i++) {
                 //     if (data[i].selected);
                 // }

@@ -5,7 +5,7 @@ define(['app', '../controllers/FmTableLayoutCtrl'], function (app) {
             restrict: 'E',
             replace: true,
             controller: 'FmTableLayoutCtrl',
-            templateUrl: '/partials/layout-table.html',
+            templateUrl: '/partials/fm-layout-table.html',
             link: function (scope, element, attr) {
 
             }

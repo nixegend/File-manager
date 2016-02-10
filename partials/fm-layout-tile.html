@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div ng-repeat="item in tableData | orderBy:criteria:reverse" class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items="tileRepeatFinished">
+    <div ng-repeat="item in currentDir.content | orderBy:criteria:reverse" class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items="tileRepeatFinished">
         <div ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}" class="tile-box" ng-switch="item.rename">
             <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             <i class="fm-icon-{{item.folder ? 'folder' : 'file'}}" filetype="{{item.ext}}"></i>

@@ -4,7 +4,7 @@ define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], functio
             restrict: 'E',
             replace: true,
             controller: 'FmTileLayoutCtrl',
-            templateUrl: '/partials/layout-tile.html',
+            templateUrl: '/partials/fm-layout-tile.html',
             link: function (scope, element, attr) {
 
                 function setBoxWidth() {
