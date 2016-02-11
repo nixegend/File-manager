@@ -5,15 +5,19 @@
 }
 
 .fm-content {
-  float: left;
-  height: 100%;
+  overflow: hidden;
+}
+
+.context-menu,
+.fm-content,
+.fm-sidebar {
+    height: 100%;
+    float: left;
 }
 
 .context-menu {
    padding: 0;
-   float: left;
    margin: 0;
-   height: 100%;
    min-width: 150px;
    overflow-x: hidden;
    border-right: $context-menu-border-right;
