@@ -14,3 +14,44 @@
     opacity: 1;
   }
 }
+
+.fm-tile-layout,
+.fm-table-layout {
+  &.ng-enter,
+  &.ng-leave {
+    transition: 300ms linear all;
+    position: absolute;
+  }
+
+  &.ng-enter.ng-enter-active,
+  &.ng-leave {
+    opacity: 1;
+    right: 0;
+  }
+
+  &.ng-leave.ng-leave-active,
+  &.ng-enter {
+    opacity: 0;
+    right: -999px;
+  }
+}
+
+.context-menu {
+  &.ng-enter,
+  &.ng-leave {
+    transition: 80ms linear all;
+    position: relative;
+  }
+
+  &.ng-enter.ng-enter-active,
+  &.ng-leave {
+    opacity: 1;
+    left: 0;
+  }
+
+  &.ng-leave.ng-leave-active,
+  &.ng-enter {
+    opacity: 0;
+    left: -200px;
+  }
+}
