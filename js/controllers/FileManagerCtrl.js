@@ -23,10 +23,10 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
             };
             
              $scope.filesForCreating = [
-                 {ext: 'pptx', name: 'New Microsoft PowerPoint Presentation'},
-                 {ext: 'xlsx', name: 'New Microsoft Excel Worksheet'},
-                 {ext: 'docx', name: 'New Microsoft Word Document'},
-                 {ext: 'txt', name: 'New Text Document'}
+                 {ext: 'pptx', name: 'Microsoft PowerPoint Presentation'},
+                 {ext: 'xlsx', name: 'Microsoft Excel Worksheet'},
+                 {ext: 'docx', name: 'Microsoft Word Document'},
+                 {ext: 'txt', name: 'Text Document'}
              ];
 
             function checkSimilarNames(obj, callback) {

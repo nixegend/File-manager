@@ -26,13 +26,11 @@
   &.ng-enter.ng-enter-active,
   &.ng-leave {
     opacity: 1;
-    right: 0;
   }
 
   &.ng-leave.ng-leave-active,
   &.ng-enter {
     opacity: 0;
-    right: -999px;
   }
 }
 

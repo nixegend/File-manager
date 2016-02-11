@@ -5,7 +5,7 @@
             <i class="hdd fa fa-hdd-o"></i> Storage
         </div>
         <ul class="menu-folders-tree">
-            <li ng-repeat="item in foldersTree.content" ng-include="menuFoldersTree"></li>
+            <li ng-repeat="item in foldersTree.content | orderBy:'name'" ng-include="menuFoldersTree"></li>
         </ul>
     </div>
     <div class="fm-content" ng-switch="fmSettings.layoutView">
