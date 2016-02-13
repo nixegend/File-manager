@@ -12,7 +12,7 @@
     @include bar-styles();
 
     .hdd {
-      font-size: 17px;
+      font-size: 19px;
     }
   }
 
@@ -66,6 +66,7 @@
       }
 
       > .icon {
+        font-size: 14px;
         color: darken($sidebar-icon-file-color, 7%);
       }
 
@@ -103,7 +104,7 @@
       > .icon {
         float: left;
         margin-right: 7px;
-        font-size: 16px;
+        font-size: 19px;
         color: darken($sidebar-icon-folder-color, 7%);
       }
 

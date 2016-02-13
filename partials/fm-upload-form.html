@@ -1,21 +1,22 @@
-<div class="modal fade fm-file-uploader-modal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" ng-click="closeModal()">&times;</button>
+    <h4 class="modal-title">File uploader</h4>
+</div>
+<div class="modal-body fm-file-uploader" upload-box>
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">File uploader</h4>
-            </div>
-            <div class="modal-body">
-                <h1>upload</h1>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+<h1>
+    <i class="fa fa-file"></i> Drop files here
+</h1>
 
-        </div>
-    </div>
+</div>
+<div class="modal-footer">
+
+    <span class="file-selector-btn">
+        <label class="btn btn-primary" for="upload-file-input">
+            <input id="upload-file-input" type="file">
+            <i class="fa_icon icon-upload-alt margin-correction"></i>Choose files
+        </label>
+    </span>
+
+    <button type="button" class="btn btn-default">Clear</button>
 </div>

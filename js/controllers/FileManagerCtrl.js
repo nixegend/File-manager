@@ -21,13 +21,13 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
             } else {
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
-            
-             $scope.filesForCreating = [
-                 {ext: 'pptx', name: 'Microsoft PowerPoint Presentation'},
-                 {ext: 'xlsx', name: 'Microsoft Excel Worksheet'},
-                 {ext: 'docx', name: 'Microsoft Word Document'},
-                 {ext: 'txt', name: 'Text Document'}
-             ];
+
+            $scope.filesForCreating = [
+                { ext: 'pptx', name: 'Microsoft PowerPoint Presentation' },
+                { ext: 'xlsx', name: 'Microsoft Excel Worksheet' },
+                { ext: 'docx', name: 'Microsoft Word Document' },
+                { ext: 'txt', name: 'Text Document' }
+            ];
 
             function checkSimilarNames(obj, callback) {
                 var thisDir = $scope.currentDir.content,
@@ -51,7 +51,7 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
             $scope.createNewFolder = function (index) {
                 checkSimilarNames($scope.newFolderData[index], function (similar) {
                     if (similar) {
-                        alert('A folder "'+$scope.newFolderData[index].name+'" already exists');
+                        alert('A folder "' + $scope.newFolderData[index].name + '" already exists');
                     } else {
                         var folder = $scope.newFolderData.splice(index, 1)[0];
                         $scope.currentDir.content.push(folder);
@@ -143,6 +143,18 @@ define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '
                 $uibModal.open({
                     size: size,
                     templateUrl: '/partials/fm-create-file-form.html',
+                    controller: function ($scope) {
+                        $scope.closeModal = function () {
+                            $scope.$close();
+                        }
+                    }
+                });
+            };
+
+            $scope.openUploadFormModal = function (size) {
+                $uibModal.open({
+                    size: size,
+                    templateUrl: '/partials/fm-upload-form.html',
                     controller: function ($scope) {
                         $scope.closeModal = function () {
                             $scope.$close();
