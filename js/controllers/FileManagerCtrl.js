@@ -1,4 +1,4 @@
-define(['app', 'bootstrap', '../services/API', '../directives/fm-upload-form', '../directives/fm-container'], function (app) {
+define(['app', '../services/API', '../directives/fm-upload-form', '../directives/fm-container'], function (app) {
     app.controller('FileManagerCtrl', ['$scope', 'api', '$rootScope', '$uibModal', 'localStorageService',
         function ($scope, api, $rootScope, $uibModal, localStorageService) {
 
