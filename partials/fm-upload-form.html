@@ -4,7 +4,12 @@
 </div>
 <div class="modal-body fm-file-uploader" upload-box>
 
-    <h1> <i class="fa fa-file"></i> Drop files here </h1>
+<h1 ng-if="upload.length == 0" class="title-pointer"> <i class="fa fa-file"></i> Drop files here </h1>
+
+<div ng-repeat="item in upload | orderBy:'status'" class="upload-container">
+  <div class="name"> {{item.newName}} </div>
+  <div class="name"> {{item.extType}} </div>
+</div>
 
 </div>
 <div class="modal-footer">

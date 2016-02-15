@@ -1,5 +1,20 @@
 .fm-file-uploader {
 
+  .title-pointer {
+    cursor: default;
+    text-align: center;
+    color: #c9c9c9;
+    padding: 20px;
+    margin: 0;
+    border: 2px dashed;
+  }
+
+  &.active {
+     .title-pointer {
+       color: lighten($link-hover, 20%);
+     }
+  }
+
 }
 
 .file-selector-btn {
