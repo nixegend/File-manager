@@ -138,11 +138,11 @@
           }
 
           .check {
-            color: darken($sidebar-icon-folder-color, 5%);
+            color: darken($sidebar-icon-file-color, 7%);
           }
 
           .uncheck {
-            color: darken($sidebar-icon-file-color, 5%);
+            color: lighten($sidebar-icon-file-color, 2%);
           }
         }
       }

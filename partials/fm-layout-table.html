@@ -66,8 +66,9 @@
 
             <div class="td" ng-switch="item.rename">
                 <div ng-switch-when="true" class="input-group input-group-sm">
-                    <span class="input-group-addon">
-                        <i class="fa {{item.folder ? 'fa-folder icon-folder' : 'fa-file icon-file'}}"></i>
+                    <span class="input-group-addon" ng-switch="item.folder">
+                      <i ng-switch-when="true" class="icon-folder fa fa-folder"></i>
+                      <i ng-switch-default class="icon-file fa fa-{{setFileClass(item.ext)}}"></i>
                     </span>
                     <input class="form-control" type="text" ng-model="item.name">
                     <span class="input-group-btn">
@@ -77,8 +78,10 @@
 					</span>
                 </div>
 
-                <span ng-switch-default title="{{item.name}}">
-                    <i class="fa {{item.folder ? 'fa-folder icon-folder' : 'fa-file icon-file'}}"></i> {{item.name}}
+                <span ng-switch-default title="{{item.name}}" ng-switch="item.folder">
+                      <i ng-switch-when="true" class="icon-folder fa fa-folder"></i>
+                      <i ng-switch-default class="icon-file fa fa-{{setFileClass(item.ext)}}"></i>
+                     {{item.name}}
                 </span>
             </div>
 

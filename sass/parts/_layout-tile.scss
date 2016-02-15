@@ -177,36 +177,10 @@
 
     .fm-icon-file {
       width: 45px;
+      font-size: 63px;
+      color: $icon-file-bg;
       margin-right: 10px;
-      border-radius: 4px 12px 4px 4px;
-      box-shadow: 15px -32px 0 15px $icon-file-bg inset;
-
-      &:after {
-        content: '';
-        position: absolute;
-        border-width: 0;
-        border-bottom: 15px solid darken($icon-file-bg, 9%);
-        border-right: 15px solid transparent;
-        top: 0;
-        right: 0;
-      }
-
-      &:before {
-        content: "." attr(filetype) "";
-        font-size: 12px;
-        bottom: 8px;
-        position: absolute;
-        color: $icon-file-ext-colot;
-        min-width: 40px;
-        background-color: darken($icon-file-bg, 7%);
-        padding: 2px 5px;
-        display: inline-block;
-        margin-left: 5px;
-      }
     }
-    
-    
-    
-    
+
   }
 }
