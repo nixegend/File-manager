@@ -56,6 +56,14 @@
   @include scroll-box-height();
   padding: 5px;
 
+  .icon-box {
+    float: left;
+    max-width: 100px;
+    position: relative;
+    margin-right: 10px;
+    height: 100%;
+  }
+
   .new-folder {
     .tile-box {
       display: table;
@@ -89,26 +97,6 @@
     padding: 5px;
     min-width: $tile-min-width;
     float: left;
-
-    &.file {
-      .check {
-        color: darken($icon-file-bg, 20%);
-      }
-
-      .uncheck {
-        color: lighten($icon-file-bg, 10%);
-      }
-    }
-
-    &.folder {
-      .check {
-        color: darken($folder-icon-bg, 20%);
-      }
-
-      .uncheck {
-        color: lighten($folder-icon-bg, 2%);
-      }
-    }
   }
 
   .tile-box {
@@ -122,17 +110,7 @@
     border: $tile-border;
 
     &.selected {
-      background-color: darken($tile-box-bg-hover, 1%);
-    }
-
-    .check,
-    .uncheck {
-      position: absolute;
-      z-index: 1;
-      top: 5px;
-      left: 5px;
-      padding: 5px 10px 10px 5px;
-      font-size: 21px;
+      background-color: darken($tile-box-bg-hover, 3%);
     }
 
     &:hover {
@@ -163,8 +141,7 @@
 
     .fm-icon-file,
     .fm-icon-folder {
-      float: left;
-      height: $tile-height - 13px;
+      height: 100%;
       position: relative;
       display: inline-block;
     }
@@ -172,8 +149,8 @@
     .fm-icon-folder {
       background-color: lighten($folder-icon-bg, 12.5%);
       width: 45px;
+      margin-right: 10px;
       border-radius: 4px 2px 2px 4px;
-      margin-right: 20px;
 
       &:after {
         width: 9px;
@@ -227,5 +204,9 @@
         margin-left: 5px;
       }
     }
+    
+    
+    
+    
   }
 }
