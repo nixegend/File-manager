@@ -1,5 +1,5 @@
 <div class="modal-header settings-modal-header">
-    <button type="button" class="close" ng-click="closeModal()">&times;</button>
+    <button type="button" class="close" ng-click="$close()">&times;</button>
     <h4 class="modal-title">Settings</h4>
 </div>
 <div class="modal-body settings-modal-body">
@@ -11,21 +11,21 @@
                 <div class="form-group">
                     <label class="col-sm-8 control-label"> Show sidebr </label>
                     <div class="col-sm-4 checkbox">
-                        <i class="fa {{fmSettings.sidebar ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="showHideSidebar()"></i>
+                        <i class="fa {{fmSettings.sidebar ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="settings.showHideSidebar()"></i>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-8 control-label"> Show files in sidebar </label>
                     <div class="col-sm-4 checkbox">
-                        <i class="fa {{fmSettings.showFiles ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="showHideFilesInSidebar()"></i>
+                        <i class="fa {{fmSettings.showFiles ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="settings.showHideFilesInSidebar()"></i>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-8 control-label"> Show files extension </label>
                     <div class="col-sm-4 checkbox">
-                        <i class="fa {{fmSettings.showExt ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="showHideFilesExtension()"></i>
+                        <i class="fa {{fmSettings.showExt ? 'fa-check-square-o' : 'fa-square-o'}}" ng-click="settings.showHideFilesExtension()"></i>
                     </div>
                 </div>
             </form>
@@ -38,21 +38,21 @@
                     <label class="col-sm-8 control-label"> Show " <span>Type</span> " </label>
                     <div class="col-sm-4 checkbox">
                         <i class="fa {{fmSettings.showTypeCol ? 'fa-check-square-o' : 'fa-square-o'}}"
-                         ng-click="showHideTableColumn('type')"></i>
+                         ng-click="settings.showHideTableColumn('type')"></i>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-8 control-label"> Show " <span>Size</span> " </label>
                     <div class="col-sm-4 checkbox">
                         <i class="fa {{fmSettings.showSizeCol ? 'fa-check-square-o' : 'fa-square-o'}}"
-                         ng-click="showHideTableColumn('size')"></i>
+                         ng-click="settings.showHideTableColumn('size')"></i>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-8 control-label"> Show " <span>Date</span> " </label>
                     <div class="col-sm-4 checkbox">
                         <i class="fa {{fmSettings.showDateCol ? 'fa-check-square-o' : 'fa-square-o'}}"
-                         ng-click="showHideTableColumn('date')"></i>
+                         ng-click="settings.showHideTableColumn('date')"></i>
                     </div>
                 </div>
             </form>
@@ -61,5 +61,5 @@
     </div>
 </div>
 <div class="modal-footer settings-modal-footer">
-    <button type="button" class="btn btn-primary btn-sm" ng-click="saveSettings()">Save changes</button>
+    <button type="button" class="btn btn-primary btn-sm" ng-click="settings.saveSettings()">Save changes</button>
 </div>

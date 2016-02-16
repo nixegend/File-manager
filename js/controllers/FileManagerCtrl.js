@@ -36,6 +36,7 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                 if (typeof (callback) == "function") callback(similarName);
             };
 
+
             $scope.addNewFolder = function (thisDir) {
                 var newDir = api.folderCreator(thisDir.path, api.getTodayDate());
                 $scope.newFolderData.unshift(newDir);
@@ -97,35 +98,30 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                     size: size,
                     templateUrl: '/partials/fm-settings-form.html',
                     controller: function ($rootScope, $scope, localStorageService) {
-                        var s = $rootScope.fmSettings;
 
-                        $scope.closeModal = function () {
-                            $scope.$close();
-                        };
-
-                        $scope.showHideSidebar = function () {
-                            s.sidebar = !s.sidebar;
-                            s.contentWidth = s.sidebar ? 100 - s.sidebarWidth : 100;
-                        };
-
-                        $scope.showHideFilesInSidebar = function () {
-                            s.showFiles = !s.showFiles;
-                        };
-
-                        $scope.showHideFilesExtension = function () {
-                            s.showExt = !s.showExt;
-                        };
-
-                        $scope.showHideTableColumn = function (col) {
-                            switch (col) {
-                                case 'type': s.showTypeCol = !s.showTypeCol; break;
-                                case 'size': s.showSizeCol = !s.showSizeCol; break;
-                                case 'date': s.showDateCol = !s.showDateCol; break;
+                        $scope.settings = {
+                            sp : $rootScope.fmSettings,
+                            showHideSidebar: function () {
+                                this.sp.sidebar = !this.sp.sidebar;
+                                this.sp.contentWidth = this.sp.sidebar ? 100 - this.sp.sidebarWidth : 100;
+                            },
+                            showHideFilesInSidebar: function () {
+                                this.sp.showFiles = !this.sp.showFiles;
+                            },
+                            showHideFilesExtension: function () {
+                                this.sp.showExt = !this.sp.showExt;
+                            },
+                            showHideTableColumn: function (col) {
+                                switch (col) {
+                                    case 'type': this.sp.showTypeCol = !this.sp.showTypeCol; break;
+                                    case 'size': this.sp.showSizeCol = !this.sp.showSizeCol; break;
+                                    case 'date': this.sp.showDateCol = !this.sp.showDateCol; break;
+                                }
+                            },
+                            saveSettings: function () {
+                                localStorageService.set('fm', $rootScope.fmSettings);
+                                $scope.$close();
                             }
-                        };
-
-                        $scope.saveSettings = function () {
-                            localStorageService.set('fm', $rootScope.fmSettings);
                         };
 
                     }
@@ -137,9 +133,7 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                     size: size,
                     templateUrl: '/partials/fm-upload-form.html',
                     controller: function ($scope) {
-                        $scope.closeModal = function () {
-                            $scope.$close();
-                        }
+
                     }
                 });
             };
