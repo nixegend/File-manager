@@ -5,31 +5,31 @@
             <div class="td icon" ng-click="contextMenuBtn()">
                 <i class="fa fa-bars"></i>
             </div>
-            <div class="td name" ng-click="sortOrder('name')" ng-switch="criteria">
+            <div class="td name" ng-click="sortOrder('name')" ng-switch="def.criteria">
                 Name
-                <i ng-switch-when="name" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+                <i ng-switch-when="name" class="sort-icon fa {{def.reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
                 <i ng-switch-default class="sort-icon fa fa-sort"></i>
             </div>
-            <div class="td type" ng-if="fmSettings.showTypeCol" ng-click="sortOrder('ext')" ng-switch="criteria">
+            <div class="td type" ng-if="fmSettings.showTypeCol" ng-click="sortOrder('ext')" ng-switch="def.criteria">
                 Type
-                <i ng-switch-when="ext" class="sort-icon fa {{reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+                <i ng-switch-when="ext" class="sort-icon fa {{def.reverse ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
                 <i ng-switch-default class="sort-icon fa fa-sort"></i>
             </div>
-            <div class="td size" ng-if="fmSettings.showSizeCol" ng-click="sortOrder('size')" ng-switch="criteria">
+            <div class="td size" ng-if="fmSettings.showSizeCol" ng-click="sortOrder('size')" ng-switch="def.criteria">
                 Size
-                <i ng-switch-when="size" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
+                <i ng-switch-when="size" class="sort-icon fa {{def.reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
                 <i ng-switch-default class="sort-icon fa fa-sort"></i>
             </div>
-            <div class="td date" ng-if="fmSettings.showDateCol" ng-click="sortOrder('date')" ng-switch="criteria">
+            <div class="td date" ng-if="fmSettings.showDateCol" ng-click="sortOrder('date')" ng-switch="def.criteria">
                 Date
-                <i ng-switch-when="date" class="sort-icon fa {{reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
+                <i ng-switch-when="date" class="sort-icon fa {{def.reverse ? 'fa-sort-down' : 'fa-sort-up'}}"></i>
                 <i ng-switch-default class="sort-icon fa fa-sort"></i>
             </div>
         </div>
     </div>
 
     <div class="tbody">
-        <div class="tr new-folder" ng-if="newFolderData.length" ng-repeat="item in newFolderData">
+        <div class="tr new-folder" ng-if="def.newFolderData.length" ng-repeat="item in def.newFolderData">
             <div class="td icon">
                 <i class="glyphicon glyphicon-remove remove" ng-click="removeNewFolder($index)"></i>
             </div>
@@ -59,7 +59,7 @@
             <div class="td date" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
         </div>
 
-        <div class="tr" ng-repeat="item in currentDir.content | orderBy:criteria:reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
+        <div class="tr" ng-repeat="item in currentDir.content | orderBy:def.criteria:def.reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
             <div class="td icon">
                 <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
             </div>

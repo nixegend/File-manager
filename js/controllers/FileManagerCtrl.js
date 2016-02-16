@@ -39,15 +39,15 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
 
             $scope.addNewFolder = function (thisDir) {
                 var newDir = api.folderCreator(thisDir.path, api.getTodayDate());
-                $scope.newFolderData.unshift(newDir);
+                $scope.def.newFolderData.unshift(newDir);
             };
 
             $scope.createNewFolder = function (index) {
-                checkSimilarNames($scope.newFolderData[index], function (similar) {
+                checkSimilarNames($scope.def.newFolderData[index], function (similar) {
                     if (similar) {
-                        alert('A folder "' + $scope.newFolderData[index].name + '" already exists');
+                        alert('A folder "' + $scope.def.newFolderData[index].name + '" already exists');
                     } else {
-                        var folder = $scope.newFolderData.splice(index, 1)[0];
+                        var folder = $scope.def.newFolderData.splice(index, 1)[0];
                         $scope.currentDir.content.push(folder);
                         $scope.$broadcast('runSetBoxWidth', true);
                     }
@@ -55,7 +55,7 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
             };
 
             $scope.removeNewFolder = function (index) {
-                $scope.newFolderData.splice(index, 1);
+                $scope.def.newFolderData.splice(index, 1);
             };
 
             $scope.step = 0;
@@ -64,13 +64,13 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                 $scope.step--;
 
                 if ($scope.step > 0) {
-                    $scope.step = ($scope.step == $scope.historyArr.length - 1) ? $scope.step - 1 : $scope.step;
-                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
-                    $scope.disabledForward = false;
+                    $scope.step = ($scope.step == $scope.def.historyArr.length - 1) ? $scope.step - 1 : $scope.step;
+                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
+                    $scope.def.disabledForward = false;
                 } else {
                     $scope.step = 0;
-                    $scope.disabledBackward = true;
-                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
+                    $scope.def.disabledBackward = true;
+                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
                 }
             };
 
@@ -81,13 +81,13 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
             $scope.goHistoryForward = function () {
                 $scope.step++;
 
-                if ($scope.step < $scope.historyArr.length - 1) {
-                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
-                    $scope.disabledBackward = false;
+                if ($scope.step < $scope.def.historyArr.length - 1) {
+                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
+                    $scope.def.disabledBackward = false;
                 } else {
-                    $scope.disabledForward = true;
-                    $scope.goToDirectory($scope.historyArr[$scope.step], true);
-                    $scope.step = $scope.historyArr.length;
+                    $scope.def.disabledForward = true;
+                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
+                    $scope.step = $scope.def.historyArr.length;
                 }
             };
 

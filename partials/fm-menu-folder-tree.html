@@ -11,6 +11,6 @@
 
 <ul ng-if="item.content.length > 0 && item.open" ng-class="{'subMenuContainer': item.content.length > 0}">
     <li ng-repeat="item in item.content | orderBy:'name'" ng-class="{'subMenuItem': item.content.length > 0}" 
-        ng-include="menuFoldersTree">
+        ng-include="def.menuFoldersTree">
     </li>
 </ul>

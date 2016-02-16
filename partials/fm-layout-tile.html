@@ -1,6 +1,6 @@
 <div class="fm-tile-contant clearfix">
 
-    <div class="tile folder new-folder" ng-if="newFolderData.length" ng-repeat="item in newFolderData" ng-style="{width: boxWidth + '%'}">
+    <div class="tile folder new-folder" ng-if="def.newFolderData.length" ng-repeat="item in def.newFolderData" ng-style="{width: boxWidth + '%'}">
         <div class="tile-box">
             <div class="td"> <i class="fm-icon-folder"></i> </div>
             <div class="td">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div ng-repeat="item in currentDir.content | orderBy:criteria:reverse" class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items="runSetBoxWidth">
+    <div ng-repeat="item in currentDir.content | orderBy:def.criteria:def.reverse" class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items="runSetBoxWidth">
         <div ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}" class="tile-box" ng-switch="item.rename">
 
             <div class="icon-box">

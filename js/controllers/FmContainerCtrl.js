@@ -2,13 +2,14 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
     app.controller('FmContainerCtrl', ['$scope', '$filter', 'api', 'localStorageService', '$rootScope',
         function ($scope, $filter, api, localStorageService, $rootScope) {
 
+            var sortArr = [
+                { name: 'Name', option: 'name' },
+                { name: 'Type', option: 'ext' },
+                { name: 'Size', option: 'size' },
+                { name: 'Date', option: 'date' }
+            ];
+
             $scope.def = {
-                sortArr: [
-                    { name: 'Name', option: 'name' },
-                    { name: 'Type', option: 'ext' },
-                    { name: 'Size', option: 'size' },
-                    { name: 'Date', option: 'date' }
-                ],
                 menuFoldersTree: '/partials/fm-menu-folder-tree.html',
                 contextMenuState: false,
                 disabledMenuItem: true,
@@ -21,10 +22,9 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 historyArr: [],
                 criteria: null,
                 reverse: true,
-                selectedOption: this.sortArr[0],
-                sortOptions: this.sortArr
+                selectedOption: sortArr[0],
+                sortOptions: sortArr
             };
-
 
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
