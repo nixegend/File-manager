@@ -2,33 +2,34 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
     app.controller('FmContainerCtrl', ['$scope', '$filter', 'api', 'localStorageService', '$rootScope',
         function ($scope, $filter, api, localStorageService, $rootScope) {
 
-            var sortArr = [
-                { name: 'Name', option: 'name' },
-                { name: 'Type', option: 'ext' },
-                { name: 'Size', option: 'size' },
-                { name: 'Date', option: 'date' }
-            ];
+            $scope.def = {
+                sortArr: [
+                    { name: 'Name', option: 'name' },
+                    { name: 'Type', option: 'ext' },
+                    { name: 'Size', option: 'size' },
+                    { name: 'Date', option: 'date' }
+                ],
+                menuFoldersTree: '/partials/fm-menu-folder-tree.html',
+                contextMenuState: false,
+                disabledMenuItem: true,
+                disabledPaste: true,
+                allSelected: false,
+                disabledBackward: true,
+                disabledForward: true,
+                tempCopyCutArr: [],
+                newFolderData: [],
+                historyArr: [],
+                criteria: null,
+                reverse: true,
+                selectedOption: this.sortArr[0],
+                sortOptions: this.sortArr
+            };
 
-            $scope.menuFoldersTree = '/partials/fm-menu-folder-tree.html';
-            $scope.contextMenuState = false;
-            $scope.disabledMenuItem = true;
-            $scope.disabledPaste = true;
-            $scope.allSelected = false;
-            $scope.disabledBackward = true;
-            $scope.disabledForward = true;
-            $scope.tempCopyCutArr = [];
-            $scope.newFolderData = [];
-            $scope.historyArr = [];
-            $scope.criteria = null;
-            $scope.reverse = true;
-            $scope.step = 0;
-            $scope.selectedOption = sortArr[0];
-            $scope.sortOptions = sortArr;
 
             api.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
                 $scope.currentDir = data;
-                $scope.historyArr[0] = data;
+                $scope.def.historyArr[0] = data;
             });
 
             function cancelSelected(data, disParam) {
@@ -37,8 +38,8 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 }
 
                 if (!disParam) {
-                    $scope.allSelected = false;
-                    $scope.disabledMenuItem = true;
+                    $scope.def.allSelected = false;
+                    $scope.def.disabledMenuItem = true;
                 }
             };
 
@@ -105,13 +106,14 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 if (typeof (callback) == "function") callback(temp);
             };
 
+
             $scope.sortOrder = function (criteria) {
-                $scope.reverse = ($scope.criteria === criteria) ? !$scope.reverse : false;
-                $scope.criteria = criteria;
+                $scope.def.reverse = ($scope.def.criteria === criteria) ? !$scope.def.reverse : false;
+                $scope.def.criteria = criteria;
             };
 
             $scope.setSortOption = function (obj) {
-                $scope.selectedOption = obj;
+                $scope.def.selectedOption = obj;
                 $scope.sortOrder(obj.option);
             };
 
@@ -119,16 +121,16 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 if (obj.folder) {
 
                     if (!disHistory) {
-                        $scope.historyArr.push(obj);
-                        $scope.disabledForward = true;
-                        $scope.disabledBackward = false;
-                        $scope.step = $scope.historyArr.length;
+                        $scope.def.historyArr.push(obj);
+                        $scope.def.disabledForward = true;
+                        $scope.def.disabledBackward = false;
+                        $scope.step = $scope.def.historyArr.length;
                     }
 
                     cancelSelected($scope.currentDir.content);
                     $scope.breadcrumbArr = obj.path.split('/').slice(2);
                     $scope.currentDir = obj;
-                    $scope.newFolderData = [];
+                    $scope.def.newFolderData = [];
                     if (obj.storage) $scope.breadcrumbArr = [];
                 }
             };
@@ -149,7 +151,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             };
 
             $scope.contextMenuBtn = function () {
-                $scope.contextMenuState = !$scope.contextMenuState;
+                $scope.def.contextMenuState = !$scope.def.contextMenuState;
                 $scope.$broadcast('countEventBoxesInRow');
             };
 
@@ -163,18 +165,18 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
 
             $scope.selectAll = function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    data[i].selected = !$scope.allSelected;
+                    data[i].selected = !$scope.def.allSelected;
                 }
-                $scope.allSelected = !$scope.allSelected;
-                $scope.disabledMenuItem = !$scope.allSelected;
+                $scope.def.allSelected = !$scope.def.allSelected;
+                $scope.def.disabledMenuItem = !$scope.def.allSelected;
             };
 
             $scope.selectThis = function (item) {
                 item.selected = !item.selected;
                 var arr = $filter('filter')($scope.currentDir.content, { selected: true });
-                $scope.disabledMenuItem = (arr.length <= 0) ? true : false;
-                if (arr.length <= 0) $scope.allSelected = false;
-                if (arr.length == $scope.currentDir.content.length) $scope.allSelected = true;
+                $scope.def.disabledMenuItem = (arr.length <= 0) ? true : false;
+                if (arr.length <= 0) $scope.def.allSelected = false;
+                if (arr.length == $scope.currentDir.content.length) $scope.def.allSelected = true;
             };
 
             $scope.rename = function (data) {
@@ -204,29 +206,29 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             };
 
             $scope.paste = function (obj) {
-                raplaceAllPathNames(obj, $scope.tempCopyCutArr, function (arr) {
-                    $scope.disabledPaste = true;
+                raplaceAllPathNames(obj, $scope.def.tempCopyCutArr, function (arr) {
+                    $scope.def.disabledPaste = true;
                     changeTheSameName(arr, obj.content, function (changedArr) {
                         obj.content.push.apply(obj.content, changedArr);
                     });
-                    $scope.tempCopyCutArr = [];
+                    $scope.def.tempCopyCutArr = [];
                 });
             };
 
             $scope.cut = function (data) {
                 cutCopyActions(data, function (arr) {
                     $scope.remove(data);
-                    $scope.tempCopyCutArr = arr;
+                    $scope.def.tempCopyCutArr = arr;
                     cancelSelected(arr);
-                    $scope.disabledPaste = false;
+                    $scope.def.disabledPaste = false;
                 });
             };
 
             $scope.copy = function (data) {
                 cutCopyActions(data, function (arr) {
-                    $scope.tempCopyCutArr = arr;
+                    $scope.def.tempCopyCutArr = arr;
                     cancelSelected(arr, true);
-                    $scope.disabledPaste = false;
+                    $scope.def.disabledPaste = false;
                 });
             };
 
@@ -247,8 +249,8 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].selected) data.splice(i--, 1);
                 }
-                $scope.allSelected = false;
-                $scope.disabledMenuItem = true;
+                $scope.def.allSelected = false;
+                $scope.def.disabledMenuItem = true;
             };
 
             $scope.getDocSize = function (fSize) {

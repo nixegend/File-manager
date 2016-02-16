@@ -58,6 +58,8 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                 $scope.newFolderData.splice(index, 1);
             };
 
+            $scope.step = 0;
+
             $scope.goHistoryBackward = function () {
                 $scope.step--;
 
