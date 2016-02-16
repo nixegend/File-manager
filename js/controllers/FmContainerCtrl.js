@@ -259,36 +259,5 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 obj.size = api.getSumSizes(obj.content);
             };
 
-
-            $scope.setFileClass = function (ext) {
-                var cssClass = null,
-                    code = /(html?|aspx?|ini|pl|py|md|sass|scss|css|ejs|jsx|js|log|htaccess|htpasswd|json|sql|xml|xslt?|sh|rb|as|bat|cmd|coffee|php[3-6]?|java|c|cpp|cbl|go|h|scala|vb)$/i,
-                    image = /(jpg|jpe?g|gif|bmp|png|svg|tiff?)$/i,
-                    archiv = /(7z|gz|tar|rar|g?zip)$/i;
-
-                switch (true) {
-                    case image.test(ext): cssClass = 'file-image-o'; break;
-                    case archiv.test(ext): cssClass = 'file-zip-o'; break;
-                    case code.test(ext): cssClass = 'file-code-o'; break;
-                }
-
-                if (cssClass) return cssClass;
-
-                switch (ext) {
-                    case 'txt': cssClass = 'file-text-o'; break;
-                    case 'docx': cssClass = 'file-word-o'; break;
-                    case 'rtf': cssClass = 'file-word-o'; break;
-                    case 'xlsx': cssClass = 'file-excel-o'; break;
-                    case 'xls': cssClass = 'file-excel-o'; break;
-                    case 'pdf': cssClass = 'file-pdf-o'; break;
-                    case 'pptx': cssClass = 'file-powerpoint-o'; break;
-
-                    default: cssClass = 'file-text'; break;
-                }
-
-                return cssClass;
-            };
-
-
         }]);
 });

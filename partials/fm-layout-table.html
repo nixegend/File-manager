@@ -53,7 +53,7 @@
             </div>
 
             <div class="td size" ng-if="fmSettings.showSizeCol">
-               <span> {{getDocSize(item.size)}} Kb </span>
+                <span> {{getDocSize(item.size)}} Kb </span>
             </div>
 
             <div class="td date" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
@@ -66,9 +66,8 @@
 
             <div class="td name" ng-switch="item.rename">
                 <div ng-switch-when="true" class="input-group input-group-sm">
-                    <span class="input-group-addon" ng-switch="item.folder">
-                      <i ng-switch-when="true" class="icon-folder fa fa-folder"></i>
-                      <i ng-switch-default class="icon-file fa fa-{{setFileClass(item.ext)}}"></i>
+                    <span class="input-group-addon">
+                      <i class="fa fa-{{item.folder ? 'folder icon-folder' : 'file-text icon-file'}}"></i>
                     </span>
                     <input class="form-control" type="text" ng-model="item.name">
                     <span class="input-group-btn">
@@ -78,9 +77,8 @@
 					</span>
                 </div>
 
-                <span ng-switch-default title="{{item.name}}" ng-switch="item.folder">
-                      <i ng-switch-when="true" class="icon-folder fa fa-folder"></i>
-                      <i ng-switch-default class="icon-file fa fa-{{setFileClass(item.ext)}}"></i>
+                <span ng-switch-default title="{{item.name}}">
+                    <i class="fa fa-{{item.folder ? 'folder icon-folder' : 'file-text icon-file'}}"></i>
                      {{item.name}}
                 </span>
             </div>

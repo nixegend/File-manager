@@ -93,10 +93,40 @@
     }
   }
 
+  .check,
+  .uncheck {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 5px;
+    padding: 0 5px 5px 0;
+    font-size: 21px;
+  }
+
   .tile {
     padding: 5px;
     min-width: $tile-min-width;
     float: left;
+
+    &.file {
+      .check {
+        color: darken($icon-file-bg, 20%);
+      }
+
+      .uncheck {
+        color: lighten($icon-file-bg, 5%);
+      }
+    }
+
+    &.folder {
+      .check {
+        color: darken($folder-icon-bg, 20%);
+      }
+
+      .uncheck {
+        color: lighten($folder-icon-bg, 2%);
+      }
+    }
   }
 
   .tile-box {
@@ -177,9 +207,23 @@
 
     .fm-icon-file {
       width: 45px;
-      font-size: 63px;
-      color: $icon-file-bg;
-      margin-right: 10px;
+      border-radius: 4px;
+      border: 2px solid $icon-file-bg;
+      background-color: lighten($icon-file-bg, 15%);
+
+      &:before {
+        content: "."attr(ext)"";
+        font-size: 12px;
+        bottom: 5px;
+        position: absolute;
+        text-transform: uppercase;
+        font-style: normal;
+        color: $icon-file-ext-colot;
+        min-width: 40px;
+        background-color: darken($icon-file-bg, 7%);
+        padding: 2px 4px;
+        margin-left: 3px;
+      }
     }
 
   }

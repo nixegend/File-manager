@@ -22,13 +22,6 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
 
-            $scope.filesForCreating = [
-                { ext: 'pptx', name: 'Microsoft PowerPoint Presentation' },
-                { ext: 'xlsx', name: 'Microsoft Excel Worksheet' },
-                { ext: 'docx', name: 'Microsoft Word Document' },
-                { ext: 'txt', name: 'Text Document' }
-            ];
-
             function checkSimilarNames(obj, callback) {
                 var thisDir = $scope.currentDir.content,
                     similarName = false;
@@ -135,18 +128,6 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                             localStorageService.set('fm', $rootScope.fmSettings);
                         };
 
-                    }
-                });
-            };
-
-            $scope.openNewFileModal = function (size) {
-                $uibModal.open({
-                    size: size,
-                    templateUrl: '/partials/fm-create-file-form.html',
-                    controller: function ($scope) {
-                        $scope.closeModal = function () {
-                            $scope.$close();
-                        }
                     }
                 });
             };
