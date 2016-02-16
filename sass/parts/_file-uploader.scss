@@ -1,12 +1,29 @@
 .fm-file-uploader {
+  padding: 0;
 
   .title-pointer {
     cursor: default;
     text-align: center;
     color: #c9c9c9;
     padding: 20px;
-    margin: 0;
+    margin: 15px;
     border: 2px dashed;
+  }
+
+  .uploading {
+    width: 100%;
+    background-color: #DDE6FF;
+    height: 14px;
+
+    .rate {
+      text-align: center;
+      font-size: 10px;
+      text-indent: 2px;
+      color: #fff;
+      width: 45%;
+      height: 14px;
+      background-color: $sub-header-bg;
+    }
   }
 
   &.active {
@@ -14,53 +31,37 @@
        color: lighten($link-hover, 20%);
      }
   }
-  
-  
+
   .tr {
-   border-bottom: $fm-table-border-bottom-td;
-   height: 31px;
-   display: table;
-   width: 100%;
-   table-layout: fixed;
-
-    &:nth-child(odd) {
-      background-color: $fm-table-tr-odd-bg;
-    }
-
-    &:nth-child(even) {
-      background-color: $fm-table-tr-even-bg;
-    }
-
-    &:hover {
-      background-color: $fm-table-tr-hover;
-    }
-
     > .td {
-      display: table-cell;
-      vertical-align: middle;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
       cursor: default;
-      padding: 5px;
 
-      &:nth-child(1) {
-        width: 20px;
+      &:first-child {
+        width: 30px;
+        font-size: 13px;
+        text-align: center;
       }
+
       &:nth-child(2) {
-        width: 30%;
+        width: 50%;
       }
+
       &:nth-child(3) {
-        width: 30%;
+        width: 10%;
       }
+
       &:nth-child(4) {
         width: 30%;
       }
-      &:nth-child(5) {
-        width: 100px;
+
+      &:last-child {
+        width: 50px;
+        text-align: center;
       }
     }
   }
+
+
 
 }
 

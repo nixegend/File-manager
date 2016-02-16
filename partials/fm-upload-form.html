@@ -6,12 +6,26 @@
 
     <h1 ng-if="upload.length == 0" class="title-pointer"> <i class="fa fa-file"></i> Drop files here </h1>
 
-    <div ng-repeat="item in upload | orderBy:'status'" class="tr upload-row">
-        <div class="td icon"> {{item.extType}} </div>
-        <div class="td name"> {{item.newName}} </div>
-        <div class="td type"> {{item.extType}} </div>
-        <div class="td uploading"> {{item.extType}} </div>
-        <div class="td buttons"> {{item.extType}} </div>
+    <div class="fm-table">
+        <div class="tbody">
+            <div ng-repeat="item in upload | orderBy:'status'" class="tr">
+                <div class="td">
+                    <i class="fa fa-file-text"></i>
+                </div>
+                <div class="td"> {{item.newName}} </div>
+                <div class="td"> .{{item.extType}} </div>
+                <div class="td">
+                    <div class="uploading">
+                        <div class="rate"> 45% </div>
+                    </div>
+                 </div>
+                <div class="td">
+                    <button type="button" class="btn btn-xs btn-danger">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                 </div>
+            </div>
+        </div>
     </div>
 
 </div>

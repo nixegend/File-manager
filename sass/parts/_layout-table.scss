@@ -6,57 +6,44 @@
 .fm-table-contant {
   height: calc(100% - #{$top-header-height});
 
-  .tr {
-   display: table;
-   width: 100%;
-   table-layout: fixed;
-
+  .thead,
+  .tbody {
+    > .tr {
       > .td {
-       display: table-cell;
-       vertical-align: middle;
-       text-overflow: ellipsis;
-       overflow: hidden;
-       white-space: nowrap;
-       cursor: default;
-       padding: 5px;
 
-      &:first-child {
-        width: 40px;
-        text-align: center;
-      }
+        &.icon {
+          width: 40px;
+          text-align: center;
+        }
 
-      &:nth-child(2) {
-        width: 50%;
-      }
+        &.name {
+          width: 50%;
+        }
 
-      &:nth-child(3) {
-        width: 15%;
-      }
+        &.type {
+          width: 15%;
+        }
 
-      &:nth-child(4) {
-        width: 15%;
-      }
+        &.size {
+          width: 10%;
+        }
 
-      &:nth-child(5) {
-        width: 15%;
+        &.date {
+          width: 25%;
+        }
+
       }
     }
   }
 
   .thead {
-    background-color: $sub-header-bg;
-    color: $sub-header-text;
-    border-bottom: $sub-header-border-bottom;
     height: $sub-header-height;
 
     > .tr {
       > .td {
         color: $sub-header-text;
         height: $sub-header-height - 2px;
-        white-space: nowrap;
         line-height: 14px;
-        position: relative;
-        font-weight: normal;
         cursor: pointer;
 
         .sort-icon {
@@ -73,20 +60,12 @@
           }
         }
 
-        &:first-child {
-          text-align: center;
-        }
       }
     }
   }
 
   .tbody {
-    color: $fm-table-text-color;
-    height: 100%;
-    overflow-y: auto;
-
     > .tr {
-      border-bottom: $fm-table-border-bottom-td;
       height: 41px;
 
       &.selected {
@@ -94,18 +73,6 @@
         &:nth-child(even) {
           background-color: darken($fm-table-tr-hover, 1%);
         }
-      }
-
-      &:nth-child(odd) {
-        background-color: $fm-table-tr-odd-bg;
-      }
-
-      &:nth-child(even) {
-        background-color: $fm-table-tr-even-bg;
-      }
-
-      &:hover {
-        background-color: $fm-table-tr-hover;
       }
 
       > .td {

@@ -1,0 +1,47 @@
+.fm-table {
+
+  .thead {
+    background-color: $sub-header-bg;
+    color: $sub-header-text;
+    border-bottom: $sub-header-border-bottom;
+  }
+
+  .tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .td {
+      display: table-cell;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      position: relative;
+      cursor: default;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 5px;
+   }
+
+  .tbody {
+    color: $fm-table-text-color;
+    height: 100%;
+    overflow-y: auto;
+
+    > .tr {
+      border-bottom: $fm-table-border-bottom-td;
+
+      &:nth-child(odd) {
+        background-color: $fm-table-tr-odd-bg;
+      }
+
+      &:nth-child(even) {
+        background-color: $fm-table-tr-even-bg;
+      }
+
+      &:hover {
+        background-color: $fm-table-tr-hover;
+      }
+    }
+  }
+}
