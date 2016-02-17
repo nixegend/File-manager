@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-    app.service('api', ['$http', '$q', function ($http, $q) {
+    app.service('fmAPI', ['$http', '$q', function ($http, $q) {
 
         this.getJSONresponse = function (file) {
             var def = $q.defer();

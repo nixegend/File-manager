@@ -1,6 +1,6 @@
-define(['app', '../services/API', '../directives/fm-layout-table', '../directives/fm-layout-tile'], function (app) {
-    app.controller('FmContainerCtrl', ['$scope', '$filter', 'api', 'localStorageService', '$rootScope',
-        function ($scope, $filter, api, localStorageService, $rootScope) {
+define(['app', '../services/fm-api', '../directives/fm-layout-table', '../directives/fm-layout-tile'], function (app) {
+    app.controller('FmContainerCtrl', ['$scope', '$filter', 'fmAPI', 'localStorageService', '$rootScope',
+        function ($scope, $filter, fmAPI, localStorageService, $rootScope) {
 
             var sortArr = [
                 { name: 'Name', option: 'name' },
@@ -26,7 +26,7 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
                 sortOptions: sortArr
             };
 
-            api.getJSONresponse('foldersTree').then(function (data) {
+            fmAPI.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
                 $scope.currentDir = data;
                 $scope.def.historyArr[0] = data;
@@ -254,11 +254,11 @@ define(['app', '../services/API', '../directives/fm-layout-table', '../directive
             };
 
             $scope.getDocSize = function (fSize) {
-                return api.convertToKb(Math.ceil(fSize / 1024));
+                return fmAPI.convertToKb(Math.ceil(fSize / 1024));
             };
 
             $scope.getFolderSize = function (obj) {
-                obj.size = api.getSumSizes(obj.content);
+                obj.size = fmAPI.getSumSizes(obj.content);
             };
 
         }]);

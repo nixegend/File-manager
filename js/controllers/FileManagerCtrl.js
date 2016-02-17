@@ -1,6 +1,6 @@
-define(['app', '../services/API', '../directives/fm-upload-form', '../directives/fm-container'], function (app) {
-    app.controller('FileManagerCtrl', ['$scope', 'api', '$rootScope', '$uibModal', 'localStorageService',
-        function ($scope, api, $rootScope, $uibModal, localStorageService) {
+define(['app', '../services/fm-api', '../directives/fm-upload-form', '../directives/fm-container'], function (app) {
+    app.controller('FileManagerCtrl', ['$scope', 'fmAPI', '$rootScope', '$uibModal', 'localStorageService',
+        function ($scope, fmAPI, $rootScope, $uibModal, localStorageService) {
 
             if (!localStorageService.get('fm')) {
                 var settings = {
@@ -38,7 +38,7 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
 
 
             $scope.addNewFolder = function (thisDir) {
-                var newDir = api.folderCreator(thisDir.path, api.getTodayDate());
+                var newDir = fmAPI.folderCreator(thisDir.path, fmAPI.getTodayDate());
                 $scope.def.newFolderData.unshift(newDir);
             };
 
@@ -57,6 +57,11 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
             $scope.removeNewFolder = function (index) {
                 $scope.def.newFolderData.splice(index, 1);
             };
+
+
+
+
+
 
             $scope.step = 0;
 
@@ -90,6 +95,12 @@ define(['app', '../services/API', '../directives/fm-upload-form', '../directives
                     $scope.step = $scope.def.historyArr.length;
                 }
             };
+
+
+
+
+
+
 
             $scope.layoutSwitcher = function () {
                 localStorageService.set('fm', $rootScope.fmSettings);
