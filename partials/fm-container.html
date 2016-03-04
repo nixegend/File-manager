@@ -10,47 +10,7 @@
     </div>
     <div class="fm-content" ng-switch="fmSettings.layoutView">
 
-        <ul class="context-menu" ng-if="def.contextMenuState">
-            <li ng-click="menu.paste(currentDir)" ng-class="{'disabled': def.disabledPaste}">
-                <i class="fa fa-clipboard"></i> Paste
-            </li>
-            <li ng-click="menu.copy(currentDir.content)" ng-class="{'disabled': def.disabledMenuItem}">
-                <i class="fa fa-files-o"></i> Copy
-            </li>
-            <li ng-click="menu.cut(currentDir.content)" ng-class="{'disabled': def.disabledMenuItem}">
-                <i class="fa fa-scissors"></i> Cut
-            </li>
-
-            <li class="divider"></li>
-
-            <li ng-click="menu.selectAll(currentDir.content)" ng-switch="def.allSelected">
-                <span ng-switch-when="true">
-                    <i class="fa fa-square-o"></i> Deselect all
-                </span>
-                <span ng-switch-when="false">
-                    <i class="fa fa-check-square-o"></i> Select all
-                </span>
-            </li>
-
-            <li ng-click="menu.rename(currentDir.content)" ng-class="{'disabled': def.disabledMenuItem}">
-                <i class="fa fa-pencil"></i> Rename
-            </li>
-
-            <li class="divider"></li>
-
-            <li ng-click="menu.compressed(currentDir.content)" ng-class="{'disabled': def.disabledMenuItem}">
-                <i class="glyphicon glyphicon-compressed"></i> To archive
-            </li>
-            <li ng-click="menu.download(currentDir.content)" ng-class="{'disabled': def.disabledMenuItem}">
-                <i class="fa fa-download"></i> Download
-            </li>
-
-            <li class="divider"></li>
-
-            <li ng-click="menu.remove(currentDir.content)" ng-class="{'disabled': def.disabledMenuItem}">
-                <i class="fa fa-trash-o"></i> Remove
-            </li>
-        </ul>
+        <fm-context-menu></fm-context-menu>
 
         <div class="fm-tile-layout" ng-switch-when="tile">
 

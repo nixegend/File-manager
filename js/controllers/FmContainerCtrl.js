@@ -1,28 +1,16 @@
 "use strict";
 
-define(['app', '../services/fm-api', '../directives/fm-layout-table', '../directives/fm-layout-tile'], function (app) {
+define([
+    'app',
+    '../services/fm-api',
+    '../directives/fm-layout-table',
+    '../directives/fm-layout-tile',
+    '../directives/fm-context-menu'
+], function (app) {
     app.controller('FmContainerCtrl', ['$scope', '$filter', 'fmAPI', 'localStorageService', '$rootScope',
         function ($scope, $filter, fmAPI, localStorageService, $rootScope) {
 
-            var sortArr = [
-                { name: 'Name', option: 'name' },
-                { name: 'Type', option: 'ext' },
-                { name: 'Size', option: 'size' },
-                { name: 'Date', option: 'date' }
-            ];
-
-            var def = $scope.def = {
-                menuFoldersTree: '/partials/fm-menu-folder-tree.html',
-                contextMenuState: false,
-                disabledMenuItem: true,
-                disabledPaste: true,
-                allSelected: false,
-                tempCopyCutArr: [],
-                criteria: null,
-                reverse: true,
-                selectedOption: sortArr[0],
-                sortOptions: sortArr
-            };
+            var def = $rootScope.def;
 
             fmAPI.getJSONresponse('foldersTree').then(function (data) {
                 $scope.foldersTree = data;
@@ -98,87 +86,6 @@ define(['app', '../services/fm-api', '../directives/fm-layout-table', '../direct
                 } else {
                     reset(item);
                 }
-            };
-
-            $scope.menu = {
-
-                paste: function (obj) {
-                    var tempArrLg = def.tempCopyCutArr.length;
-
-                    for (var i = 0; i < tempArrLg; i++) {
-                        var item = def.tempCopyCutArr[i];
-
-                        fmAPI.checkSimilarNames(obj.content, item.name, function (exist) {
-                            // TODO: create deep 'watcher' for similar names
-                            if (exist) item.name = item.name + '-COPY';
-                            if (tempArrLg == i + 1) {
-                                fmAPI.raplacePath(obj, def.tempCopyCutArr, function (changedArr) {
-                                    def.disabledPaste = true;
-                                    obj.content.push.apply(obj.content, changedArr);
-                                    def.tempCopyCutArr = [];
-                                    fmAPI.cancelSelected(obj.content);
-                                });
-                            }
-                        });
-                    }
-                },
-
-                cut: function (data) {
-                    fmAPI.cutCopyActions(data, function (arr) {
-                        def.tempCopyCutArr = arr;
-                        fmAPI.cancelSelected(arr, function () {
-                            def.disabledMenuItem = true;
-                            def.disabledPaste = false;
-                            fmAPI.removeSelectedItems(data);
-                        });
-                    }, 'cut');
-                },
-
-                copy: function (data) {
-                    fmAPI.cutCopyActions(data, function (arr) {
-                        def.tempCopyCutArr = arr;
-                        fmAPI.cancelSelected(arr, function () {
-                            def.disabledMenuItem = true;
-                            def.disabledPaste = false;
-                        });
-                    }, 'copy');
-                },
-
-                selectAll: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        data[i].selected = !def.allSelected;
-                    }
-                    def.allSelected = !def.allSelected;
-                    def.disabledMenuItem = !def.allSelected;
-                },
-
-                rename: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        if (data[i].selected && !data[i].rename) {
-                            data[i].newName = data[i].name;
-                            data[i].rename = true;
-                        }
-                    }
-                },
-
-                compressed: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        // if (data[i].selected); TODO
-                    }
-                },
-
-                download: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        // if (data[i].selected); TODO
-                    }
-                },
-
-                remove: function (data) {
-                    fmAPI.removeSelectedItems(data);
-                    def.allSelected = false;
-                    def.disabledMenuItem = true;
-                }
-
             };
 
         }]);
