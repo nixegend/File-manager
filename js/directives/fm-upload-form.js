@@ -1,3 +1,5 @@
+"use strict";
+
 define(['app'], function (app) {
 
     app.directive('uploadBox', ['$timeout', '$rootScope', 'localStorageService', '$http',

@@ -1,15 +1,11 @@
-define(['app', '../controllers/FmTableLayoutCtrl'], function (app) {
+"use strict";
 
-    app.directive('fmTableLayout', ['$rootScope', 'localStorageService', function ($rootScope, localStorageService) {
+define(['app'], function (app) {
+    app.directive('fmTableLayout', [function () {
         return {
             restrict: 'E',
             replace: true,
-            controller: 'FmTableLayoutCtrl',
-            templateUrl: '/partials/fm-layout-table.html',
-            link: function (scope, element, attr) {
-
-            }
+            templateUrl: '/partials/fm-layout-table.html'
         };
     }]);
-
 });

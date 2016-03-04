@@ -1,11 +1,13 @@
+"use strict";
+
 define(['app', '../services/fm-api', '../directives/fm-upload-form', '../directives/fm-container'], function (app) {
-    app.controller('FileManagerCtrl', ['$scope', 'fmAPI', '$rootScope', '$uibModal', 'localStorageService',
-        function ($scope, fmAPI, $rootScope, $uibModal, localStorageService) {
+    app.controller('FileManagerCtrl', ['$scope', '$filter', '$rootScope', '$uibModal', 'fmAPI', 'localStorageService',
+        function ($scope, $filter, $rootScope, $uibModal, fmAPI, localStorageService) {
 
             if (!localStorageService.get('fm')) {
+
                 var settings = {
                     sidebar: true,
-                    showFiles: true,
                     showExt: true,
                     showTypeCol: true,
                     showSizeCol: true,
@@ -22,85 +24,105 @@ define(['app', '../services/fm-api', '../directives/fm-upload-form', '../directi
                 $rootScope.fmSettings = localStorageService.get('fm');
             };
 
-            function checkSimilarNames(obj, callback) {
-                var thisDir = $scope.currentDir.content,
-                    similarName = false;
+            $scope.newDir = {
+                data: [],
 
-                for (var i = 0; i < thisDir.length; i++) {
-                    if (thisDir[i].folder && thisDir[i].name == obj.name) {
-                        similarName = true;
-                        break;
-                    }
+                add: function (obj) {
+                    this.data.unshift({
+                        content: [],
+                        date: $filter('date')(new Date(), "MM/dd/yyyy"),
+                        time: $filter('date')(new Date(), "h:mm:ss' 'a"),
+                        isDir: true,
+                        name: "New Folder",
+                        path: obj.path + "/",
+                        size: 0
+                    });
+                },
+
+                remove: function (index) {
+                    this.data.splice(index, 1);
+                },
+
+                create: function (obj, index) {
+                    fmAPI.checkSimilarNames(obj.content, this.data[index].name, function (exist) {
+                        if (exist) {
+                            alert('The folder "' + $scope.newDir.data[index].name + '" already exists');
+                        } else {
+                            var dir = $scope.newDir.data.splice(index, 1)[0];
+                            dir.path += dir.name;
+                            obj.content.push(dir);
+                            $scope.$broadcast('runSetBoxWidth', true);
+                        }
+                    });
                 }
-
-                if (typeof (callback) == "function") callback(similarName);
             };
 
+            var history = $scope.history = {
+                step: 0,
+                data: [],
+                btnBackward: true,
+                btnForward: true,
 
-            $scope.addNewFolder = function (thisDir) {
-                var newDir = fmAPI.folderCreator(thisDir.path, fmAPI.getTodayDate());
-                $scope.def.newFolderData.unshift(newDir);
-            };
+                goBackward: function () {
+                    this.step--;
 
-            $scope.createNewFolder = function (index) {
-                checkSimilarNames($scope.def.newFolderData[index], function (similar) {
-                    if (similar) {
-                        alert('A folder "' + $scope.def.newFolderData[index].name + '" already exists');
+                    if (this.step > 0) {
+                        this.step = (this.step == this.data.length - 1) ? this.step - 1 : this.step;
+                        $scope.objClickEventAction(this.data[this.step], true);
+                        this.btnForward = false;
                     } else {
-                        var folder = $scope.def.newFolderData.splice(index, 1)[0];
-                        $scope.currentDir.content.push(folder);
-                        $scope.$broadcast('runSetBoxWidth', true);
+                        this.step = 0;
+                        this.btnBackward = true;
+                        $scope.objClickEventAction(this.data[this.step], true);
                     }
-                });
-            };
+                },
 
-            $scope.removeNewFolder = function (index) {
-                $scope.def.newFolderData.splice(index, 1);
-            };
+                goForward: function () {
+                    this.step++;
 
-
-
-
-
-
-            $scope.step = 0;
-
-            $scope.goHistoryBackward = function () {
-                $scope.step--;
-
-                if ($scope.step > 0) {
-                    $scope.step = ($scope.step == $scope.def.historyArr.length - 1) ? $scope.step - 1 : $scope.step;
-                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
-                    $scope.def.disabledForward = false;
-                } else {
-                    $scope.step = 0;
-                    $scope.def.disabledBackward = true;
-                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
+                    if (this.step < this.data.length - 1) {
+                        $scope.objClickEventAction(this.data[this.step], true);
+                        this.btnBackward = false;
+                    } else {
+                        this.btnForward = true;
+                        $scope.objClickEventAction(this.data[this.step], true);
+                        this.step = this.data.length;
+                    }
                 }
             };
 
-            $scope.goToHomeDirectory = function (data) {
-                $scope.goToDirectory(data, true);
-            };
+            $scope.objClickEventAction = function (obj, stateHistory) {
+                if (obj.isDir) {
 
-            $scope.goHistoryForward = function () {
-                $scope.step++;
+                    if (!stateHistory) {
+                        history.data.push(obj);
+                        history.btnBackward = false;
+                        history.btnForward = true;
+                        history.step = history.data.length;
+                    }
 
-                if ($scope.step < $scope.def.historyArr.length - 1) {
-                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
-                    $scope.def.disabledBackward = false;
+                    fmAPI.cancelSelected($scope.currentDir.content, function () {
+                        $scope.currentDir = obj;
+                        $scope.newDir.data = [];
+                    });
+
+                    $scope.breadcrumbArr = (obj.storage) ? [] : obj.path.split('/').slice(2);
                 } else {
-                    $scope.def.disabledForward = true;
-                    $scope.goToDirectory($scope.def.historyArr[$scope.step], true);
-                    $scope.step = $scope.def.historyArr.length;
+
                 }
             };
 
+            $scope.breadcrumbWalker = function (index, last) {
+                if (!last) {
+                    var destArr = $scope.breadcrumbArr.slice(0, index + 1);
+                    var obj = $scope.foldersTree;
 
-
-
-
-
+                    for (var i = 0; i < index + 1; i++) {
+                        obj = $filter('filter')(obj.content, { name: destArr[i] })[0];
+                        if (i === index) $scope.objClickEventAction(obj);
+                    }
+                }
+            };
 
             $scope.layoutSwitcher = function () {
                 localStorageService.set('fm', $rootScope.fmSettings);
@@ -113,7 +135,7 @@ define(['app', '../services/fm-api', '../directives/fm-upload-form', '../directi
                     controller: function ($rootScope, $scope, localStorageService) {
 
                         $scope.settings = {
-                            sp : $rootScope.fmSettings,
+                            sp: $rootScope.fmSettings,
                             showHideSidebar: function () {
                                 this.sp.sidebar = !this.sp.sidebar;
                                 this.sp.contentWidth = this.sp.sidebar ? 100 - this.sp.sidebarWidth : 100;
@@ -144,10 +166,7 @@ define(['app', '../services/fm-api', '../directives/fm-upload-form', '../directi
             $scope.openUploadFormModal = function (size) {
                 $uibModal.open({
                     size: size,
-                    templateUrl: '/partials/fm-upload-form.html',
-                    controller: function ($scope) {
-
-                    }
+                    templateUrl: '/partials/fm-upload-form.html'
                 });
             };
 

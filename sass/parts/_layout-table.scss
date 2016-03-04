@@ -75,6 +75,14 @@
         }
       }
 
+     &.cutout {
+       opacity: 0.4;
+     }
+
+     &.copied {
+       opacity: 0.8;
+     }
+
       > .td {
         .icon-file,
         .icon-folder {

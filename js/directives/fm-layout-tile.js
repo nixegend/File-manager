@@ -1,9 +1,10 @@
-define(['app', './on-finish-render', '../controllers/FmTileLayoutCtrl'], function (app) {
+"use strict";
+
+define(['app', './on-finish-render'], function (app) {
     app.directive('fmTileLayout', ['$timeout', function ($timeout) {
         return {
             restrict: 'E',
             replace: true,
-            controller: 'FmTileLayoutCtrl',
             templateUrl: '/partials/fm-layout-tile.html',
             link: function (scope, element, attr) {
 

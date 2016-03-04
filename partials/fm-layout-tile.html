@@ -1,34 +1,37 @@
 <div class="fm-tile-contant clearfix">
 
-    <div class="tile folder new-folder" ng-if="def.newFolderData.length" ng-repeat="item in def.newFolderData" ng-style="{width: boxWidth + '%'}">
+    <div class="tile folder new-folder" ng-if="newDir.data.length" ng-repeat="item in newDir.data" ng-style="{width: boxWidth + '%'}">
         <div class="tile-box">
             <div class="td"> <i class="fm-icon-folder"></i> </div>
             <div class="td">
                 <input class="form-control input-sm" type="text" ng-model="item.name">
-                <button type="button" class="btn btn-xs btn-success create" ng-click="createNewFolder($index)">
+                <button type="button" class="btn btn-xs btn-success create" ng-click="newDir.create(currentDir, $index)">
                     <i class="glyphicon glyphicon-ok"></i>
                 </button>
-                <button type="button" class="btn btn-xs btn-danger remove" ng-click="removeNewFolder($index)">
+                <button type="button" class="btn btn-xs btn-danger remove" ng-click="newDir.remove($index)">
                     <i class="glyphicon glyphicon-remove"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <div ng-repeat="item in currentDir.content | orderBy:def.criteria:def.reverse" class="tile {{item.folder ? 'folder' : 'file'}}" on-finish-render-items="runSetBoxWidth">
-        <div ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}" class="tile-box" ng-switch="item.rename">
+    <div ng-repeat="item in currentDir.content | orderBy:def.criteria:def.reverse" class="tile {{item.isDir ? 'folder' : 'file'}}"
+    on-finish-render-items="runSetBoxWidth">
+
+        <div ng-dblclick="objClickEventAction(item)" ng-class="{'selected': item.selected, 'cutout': item.cutCopyState == 'cutout', 'copied': item.cutCopyState == 'copied'}" class="tile-box"
+        ng-switch="item.rename">
 
             <div class="icon-box">
-                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
-               <i class="{{item.folder ? 'fm-icon-folder' : 'fm-icon-file'}}" ext="{{item.ext}}"></i>
+                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(currentDir, item)"></i>
+                <i class="{{item.isDir ? 'fm-icon-folder' : 'fm-icon-file'}}" ext="{{item.ext}}"></i>
             </div>
 
             <p ng-switch-default class="name" title="{{item.name}}">{{ renderFileName(item.name, item.ext) }}</p>
 
             <div ng-switch-when="true" class="input-group input-group-sm">
-                <input class="form-control" type="text" ng-model="item.name">
+                <input class="form-control" type="text" ng-model="item.newName">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-success" ng-click="renameDone(item); item.rename = false">
+                    <button type="button" class="btn btn-success" ng-click="renameDone(currentDir, item)">
                         <i class="glyphicon glyphicon-ok"></i>
                     </button>
                 </span>
@@ -39,6 +42,6 @@
                 Get size
             </button>
         </div>
-    </div>
 
+    </div>
 </div>

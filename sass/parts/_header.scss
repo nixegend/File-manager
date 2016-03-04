@@ -54,10 +54,10 @@
         .folder {
           cursor: pointer;
           padding: 5px 0;
-          color: $link-hover;
+          color: $default-text;
 
           &:hover {
-            color: $default-text;
+            color: $link-hover;
           }
         }
       }

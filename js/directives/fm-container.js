@@ -1,3 +1,5 @@
+"use strict";
+
 define(['app', '../controllers/FmContainerCtrl'], function (app) {
 
     app.directive('fmContainer', ['$rootScope', 'localStorageService', function ($rootScope, localStorageService) {

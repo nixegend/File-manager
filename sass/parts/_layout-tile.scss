@@ -143,6 +143,14 @@
       background-color: darken($tile-box-bg-hover, 3%);
     }
 
+    &.cutout {
+      opacity: 0.4;
+    }
+
+    &.copied {
+      opacity: 0.8;
+    }
+
     &:hover {
       border: $tile-border-hover;
       background-color: $tile-box-bg-hover;

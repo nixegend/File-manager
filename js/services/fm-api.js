@@ -1,3 +1,5 @@
+"use strict";
+
 define(['app'], function (app) {
     app.service('fmAPI', ['$http', '$q', function ($http, $q) {
 
@@ -14,42 +16,74 @@ define(['app'], function (app) {
             return def.promise;
         };
 
-        this.getSumSizes = function (arrObj) {
-            return (function sum(arr) {
-                var s = 0;
-                for (var i = 0; i < arr.length; i++) {
-                    if (arr[i].folder) {
-                        s += sum(arr[i].content);
-                    } else if (arr[i].file) {
-                        s += arr[i].size;
-                    }
+        this.getSumSizes = function (arr) {
+            var size = 0;
+            for (var i = 0; i < arr.length; i++) {
+                var o = arr[i];
+                if (o.isDir) {
+                    size += this.getSumSizes(o.content);
+                } else if (!o.isDir) {
+                    size += o.size;
                 }
-                return s;
-            })(arrObj);
-        };
-
-        this.getTodayDate = function () {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0!
-            var yyyy = today.getFullYear();
-
-            if (dd < 10) dd = '0' + dd;
-            if (mm < 10) mm = '0' + mm;
-
-            return dd + '/' + mm + '/' + yyyy;
-        };
-
-        this.folderCreator = function (furtherPath, todayDate) {
-            return {
-                content: [],
-                date: todayDate,
-                file: false,
-                folder: true,
-                name: "+++++",
-                path: furtherPath + "/",
-                size: 0
             }
+            return size;
+        };
+
+        this.removeSelectedItems = function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].selected) data.splice(i--, 1);
+            }
+        };
+
+        this.checkSimilarNames = function (thisObj, name, callback) {
+            var result = false;
+
+            for (var i = 0; i < thisObj.length; i++) {
+                var o = thisObj[i];
+                if ((!o.renameStateDone && o.isDir && o.name == name) ||
+                    (!o.renameStateDone && !o.isDir && o.name + '.' + o.ext == name + '.' + o.ext)) {
+                    result = true;
+                    break;
+                }
+            }
+
+            (callback || angular.noop)(result);
+        };
+
+        this.cutCopyActions = function (data, callback, command) {
+            var temp = [];
+            for (var i = 0; i < data.length; i++) {
+                var o = data[i];
+                if (o.selected) {
+                    delete o.cutCopyState;
+                    temp.push(angular.copy(o));
+                    o.cutCopyState = command;
+                }
+            }
+
+            (callback || angular.noop)(temp);
+        };
+
+        this.cancelSelected = function (data, callback) {
+            for (var i = 0; i < data.length; i++) {
+                delete data[i].selected;
+            }
+
+            (callback || angular.noop)();
+        };
+
+        this.raplacePath = function (currentObj, nestedDir, callback) {
+            for (var i = 0; i < nestedDir.length; i++) {
+                var o = nestedDir[i];
+                if (o.isDir) {
+                    o.path = currentObj.path + '/' + o.name;
+                    this.raplacePath(o, o.content);
+                } else {
+                    o.path = currentObj.path;
+                }
+            }
+
+            (callback || angular.noop)(nestedDir);
         };
 
         this.convertToKb = function (size) {

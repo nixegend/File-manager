@@ -3,8 +3,7 @@
   "content": [
     {
       "path": "./storage",
-      "folder": false,
-      "file": true,
+      "isDir": false,
       "name": "db.node",
       "date": "22/03/2015",
       "ext": "accdb",
@@ -15,8 +14,7 @@
       "content": [
         {
           "path": "./storage/for nodeJS",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "app-node",
           "date": "22/03/2015",
           "ext": "js",
@@ -27,8 +25,7 @@
           "content": [
             {
               "path": "./storage/for nodeJS/node-runer",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "run-app",
               "date": "22/03/2015",
               "ext": "js",
@@ -39,8 +36,7 @@
               "content": [
                 {
                   "path": "./storage/for nodeJS/node-runer/stylesheets",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "animations",
                   "date": "22/03/2015",
                   "ext": "css",
@@ -48,8 +44,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/stylesheets",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "dialogs",
                   "date": "22/03/2015",
                   "ext": "css",
@@ -57,8 +52,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/stylesheets",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "main",
                   "date": "22/03/2015",
                   "ext": "css",
@@ -66,16 +60,14 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/stylesheets",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "style",
                   "date": "22/03/2015",
                   "ext": "css",
                   "size": 111
                 }
               ],
-              "folder": true,
-              "file": false,
+              "isDir": true,
               "size": null,
               "date": "22/03/2015",
               "name": "stylesheets"
@@ -85,8 +77,7 @@
               "content": [
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "current-folder-breadcrumb",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -94,8 +85,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "item-context-menu",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -103,8 +93,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "item-toolbar",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -112,8 +101,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "main-icons",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -121,8 +109,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "main-table-modal",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -130,8 +117,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "main-table",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -139,8 +125,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "main",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -148,8 +133,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "modals",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -157,8 +141,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "navbar",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -166,8 +149,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "sidebar",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -175,8 +157,7 @@
                 },
                 {
                   "path": "./storage/for nodeJS/node-runer/templates",
-                  "folder": false,
-                  "file": true,
+                  "isDir": false,
                   "name": "spinner",
                   "date": "22/03/2015",
                   "ext": "html",
@@ -187,8 +168,7 @@
                   "content": [
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/stylesheets",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "animations",
                       "date": "22/03/2015",
                       "ext": "css",
@@ -196,8 +176,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/stylesheets",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "dialogs",
                       "date": "22/03/2015",
                       "ext": "css",
@@ -205,8 +184,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/stylesheets",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "main",
                       "date": "22/03/2015",
                       "ext": "css",
@@ -214,16 +192,14 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/stylesheets",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "style",
                       "date": "22/03/2015",
                       "ext": "css",
                       "size": 111
                     }
                   ],
-                  "folder": true,
-                  "file": false,
+                  "isDir": true,
                   "size": null,
                   "date": "22/03/2015",
                   "name": "stylesheets"
@@ -233,8 +209,7 @@
                   "content": [
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "current-folder-breadcrumb",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -242,8 +217,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "item-context-menu",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -251,8 +225,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "item-toolbar",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -260,8 +233,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "main-icons",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -269,8 +241,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "main-table-modal",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -278,8 +249,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "main-table",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -287,8 +257,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "main",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -296,8 +265,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "modals",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -305,8 +273,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "navbar",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -314,8 +281,7 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "sidebar",
                       "date": "22/03/2015",
                       "ext": "html",
@@ -323,30 +289,26 @@
                     },
                     {
                       "path": "./storage/for nodeJS/node-runer/templates/templates",
-                      "folder": false,
-                      "file": true,
+                      "isDir": false,
                       "name": "spinner",
                       "date": "22/03/2015",
                       "ext": "html",
                       "size": 235
                     }
                   ],
-                  "folder": true,
-                  "file": false,
+                  "isDir": true,
                   "size": null,
                   "date": "22/03/2015",
                   "name": "templates"
                 }
               ],
-              "folder": true,
-              "file": false,
+              "isDir": true,
               "size": null,
               "date": "22/03/2015",
               "name": "templates"
             }
           ],
-          "folder": true,
-          "file": false,
+          "isDir": true,
           "size": null,
           "date": "22/03/2015",
           "name": "node-runer"
@@ -356,8 +318,7 @@
           "content": [
             {
               "path": "./storage/for nodeJS/stylesheets",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "animations",
               "date": "22/03/2015",
               "ext": "css",
@@ -365,8 +326,7 @@
             },
             {
               "path": "./storage/for nodeJS/stylesheets",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "dialogs",
               "date": "22/03/2015",
               "ext": "css",
@@ -374,8 +334,7 @@
             },
             {
               "path": "./storage/for nodeJS/stylesheets",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "main",
               "date": "22/03/2015",
               "ext": "css",
@@ -383,16 +342,14 @@
             },
             {
               "path": "./storage/for nodeJS/stylesheets",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "style",
               "date": "22/03/2015",
               "ext": "css",
               "size": 111
             }
           ],
-          "folder": true,
-          "file": false,
+          "isDir": true,
           "size": null,
           "date": "22/03/2015",
           "name": "stylesheets"
@@ -402,8 +359,7 @@
           "content": [
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "current-folder-breadcrumb",
               "date": "22/03/2015",
               "ext": "html",
@@ -411,8 +367,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "item-context-menu",
               "date": "22/03/2015",
               "ext": "html",
@@ -420,8 +375,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "item-toolbar",
               "date": "22/03/2015",
               "ext": "html",
@@ -429,8 +383,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "main-icons",
               "date": "22/03/2015",
               "ext": "html",
@@ -438,8 +391,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "main-table-modal",
               "date": "22/03/2015",
               "ext": "html",
@@ -447,8 +399,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "main-table",
               "date": "22/03/2015",
               "ext": "html",
@@ -456,8 +407,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "main",
               "date": "22/03/2015",
               "ext": "html",
@@ -465,8 +415,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "modals",
               "date": "22/03/2015",
               "ext": "html",
@@ -474,8 +423,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "navbar",
               "date": "22/03/2015",
               "ext": "html",
@@ -483,8 +431,7 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "sidebar",
               "date": "22/03/2015",
               "ext": "html",
@@ -492,23 +439,20 @@
             },
             {
               "path": "./storage/for nodeJS/templates",
-              "folder": false,
-              "file": true,
+              "isDir": false,
               "name": "spinner",
               "date": "22/03/2015",
               "ext": "html",
               "size": 235
             }
           ],
-          "folder": true,
-          "file": false,
+          "isDir": true,
           "size": null,
           "date": "22/03/2015",
           "name": "templates"
         }
       ],
-      "folder": true,
-      "file": false,
+      "isDir": true,
       "size": null,
       "date": "22/03/2015",
       "name": "for nodeJS"
@@ -518,8 +462,7 @@
       "content": [
         {
           "path": "./storage/images",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "2",
           "date": "22/03/2015",
           "ext": "png",
@@ -527,8 +470,7 @@
         },
         {
           "path": "./storage/images",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "3",
           "date": "22/03/2015",
           "ext": "png",
@@ -536,8 +478,7 @@
         },
         {
           "path": "./storage/images",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "5",
           "date": "22/03/2015",
           "ext": "jpg",
@@ -545,16 +486,14 @@
         },
         {
           "path": "./storage/images",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "gfFbh50Z1qI",
           "date": "22/03/2015",
           "ext": "jpg",
           "size": 66605
         }
       ],
-      "folder": true,
-      "file": false,
+      "isDir": true,
       "size": null,
       "date": "22/03/2015",
       "name": "images"
@@ -564,8 +503,7 @@
       "content": [
         {
           "path": "./storage/pdf files",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "AngularJS",
           "date": "22/03/2015",
           "ext": "pdf",
@@ -573,24 +511,21 @@
         },
         {
           "path": "./storage/pdf files",
-          "folder": false,
-          "file": true,
+          "isDir": false,
           "name": "Pro AngularJS",
           "date": "22/03/2015",
           "ext": "pdf",
           "size": 12254009
         }
       ],
-      "folder": true,
-      "file": false,
+      "isDir": true,
       "size": null,
       "date": "22/03/2015",
       "name": "pdf files"
     },
     {
       "path": "./storage",
-      "folder": false,
-      "file": true,
+      "isDir": false,
       "name": "storage",
       "date": "22/03/2015",
       "ext": "rar",
@@ -598,8 +533,7 @@
     },
     {
       "path": "./storage",
-      "folder": false,
-      "file": true,
+      "isDir": false,
       "name": "storage",
       "date": "22/03/2015",
       "ext": "zip",
@@ -607,8 +541,7 @@
     },
     {
       "path": "./storage",
-      "folder": false,
-      "file": true,
+      "isDir": false,
       "name": "text-doc",
       "date": "22/03/2015",
       "ext": "txt",
@@ -616,16 +549,14 @@
     },
     {
       "path": "./storage",
-      "folder": false,
-      "file": true,
+      "isDir": false,
       "name": "todo",
       "date": "22/03/2015",
       "ext": "jnt",
       "size": 4544
     }
   ],
-  "folder": true,
-  "file": false,
+  "isDir": true,
   "size": null,
   "storage": true,
   "date": "22/03/2015",

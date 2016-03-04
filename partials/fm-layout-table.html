@@ -29,9 +29,9 @@
     </div>
 
     <div class="tbody">
-        <div class="tr new-folder" ng-if="def.newFolderData.length" ng-repeat="item in def.newFolderData">
+        <div class="tr new-folder" ng-if="newDir.data.length" ng-repeat="item in newDir.data">
             <div class="td icon">
-                <i class="glyphicon glyphicon-remove remove" ng-click="removeNewFolder($index)"></i>
+                <i class="glyphicon glyphicon-remove remove" ng-click="newDir.remove($index)"></i>
             </div>
 
             <div class="td name">
@@ -41,7 +41,7 @@
                     </span>
                     <input class="form-control" type="text" ng-model="item.name">
                     <span class="input-group-btn">
-						<button type="button" class="btn btn-success" ng-click="createNewFolder($index)">
+						<button type="button" class="btn btn-success" ng-click="newDir.create(currentDir, $index)">
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
 					</span>
@@ -59,31 +59,32 @@
             <div class="td date" ng-if="fmSettings.showDateCol"> {{item.date}} </div>
         </div>
 
-        <div class="tr" ng-repeat="item in currentDir.content | orderBy:def.criteria:def.reverse" ng-dblclick="goToDirectory(item)" ng-class="{'selected': item.selected}">
+        <div class="tr" ng-repeat="item in currentDir.content | orderBy:def.criteria:def.reverse" ng-dblclick="objClickEventAction(item)" 
+        ng-class="{'selected': item.selected, 'cutout': item.cutCopyState == 'cutout', 'copied': item.cutCopyState == 'copied'}">
             <div class="td icon">
-                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(item)"></i>
+                <i class="fa {{item.selected ? 'fa-check-square-o check' : 'fa-square-o uncheck'}}" ng-click="selectThis(currentDir, item)"></i>
             </div>
 
             <div class="td name" ng-switch="item.rename">
                 <div ng-switch-when="true" class="input-group input-group-sm">
                     <span class="input-group-addon">
-                      <i class="fa fa-{{item.folder ? 'folder icon-folder' : 'file-text icon-file'}}"></i>
+                      <i class="fa fa-{{item.isDir ? 'folder icon-folder' : 'file-text icon-file'}}"></i>
                     </span>
-                    <input class="form-control" type="text" ng-model="item.name">
+                    <input class="form-control" type="text" ng-model="item.newName">
                     <span class="input-group-btn">
-						<button type="button" class="btn btn-success" ng-click="renameDone(item); item.rename = false">
+						<button type="button" class="btn btn-success" ng-click="renameDone(currentDir, item)">
 							<i class="glyphicon glyphicon-ok"></i>
 						</button>
 					</span>
                 </div>
 
                 <span ng-switch-default title="{{item.name}}">
-                    <i class="fa fa-{{item.folder ? 'folder icon-folder' : 'file-text icon-file'}}"></i>
+                    <i class="fa fa-{{item.isDir ? 'folder icon-folder' : 'file-text icon-file'}}"></i>
                      {{item.name}}
                 </span>
             </div>
 
-            <div class="td type" ng-if="fmSettings.showTypeCol" ng-switch="item.folder">
+            <div class="td type" ng-if="fmSettings.showTypeCol" ng-switch="item.isDir">
                 <span ng-switch-when="false" class="file"> .{{item.ext}} </span>
                 <span ng-switch-when="true" class="label label-info folder">-- folder</span>
             </div>

@@ -1,13 +1,13 @@
 <div class="fm-header clearfix">
 
     <div class="cell">
-        <button type="button" class="btn btn-default btn-sm" ng-click="goHistoryBackward()" ng-disabled="def.disabledBackward">
+        <button type="button" class="btn btn-default btn-sm" ng-click="history.goBackward()" ng-disabled="history.btnBackward">
             <i class="glyphicon glyphicon-chevron-left"></i>
         </button>
-        <button type="button" class="btn btn-default btn-sm" ng-click="goToHomeDirectory(foldersTree)">
+        <button type="button" class="btn btn-default btn-sm" ng-click="objClickEventAction(foldersTree)">
             <i class="glyphicon glyphicon-home"></i>
         </button>
-        <button type="button" class="btn btn-default btn-sm" ng-click="goHistoryForward()" ng-disabled="def.disabledForward">
+        <button type="button" class="btn btn-default btn-sm" ng-click="history.goForward()" ng-disabled="history.btnForward">
             <i class="glyphicon glyphicon-chevron-right"></i>
         </button>
     </div>
@@ -15,7 +15,7 @@
     <div class="cell">
         <div class="input-group">
             <ul class="fm-breadcrumb form-control input-sm">
-                <li ng-repeat="item in breadcrumbArr track by $index">
+                <li ng-repeat="item in breadcrumbArr">
                     <span class="folder" ng-click="breadcrumbWalker($index, $last)">{{item}}</span>
                 </li>
             </ul>
@@ -44,7 +44,7 @@
             <button type="button" class="btn btn-default btn-sm" ng-click="openUploadFormModal('lg')">
                 <i class="fa fa-upload"></i>
             </button>
-            <button type="button" class="btn btn-default btn-sm" ng-click="addNewFolder(currentDir)">
+            <button type="button" class="btn btn-default btn-sm" ng-click="newDir.add(currentDir)">
                 + <i class="fa fa-folder"></i>
             </button>
             <div class="btn-group btn-group-sm">

@@ -54,32 +54,6 @@
       padding-left: 15px;
     }
 
-    > .file {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding: 1px 3px;
-      cursor: pointer;
-
-      > .name {
-        color: $default-text;
-      }
-
-      > .icon {
-        font-size: 14px;
-        color: darken($sidebar-icon-file-color, 7%);
-      }
-
-      &:hover {
-        background-color: $link-hover-bg;
-
-        > .name,
-        > .icon {
-          color: $link-hover;
-        }
-      }
-    }
-
     > .folder {
       position: relative;
       padding: 1px 3px;
@@ -97,7 +71,6 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-weight: bold;
         color: $default-text;
       }
 
