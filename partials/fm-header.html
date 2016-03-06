@@ -4,7 +4,7 @@
         <button type="button" class="btn btn-default btn-sm" ng-click="history.goBackward()" ng-disabled="history.btnBackward">
             <i class="glyphicon glyphicon-chevron-left"></i>
         </button>
-        <button type="button" class="btn btn-default btn-sm" ng-click="objClickEventAction(foldersTree)">
+        <button type="button" class="btn btn-default btn-sm" ng-click="objClickEventAction(foldersTree); newBreadcrumbPath = ''">
             <i class="glyphicon glyphicon-home"></i>
         </button>
         <button type="button" class="btn btn-default btn-sm" ng-click="history.goForward()" ng-disabled="history.btnForward">
@@ -13,15 +13,23 @@
     </div>
 
     <div class="cell">
-        <div class="input-group">
-            <ul class="fm-breadcrumb form-control input-sm">
+        <div class="input-group" ng-switch="writeNewPathState" ng-init="newPathObj = {}">
+            <span class="input-group-btn" >
+				<button type="button" class="btn btn-default btn-sm" ng-click="applyNewPath(newPathObj)">
+					<i class="glyphicon glyphicon-{{writeNewPathState ? 'arrow-right' : 'pencil'}}"></i>
+				</button>
+			</span>
+
+            <ul ng-switch-default class="fm-breadcrumb form-control input-sm">
                 <li ng-repeat="item in breadcrumbArr">
                     <span class="folder" ng-click="breadcrumbWalker($index, $last)">{{item}}</span>
                 </li>
             </ul>
+
+            <input ng-switch-when="true" type="text" class="write-path-input form-control input-sm" ng-model="newPathObj.path">
+
             <span class="input-group-btn">
-				<button type="button" class="btn btn-default btn-sm">
-					<!--<i class="glyphicon glyphicon-arrow-right"></i>-->
+				<button type="button" class="btn btn-default btn-sm" ng-click="refreshCurrentDir(currentDir)">
 					<i class="glyphicon glyphicon-refresh"></i>
 				</button>
 			</span>

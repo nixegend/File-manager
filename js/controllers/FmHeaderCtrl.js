@@ -86,6 +86,7 @@ define(['app', '../services/fm-api', '../directives/fm-upload-form'], function (
                         $scope.newDir.data = [];
                     });
 
+                    $scope.writeNewPathState = false;
                     $scope.breadcrumbArr = (obj.storage) ? [] : obj.path.split('/').slice(2);
                 } else {
 
@@ -101,6 +102,19 @@ define(['app', '../services/fm-api', '../directives/fm-upload-form'], function (
                         obj = $filter('filter')(obj.content, { name: destArr[i] })[0];
                         if (i === index) $scope.objClickEventAction(obj);
                     }
+                }
+            };
+
+            $scope.applyNewPath = function (obj) {
+                $scope.writeNewPathState = !$scope.writeNewPathState;
+
+                if ($scope.writeNewPathState) {
+                    if ($scope.breadcrumbArr && $scope.breadcrumbArr.length > 0) {
+                        obj.path = $scope.breadcrumbArr.join('/');
+                    }
+                } else if (obj.path) {
+                    console.log(obj.path.split('/'));
+
                 }
             };
 

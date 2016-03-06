@@ -26,6 +26,11 @@
     }
   }
 
+  .write-path-input {
+    background-color: lighten($header-bg, 30%);
+    font-size: 15px;
+  }
+
   .fm-breadcrumb {
     > li {
       list-style-type: none;
@@ -36,7 +41,7 @@
 
       &:not(:last-child):after {
         content: " / ";
-        font-size: 17px;
+        font-size: 18px;
         line-height: 0;
         cursor: default;
       }

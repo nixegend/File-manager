@@ -8,10 +8,7 @@ define(['app', '../controllers/FmHeaderCtrl'], function (app) {
             restrict: 'E',
             replace: true,
             controller: 'FmHeaderCtrl',
-            templateUrl: '/partials/fm-header.html',
-            link: function (scope, element, attr) {
-
-            }
+            templateUrl: '/partials/fm-header.html'
         };
     }]);
 

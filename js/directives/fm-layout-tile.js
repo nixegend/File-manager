@@ -20,7 +20,7 @@ define(['app', './on-finish-render'], function (app) {
                             for (; i < b; i++) {
                                 boxes[i].style.width = scope.boxWidth + '%';
                             }
-                        }, 10);
+                        }, 30);
                     }
                 };
 

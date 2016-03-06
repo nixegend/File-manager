@@ -33,6 +33,14 @@
   }
 }
 
+.write-path-input,
+.fm-breadcrumb {
+  &.ng-enter,
+  &.ng-leave {
+    transition: none;
+  }
+}
+
 .context-menu {
   &.ng-enter,
   &.ng-leave {

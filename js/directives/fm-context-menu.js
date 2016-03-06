@@ -8,10 +8,7 @@ define(['app', '../controllers/FmContextMenuCtrl'], function (app) {
             restrict: 'E',
             replace: true,
             controller: 'FmContextMenuCtrl',
-            templateUrl: '/partials/fm-context-menu.html',
-            link: function (scope, element, attr) {
-
-            }
+            templateUrl: '/partials/fm-context-menu.html'
         };
     }]);
 
