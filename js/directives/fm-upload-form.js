@@ -1,14 +1,22 @@
 "use strict";
 
-define(['app'], function (app) {
+define(['app'], function(app) {
 
     app.directive('uploadBox', ['$timeout', '$rootScope', 'localStorageService', '$http',
-        function ($timeout, $rootScope, localStorageService, $http) {
+        function($timeout, $rootScope, localStorageService, $http) {
             return {
                 restrict: 'A',
-                link: function (scope, element, attrs) {
+                link: function(scope, element, attrs) {
 
                     scope.upload = [];
+
+                    scope.removeUploadingFile = function(index) {
+                        scope.upload.splice(index, 1);
+                    };
+
+                    scope.clearList = function() {
+                        scope.upload = [];
+                    };
 
                     function uploader(files) {
                         var data = new FormData();
@@ -19,23 +27,21 @@ define(['app'], function (app) {
 
                         console.log(data);
                         /*
-                                                $http({
-                                                    method: 'POST',
-                                                    url: attrs.to,
-                                                    data: data,
-                                                    withCredentials: true,
-                                                    headers: { 'Content-Type': undefined },
-                                                    transformRequest: angular.identity
-                                                }).success(function () {
-                                                    console.log("Uploaded");
-                                                }).error(function () {
-                                                    console.log("Error");
-                                                });
+                           $http({
+                               method: 'POST',
+                               url: attrs.to,
+                               data: data,
+                               withCredentials: true,
+                               headers: { 'Content-Type': undefined },
+                               transformRequest: angular.identity
+                           }).success(function () {
+                               console.log("Uploaded");
+                           }).error(function () {
+                               console.log("Error");
+                           });
                         */
 
-
-
-                        $timeout(function () {
+                        $timeout(function() {
                             scope.upload;
                         });
                     };
@@ -60,28 +66,28 @@ define(['app'], function (app) {
                         if (typeof (callback) == 'function') callback(arr);
                     };
 
-                    element.on('dragover', function (e) {
+                    element.on('dragover', function(e) {
                         // console.log(e);
                         element.addClass('active');
                         e.preventDefault();
                         e.stopPropagation();
                     });
 
-                    element.on('dragenter', function (e) {
+                    element.on('dragenter', function(e) {
                         // console.log(e);
                         element.addClass('active');
                         e.preventDefault();
                         e.stopPropagation();
                     });
 
-                    element.on('dragleave', function (e) {
+                    element.on('dragleave', function(e) {
                         // console.log(e);
                         element.removeClass('active');
                         e.preventDefault();
                         e.stopPropagation();
                     });
 
-                    element.on('drop', function (e) {
+                    element.on('drop', function(e) {
                         console.log(e);
                         element.removeClass('active');
                         if (e.dataTransfer && e.dataTransfer.files.length > 0) {

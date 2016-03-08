@@ -16,11 +16,11 @@
                 <div class="td"> .{{item.extType}} </div>
                 <div class="td">
                     <div class="uploading">
-                        <div class="rate"> 45% </div>
+                        <div class="rate" ng-style="{'width': item.percentages +'%'}"> {{item.percentages}}%</div>
                     </div>
                  </div>
                 <div class="td">
-                    <button type="button" class="btn btn-xs btn-danger">
+                    <button type="button" ng-click="removeUploadingFile($index)" class="btn btn-xs btn-danger">
                         <i class="glyphicon glyphicon-remove"></i>
                     </button>
                  </div>
@@ -36,5 +36,5 @@
         <i class="fa_icon icon-upload-alt margin-correction"></i>Choose files
     </label>
 
-    <button type="button" class="btn btn-default">Clear</button>
+    <button type="button" ng-click="clearList()" class="btn btn-default">Clear</button>
 </div>

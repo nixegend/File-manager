@@ -1,5 +1,7 @@
 .fm-file-uploader {
   padding: 0;
+  max-height: 295px;
+  overflow-y: auto;
 
   .title-pointer {
     cursor: default;
@@ -59,10 +61,11 @@
         text-align: center;
       }
     }
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
-
-
-
 }
 
 .file-selector-btn {

@@ -114,7 +114,7 @@ define(['app', '../services/fm-api', '../directives/fm-upload-form'], function (
                     }
                 } else if (obj.path) {
                     console.log(obj.path.split('/'));
-
+                    
                 }
             };
 
